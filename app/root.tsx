@@ -13,7 +13,7 @@ export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet }
 ]
 
-export default function App () {
+export default function App (): JSX.Element {
   return (
     <html lang="en">
       <head>

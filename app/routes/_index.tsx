@@ -7,7 +7,7 @@ export const meta: V2_MetaFunction = () => {
   ]
 }
 
-export default function Index () {
+export default function Index (): JSX.Element {
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
       <h1>Welcome to Remix</h1>
