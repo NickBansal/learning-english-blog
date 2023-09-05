@@ -1,19 +1,19 @@
-import type { LinksFunction } from '@remix-run/node'
+import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
-} from '@remix-run/react'
-import stylesheet from '~/tailwind.css'
+  ScrollRestoration,
+} from "@remix-run/react";
+import stylesheet from "~/tailwind.css";
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: stylesheet }
-]
+  { rel: "stylesheet", href: stylesheet },
+];
 
-export default function App (): JSX.Element {
+export default function App(): JSX.Element {
   return (
     <html lang="en">
       <head>
@@ -29,5 +29,5 @@ export default function App (): JSX.Element {
         <LiveReload />
       </body>
     </html>
-  )
+  );
 }

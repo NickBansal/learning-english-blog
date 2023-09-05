@@ -5,5 +5,14 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "cSpell.words": ["isbot", "Pipeable"]
+  "cSpell.words": [
+    "isbot",
+    "Pipeable",
+    "tailwindcss",
+    "prismjs",
+    "headlessui",
+    "typecheck",
+    "graphcms",
+    "Quickstart"
+  ]
 }
