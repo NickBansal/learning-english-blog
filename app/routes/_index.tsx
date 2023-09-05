@@ -1,16 +1,21 @@
-import type { V2_MetaFunction } from '@remix-run/node'
+import type { V2_MetaFunction } from "@remix-run/node";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: 'New Remix App' },
-    { name: 'description', content: 'Welcome to Remix!' }
-  ]
-}
+    { title: "New Remix App" },
+    { name: "description", content: "Welcome to Remix!" }
+  ];
+};
 
-export default function Index (): JSX.Element {
+export default function Index(): JSX.Element {
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
-      <h1>Welcome to Remix</h1>
+    <div
+      style={{
+        fontFamily: "system-ui, sans-serif",
+        lineHeight: "1.8"
+      }}
+    >
+      <h1 className="text-2xl bg-orange-500 p-4">Welcome to Remix</h1>
       <ul>
         <li>
           <a
@@ -37,5 +42,5 @@ export default function Index (): JSX.Element {
         </li>
       </ul>
     </div>
-  )
+  );
 }

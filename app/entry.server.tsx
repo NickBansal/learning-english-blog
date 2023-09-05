@@ -60,7 +60,7 @@ async function handleBotRequest(
                     resolve(
                         new Response(body, {
                             headers: responseHeaders,
-                            status: responseStatusCode,
+                            status: responseStatusCode
                         })
                     );
 
@@ -77,7 +77,7 @@ async function handleBotRequest(
                     if (shellRendered) {
                         console.error(error);
                     }
-                },
+                }
             }
         );
 
@@ -109,7 +109,7 @@ async function handleBrowserRequest(
                     resolve(
                         new Response(body, {
                             headers: responseHeaders,
-                            status: responseStatusCode,
+                            status: responseStatusCode
                         })
                     );
 
@@ -126,7 +126,7 @@ async function handleBrowserRequest(
                     if (shellRendered) {
                         console.error(error);
                     }
-                },
+                }
             }
         );
 
