@@ -1,42 +1,59 @@
-import type { LinksFunction, LoaderArgs } from "@remix-run/node";
+import type { LinksFunction, LoaderArgs } from '@remix-run/node';
 import {
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
-} from "@remix-run/react";
-import stylesheet from "~/tailwind.css";
-import { themeSessionResolver } from "./utils/session.server";
+  ScrollRestoration,
+  useLoaderData
+} from '@remix-run/react';
+import stylesheet from '~/tailwind.css';
+import { themeSessionResolver } from './utils/session.server';
+import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
+import { Layout } from './layout';
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet }
-];
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }];
 
-export async function loader({ request }: LoaderArgs) {
+export const loader = async ({ request }: LoaderArgs) => {
   const { getTheme } = await themeSessionResolver(request);
 
   return {
     theme: getTheme()
   };
+};
+
+export default function AppWithProvider() {
+  const { theme } = useLoaderData<typeof loader>();
+
+  return (
+    <ThemeProvider specifiedTheme={theme} themeAction="/action/set-theme">
+      <App />
+    </ThemeProvider>
+  );
 }
 
-export default function App(): JSX.Element {
+export const App = (): JSX.Element => {
+  const { theme } = useLoaderData<typeof loader>();
+  const [themeX] = useTheme();
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme={themeX ?? ''}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(theme)} />
         <Links />
       </head>
-      <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+      <body className="bg-white text-black dark:bg-gray-900 dark:text-white h-full selection:bg-gray-50 dark:selection:bg-gray-800">
+        <Layout>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </Layout>
       </body>
     </html>
   );
-}
+};

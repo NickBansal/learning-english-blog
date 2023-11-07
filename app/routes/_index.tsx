@@ -15,7 +15,7 @@ export default function Index(): JSX.Element {
         lineHeight: "1.8"
       }}
     >
-      <h1 className="text-2xl bg-orange-900 text-white p-4">Welcome to Remix</h1>
+      <h1>Welcome to Remix</h1>
       <ul>
         <li>
           <a
