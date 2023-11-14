@@ -1,9 +1,9 @@
-import { PaddedMain } from '~/components/paddedMain';
+import { PaddedMain } from '~/components/padded-main';
 
 export default function Blogs(): JSX.Element {
   return (
     <PaddedMain>
-      <h1>Blogs sections</h1>
+      <h1 className="text-2xl">Blogs sections</h1>
     </PaddedMain>
   );
 }
