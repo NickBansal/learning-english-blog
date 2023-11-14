@@ -8,10 +8,12 @@ import {
   ScrollRestoration,
   useLoaderData
 } from '@remix-run/react';
-import stylesheet from '~/tailwind.css';
-import { themeSessionResolver } from './utils/session.server';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
+
+import { themeSessionResolver } from './utils/session.server';
 import { Layout } from './layout';
+
+import stylesheet from '~/tailwind.css';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }];
 

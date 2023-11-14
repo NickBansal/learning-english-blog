@@ -25,7 +25,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module"
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "simple-import-sort"],
   rules: {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/quotes": 0,
@@ -34,6 +34,25 @@ module.exports = {
     "@typescript-eslint/space-before-function-paren": 0,
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/explicit-function-return-type": 0,
-    "multiline-ternary" : 0
+    "multiline-ternary" : 0,
+      "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              // Packages `react` related packages come first.
+              ["^react", "^@?\\w"],
+              // Internal packages.
+              ["^(@|components)(/.*|$)"],
+              // Side effect imports.
+              ["^\\u0000"],
+              // Parent imports. Put `..` last.
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              // Other relative imports. Put same-folder imports and `.` last.
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              // Style imports.
+              ["^.+\\.?(css)$"]
+            ]
+          }
+        ]
   }
 };

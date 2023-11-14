@@ -1,7 +1,5 @@
 import { Disclosure } from '@headlessui/react';
 import { Link, NavLink } from '@remix-run/react';
-
-import React from 'react';
 import { Theme, useTheme } from 'remix-themes';
 
 const headerLinks = ({ isActive }: { isActive: boolean }) =>
@@ -49,7 +47,7 @@ export const Navbar = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6"
+                        className="w-6 h-6 text-gray-500"
                       >
                         <path
                           strokeLinecap="round"
