@@ -33,6 +33,7 @@ module.exports = {
     "@typescript-eslint/comma-dangle": 0,
     "@typescript-eslint/space-before-function-paren": 0,
     "@typescript-eslint/indent": "off",
-    "@typescript-eslint/explicit-function-return-type": 0
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "multiline-ternary" : 0
   }
 };
