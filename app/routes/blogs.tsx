@@ -1,4 +1,4 @@
-import { PaddedMain } from '~/components/padded-main';
+import { PaddedMain } from '~/components/padded-main/padded-main';
 
 export default function Blogs(): JSX.Element {
   return (

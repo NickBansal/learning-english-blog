@@ -34,6 +34,7 @@ module.exports = {
     "@typescript-eslint/space-before-function-paren": 0,
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
     "multiline-ternary" : 0,
       "simple-import-sort/imports": [
           "error",

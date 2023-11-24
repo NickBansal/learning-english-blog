@@ -6,9 +6,8 @@ export const meta: V2_MetaFunction = () => {
 
 export default function Index(): JSX.Element {
   return (
-    <main>
-      <section className="relative flex items-center justify-center w-full h-screen overflow-hidden">
-        <div className="absolute top-0 bottom-0 left-0 right-0 z-10 w-full h-full bg-fixed bg-black opacity-60">
+    <section className="relative flex items-center justify-center w-full h-screen overflow-hidden">
+      {/* <div className="absolute top-0 bottom-0 left-0 right-0 z-10 w-full h-full bg-fixed bg-black opacity-60">
           <video
             autoPlay
             loop
@@ -17,8 +16,7 @@ export default function Index(): JSX.Element {
           >
             <source src="forestHD.mp4" type="video/mp4" />
           </video>
-        </div>
-      </section>
-    </main>
+        </div> */}
+    </section>
   );
 }
