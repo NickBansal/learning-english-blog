@@ -9,9 +9,11 @@ export const meta: V2_MetaFunction = () => {
 export default function Index(): JSX.Element {
   return (
     <main>
-      <div className="bg-[url('/hero.jpg')] h-[60vh] w-full bg-center bg-cover relative"></div>
+      <div className="bg-[url('/hero.jpg')] h-[60vh] w-full bg-center bg-cover relative" />
+
+      <PaddedMain>
+        <p>Home page content</p>
+      </PaddedMain>
     </main>
   );
 }
-
-// object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 block
