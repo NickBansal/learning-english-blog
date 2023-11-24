@@ -4,7 +4,7 @@ interface Props {
 
 export const headerLinksDesktop = ({ isActive }: Props) =>
   isActive
-    ? 'border-teal-500 dark:bg-gray-800 dark:text-white h-full inline-flex items-center px-2 pt-1 border-b-2 text-md font-medium transition'
+    ? 'border-teal-500 dark:text-white h-full inline-flex items-center px-2 pt-1 border-b-2 text-md font-medium transition'
     : 'border-transparent text-gray-500 dark:text-white inline-flex items-center px-2 pt-1 border-b-2 text-md font-medium';
 
 export const headerLinksMobile = ({ isActive }: Props) =>

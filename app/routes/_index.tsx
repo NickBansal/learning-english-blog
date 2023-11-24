@@ -9,7 +9,7 @@ export const meta: V2_MetaFunction = () => {
 export default function Index(): JSX.Element {
   return (
     <PaddedMain>
-      <h1 className="text-2xl">Home section</h1>
+      <h1 className="text-lg lg:text-2xl">Home section</h1>
     </PaddedMain>
   );
 }
