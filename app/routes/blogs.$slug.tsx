@@ -63,45 +63,47 @@ export default function BlogPost(): JSX.Element {
       <div className="mb-8">
         <Link
           to="/blogs"
-          className="text-blue-800 border-b-2 border-blue-800 hover:text-blue-500 hover:border-blue-500 dark:border-blue-300 hover:dark:text-blue-500 hover:dark:border-blue-500 dark:text-blue-300 mr-2"
+          className="text-teal-500 border-b-2 border-teal-500 hover:text-teal-600 hover:border-teal-600"
         >
           Blogs page
         </Link>
         {' > '}
         <span className="ml-2">{blogData.title}</span>
       </div>
-      <h1 className="text-center text-2xl md:text-3xl pb-2 font-semibold">{blogData.title}</h1>
-      <p className="text-sm font-light border-b-2 border-black dark:border-white text-center pb-4">
-        Created: {format(new Date(blogData.createdAt), 'dd/MM/yyyy')}
-      </p>
-      <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData.overview}</p>
-      <div className="mt-8">
-        <RichText
-          content={blogData.body.raw}
-          renderers={{
-            code_block: ({ children }) => {
-              return (
-                <pre className="line-numbers language-javascript">
-                  <code>{children}</code>
-                </pre>
-              );
-            },
-            img: ({ src, altText, height, width }) => (
-              <img src={src} alt={altText} width={width} height={height} className="rounded-lg" />
-            ),
-            a: ({ children, openInNewTab, href, rel, ...rest }) => (
-              <a
-                href={href}
-                rel="noreferrer"
-                target={openInNewTab ?? false ? '_blank' : '_self'}
-                {...rest}
-                className="text-teal-500 hover:text-teal-600"
-              >
-                {children}
-              </a>
-            )
-          }}
-        />
+      <div className="lg:px-20">
+        <h1 className="text-center text-2xl md:text-3xl pb-2 font-semibold">{blogData.title}</h1>
+        <p className="text-sm font-light border-b-2 border-black dark:border-white text-center pb-4">
+          Created: {format(new Date(blogData.createdAt), 'dd/MM/yyyy')}
+        </p>
+        <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData.overview}</p>
+        <div className="mt-8">
+          <RichText
+            content={blogData.body.raw}
+            renderers={{
+              code_block: ({ children }) => {
+                return (
+                  <pre className="line-numbers language-javascript">
+                    <code>{children}</code>
+                  </pre>
+                );
+              },
+              img: ({ src, altText, height, width }) => (
+                <img src={src} alt={altText} width={width} height={height} className="rounded-lg" />
+              ),
+              a: ({ children, openInNewTab, href, rel, ...rest }) => (
+                <a
+                  href={href}
+                  rel="noreferrer"
+                  target={openInNewTab ?? false ? '_blank' : '_self'}
+                  {...rest}
+                  className="text-teal-500 hover:text-teal-600"
+                >
+                  {children}
+                </a>
+              )
+            }}
+          />
+        </div>
       </div>
     </PaddedMain>
   );

@@ -42,8 +42,11 @@ export default function BlogPage(): JSX.Element {
         {blogs.map((blog) => {
           return (
             <Link to={blog.slug} prefetch="none" key={blog.id}>
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
+              <div className="mb-8 group">
+                <h2 className="text-xl font-semibold mb-2 relative w-fit">
+                  {blog.title}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[0.15rem] bg-teal-500 transition-all duration-150 group-hover:w-full"></span>
+                </h2>
                 <p className="mb-2">{blog.overview}</p>
                 <p className="text-sm font-light">Created: {format(new Date(blog.createdAt), 'dd/MM/yyyy')}</p>
               </div>
