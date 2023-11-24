@@ -1,17 +1,17 @@
 import { Disclosure } from '@headlessui/react';
 import { Link, NavLink } from '@remix-run/react';
-import { Theme, useTheme } from 'remix-themes';
+import { useTheme } from 'remix-themes';
 
 import { DarknessModeButton } from '../darkness-mode-button/darkness-mode-button';
 
-import { headerLinksDesktop, headerLinksMobile } from './styles';
+import { headerLinksDesktop, headerLinksMobile } from './navbar-styles';
 
 export const Navbar = () => {
   const [theme, setTheme] = useTheme();
 
   return (
     <Disclosure as="nav">
-      {({ open }) => {
+      {({ open, close }) => {
         return (
           <>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +25,7 @@ export const Navbar = () => {
                       </h1>
                     </Link>
                   </div>
-                  <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                  <div className="hidden sm:ml-6 sm:flex sm:space-x-6">
                     <NavLink to="/" className={headerLinksDesktop}>
                       Home
                     </NavLink>
@@ -55,11 +55,7 @@ export const Navbar = () => {
                         stroke="currentColor"
                         className="w-6 h-6 text-gray-500"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     ) : (
                       <svg
@@ -81,15 +77,33 @@ export const Navbar = () => {
                 </div>
               </div>
             </div>
-            <Disclosure.Panel className="sm:hidden">
+            <Disclosure.Panel className="sm:hidden absolute z-100 w-full h-screen bg-slate-50">
               <div className="p-2 pb-3 space-y-1">
-                <NavLink to="/" className={headerLinksMobile}>
+                <NavLink
+                  to="/"
+                  className={headerLinksMobile}
+                  onClick={() => {
+                    close();
+                  }}
+                >
                   Home
                 </NavLink>
-                <NavLink to="/blogs" className={headerLinksMobile}>
+                <NavLink
+                  to="/blogs"
+                  className={headerLinksMobile}
+                  onClick={() => {
+                    close();
+                  }}
+                >
                   Blogs
                 </NavLink>
-                <NavLink to="/about" className={headerLinksMobile}>
+                <NavLink
+                  to="/about"
+                  className={headerLinksMobile}
+                  onClick={() => {
+                    close();
+                  }}
+                >
                   About
                 </NavLink>
               </div>
