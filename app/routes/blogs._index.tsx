@@ -5,12 +5,11 @@ import format from 'date-fns/format';
 import { gql } from 'graphql-request';
 
 import { PaddedMain } from '~/components/padded-main/padded-main';
+import { blogsPage } from '~/constants/meta-data';
 import { hygraph } from '~/utils/hygraph.server';
-import { type Blog } from '~/utils/interface';
+import { type Blogs } from '~/utils/interface';
 
-export const meta: V2_MetaFunction = () => {
-  return [{ title: 'Learning English | Blogs Page' }, { name: 'description', content: 'Welcome to Remix!' }];
-};
+export const meta: V2_MetaFunction = () => blogsPage;
 
 export async function loader() {
   const query = gql`
@@ -33,7 +32,7 @@ export async function loader() {
 }
 
 export default function BlogPage(): JSX.Element {
-  const { blogs } = useLoaderData() as Blog;
+  const { blogs } = useLoaderData() as Blogs;
 
   return (
     <PaddedMain>
@@ -42,7 +41,7 @@ export default function BlogPage(): JSX.Element {
       <div className="py-8">
         {blogs.map((blog) => {
           return (
-            <Link to={`blogs/${blog.slug}`} prefetch="intent" key={blog.id}>
+            <Link to={blog.slug} prefetch="none" key={blog.id}>
               <div className="mb-8">
                 <h2 className="text-xl font-semibold mb-2">{blog.title}</h2>
                 <p className="mb-2">{blog.overview}</p>
