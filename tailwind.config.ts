@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 export default {
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
@@ -7,4 +7,4 @@ export default {
     extend: {}
   },
   plugins: [require('@tailwindcss/typography')]
-} satisfies Config
+} satisfies Config;
