@@ -10,9 +10,12 @@ export const DarknessModeButton = ({
   theme: string | null;
   className?: string;
 }) => {
+  const shadow = theme === Theme.DARK ? 'shadow-outer' : 'shadow-inner';
+
   return (
     <button
-      className={className}
+      className={`h-fit p-2 border-2 rounded-full ${shadow} ${className} transition-colors`}
+      aria-label={`toggle-${theme ?? ''}`}
       onClick={() => {
         setTheme((prevState) => {
           return prevState === Theme.DARK ? Theme.LIGHT : Theme.DARK;
@@ -26,7 +29,7 @@ export const DarknessModeButton = ({
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 text-gray-500"
+          className="w-6 h-6 text-teal-800"
         >
           <path
             strokeLinecap="round"

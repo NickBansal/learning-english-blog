@@ -23,4 +23,15 @@ interface BlogItem {
     }>
 }
 
-export type { BlogItem, Blogs }
+interface HomeContent {
+    homeContents: Array<{
+        id: string;
+        image?: {
+            id: string
+        }
+        title: string
+        description: any
+    }>
+}
+
+export type { BlogItem, Blogs, HomeContent }

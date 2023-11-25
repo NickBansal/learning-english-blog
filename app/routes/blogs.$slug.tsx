@@ -63,7 +63,7 @@ export default function BlogPost(): JSX.Element {
       <div className="mb-8">
         <Link
           to="/blogs"
-          className="text-teal-500 border-b-2 border-teal-500 hover:text-teal-600 hover:border-teal-600"
+          className="text-teal-700 border-b-2 border-teal-700 hover:text-teal-800 hover:border-teal-800 dark:text-teal-500 dark:border-teal-500 dark:hover:text-teal-600 dark:hover:border-teal-600 mr-2"
         >
           Blogs page
         </Link>
