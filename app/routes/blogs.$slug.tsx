@@ -1,29 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { useEffect } from 'react';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import type { LinksFunction, LoaderArgs, V2_MetaFunction } from '@remix-run/node';
+import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import format from 'date-fns/format';
 import { gql } from 'graphql-request';
-import Prism from 'prismjs';
 
-import 'prismjs/plugins/line-numbers/prism-line-numbers';
-
-import linenum from 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-import theme from 'prismjs/themes/prism-tomorrow.css';
-
+import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedMain } from '~/components/padded-main/padded-main';
 import { blogsPage } from '~/constants/meta-data';
 import { hygraph } from '~/utils/hygraph.server';
 import { type BlogItem } from '~/utils/interface';
-
-export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: theme },
-  { rel: 'stylesheet', href: linenum }
-];
 
 export const meta: V2_MetaFunction = () => blogsPage;
 
@@ -38,9 +27,7 @@ export async function loader({ params }: LoaderArgs) {
         slug
         title
         updatedAt
-        body {
-          raw
-        }
+        body
       }
     }
   `;
@@ -53,11 +40,7 @@ export async function loader({ params }: LoaderArgs) {
 export default function BlogPost(): JSX.Element {
   const { blogs } = useLoaderData() as BlogItem;
   const blogData = blogs[0];
-
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
-
+  console.log(blogData, ' <<<<');
   return (
     <PaddedMain>
       <div className="mb-8">
@@ -76,34 +59,7 @@ export default function BlogPost(): JSX.Element {
           Created: {format(new Date(blogData.createdAt), 'dd/MM/yyyy')}
         </p>
         <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData.overview}</p>
-        <div className="mt-8">
-          <RichText
-            content={blogData.body.raw}
-            renderers={{
-              code_block: ({ children }) => {
-                return (
-                  <pre className="line-numbers language-javascript">
-                    <code>{children}</code>
-                  </pre>
-                );
-              },
-              img: ({ src, altText, height, width }) => (
-                <img src={src} alt={altText} width={width} height={height} className="rounded-lg" />
-              ),
-              a: ({ children, openInNewTab, href, rel, ...rest }) => (
-                <a
-                  href={href}
-                  rel="noreferrer"
-                  target={openInNewTab ?? false ? '_blank' : '_self'}
-                  {...rest}
-                  className="text-teal-500 hover:text-teal-600"
-                >
-                  {children}
-                </a>
-              )
-            }}
-          />
-        </div>
+        <div className="mt-8">{<JSMarkdown>{blogData.body}</JSMarkdown>}</div>
       </div>
     </PaddedMain>
   );

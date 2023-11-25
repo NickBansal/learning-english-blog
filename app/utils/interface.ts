@@ -19,7 +19,7 @@ interface BlogItem {
         slug: string
         title: string
         updatedAt: string
-        body: any
+        body: string
     }>
 }
 
@@ -30,7 +30,7 @@ interface HomeContent {
             id: string
         }
         title: string
-        description: any
+        description: string
     }>
 }
 

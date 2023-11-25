@@ -2,6 +2,7 @@ import { json, type V2_MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { gql } from 'graphql-request';
 
+import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedMain } from '~/components/padded-main/padded-main';
 import { homePage } from '~/constants/meta-data';
 import { hygraph } from '~/utils/hygraph.server';
@@ -33,7 +34,15 @@ export default function Index(): JSX.Element {
 
   return (
     <PaddedMain>
-      <h1 className="text-lg md:text-2xl">Home section</h1>
+      <h1 className="text-lg md:text-2xl mb-8">Home section</h1>
+      {homeContents.map((item) => {
+        return (
+          <section key={item.id}>
+            <h2 className="text-base md:text-xl">{item.title}</h2>
+            <JSMarkdown>{item.description}</JSMarkdown>
+          </section>
+        );
+      })}
     </PaddedMain>
   );
 }
