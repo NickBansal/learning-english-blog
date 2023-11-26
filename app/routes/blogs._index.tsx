@@ -4,7 +4,7 @@ import { Link, useLoaderData } from '@remix-run/react';
 import format from 'date-fns/format';
 import { gql } from 'graphql-request';
 
-import { PaddedMain } from '~/components/padded-main/padded-main';
+import { PaddedSection } from '~/components/padded-section/padded-section';
 import { blogsPage } from '~/constants/meta-data';
 import { hygraph } from '~/utils/hygraph.server';
 import { type Blogs } from '~/utils/interface';
@@ -35,7 +35,7 @@ export default function BlogPage(): JSX.Element {
   const { blogs } = useLoaderData() as Blogs;
 
   return (
-    <PaddedMain>
+    <PaddedSection>
       <h1 className="text-lg md:text-2xl w-full border-b-2 pb-4">All content</h1>
 
       <div className="py-8">
@@ -54,6 +54,6 @@ export default function BlogPage(): JSX.Element {
           );
         })}
       </div>
-    </PaddedMain>
+    </PaddedSection>
   );
 }

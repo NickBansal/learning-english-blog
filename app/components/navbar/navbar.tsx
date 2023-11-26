@@ -17,20 +17,22 @@ export const Navbar = () => {
             close();
           }, 200);
         };
+
+        const opacity = open ? 'opacity-100' : 'opacity-90';
         return (
-          <>
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`fixed z-[900] left-0 right-0 bg-slate-50 ${opacity} dark:bg-gray-800`}>
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ">
               <div className="flex justify-between h-16">
                 <div className="flex justify-between w-full">
                   <div className="flex items-center">
                     <Link to="/">
                       <h1 className="text-2xl font-medium">
-                        Learning
-                        <span className="text-teal-600">English</span>
+                        English
+                        <span className="text-teal-600">Everyday</span>
                       </h1>
                     </Link>
                   </div>
-                  <div className="hidden md:ml-6 md:flex md:space-x-6 items-center">
+                  <div className="hidden md:ml-6 md:flex md:space-x-4 items-center">
                     <NavLink to="/" className={headerLinksDesktop}>
                       Home
                     </NavLink>
@@ -88,7 +90,7 @@ export const Navbar = () => {
                 </div>
               </div>
             </div>
-            <Disclosure.Panel className="sm:hidden absolute z-[9999] w-full h-screen bg-slate-50">
+            <Disclosure.Panel className="sm:hidden absolute z-[9999] w-full h-screen bg-slate-50 dark:">
               <div className="p-2 pb-3 space-y-1">
                 <NavLink to="/" className={headerLinksMobile} onClick={closeModal}>
                   Home
@@ -107,7 +109,7 @@ export const Navbar = () => {
                 </NavLink>
               </div>
             </Disclosure.Panel>
-          </>
+          </div>
         );
       }}
     </Disclosure>

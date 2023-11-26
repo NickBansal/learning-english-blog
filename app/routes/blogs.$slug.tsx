@@ -5,7 +5,7 @@ import format from 'date-fns/format';
 import { gql } from 'graphql-request';
 
 import JSMarkdown from '~/components/mdx-components/mdx-component';
-import { PaddedMain } from '~/components/padded-main/padded-main';
+import { PaddedSection } from '~/components/padded-section/padded-section';
 import { blogsPage } from '~/constants/meta-data';
 import { hygraph } from '~/utils/hygraph.server';
 import { type BlogItem } from '~/utils/interface';
@@ -37,7 +37,7 @@ export default function BlogPost(): JSX.Element {
   const blogData = blogs[0];
 
   return (
-    <PaddedMain>
+    <PaddedSection>
       <div className="mb-8">
         <Link
           to="/blogs"
@@ -56,6 +56,6 @@ export default function BlogPost(): JSX.Element {
         <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData.overview}</p>
         <div className="mt-8">{<JSMarkdown>{blogData.body}</JSMarkdown>}</div>
       </div>
-    </PaddedMain>
+    </PaddedSection>
   );
 }
