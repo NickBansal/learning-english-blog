@@ -34,11 +34,11 @@ export const Navbar = () => {
                     <NavLink to="/" className={headerLinksDesktop}>
                       Home
                     </NavLink>
-                    <NavLink to="/blogs" className={headerLinksDesktop}>
-                      Blogs
-                    </NavLink>
                     <NavLink to="/about" className={headerLinksDesktop}>
                       About
+                    </NavLink>
+                    <NavLink to="/blogs" className={headerLinksDesktop}>
+                      Blogs
                     </NavLink>
                     <NavLink to="/courses" className={headerLinksDesktop}>
                       Courses
@@ -93,16 +93,16 @@ export const Navbar = () => {
                 <NavLink to="/" className={headerLinksMobile} onClick={closeModal}>
                   Home
                 </NavLink>
-                <NavLink to="/blogs" className={headerLinksMobile} onClick={closeModal}>
-                  Blogs
-                </NavLink>
-                <NavLink to="/about" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/about" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
                   About
                 </NavLink>
-                <NavLink to="/courses" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/blogs" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
+                  Blogs
+                </NavLink>
+                <NavLink to="/courses" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
                   Courses
                 </NavLink>
-                <NavLink to="/contact" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/contact" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
                   Contact
                 </NavLink>
               </div>

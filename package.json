@@ -7,7 +7,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@graphcms/rich-text-react-renderer": "^0.6.1",
     "@headlessui/react": "^1.7.16",
     "@remix-run/css-bundle": "^1.19.3",
     "@remix-run/node": "^1.19.3",

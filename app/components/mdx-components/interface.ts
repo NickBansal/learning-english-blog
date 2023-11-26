@@ -14,6 +14,4 @@ export interface ChildrenNodes {
   children: React.ReactNode;
 }
 
-export interface ChildrenString {
-  children: string;
-}
+export type ChildrenString = Record<string, string>;

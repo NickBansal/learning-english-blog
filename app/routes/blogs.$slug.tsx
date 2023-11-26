@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { RichText } from '@graphcms/rich-text-react-renderer';
 import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
@@ -33,14 +29,13 @@ export async function loader({ params }: LoaderArgs) {
   `;
 
   const blogs = await hygraph.request(query);
-
   return json(blogs);
 }
 
 export default function BlogPost(): JSX.Element {
   const { blogs } = useLoaderData() as BlogItem;
   const blogData = blogs[0];
-  console.log(blogData, ' <<<<');
+
   return (
     <PaddedMain>
       <div className="mb-8">

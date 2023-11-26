@@ -2,12 +2,11 @@ import React from 'react';
 import { Link } from '@remix-run/react';
 
 interface AnchorTypes {
-  internal: boolean;
   children: React.ReactNode;
   href: string;
 }
 
-export default function Anchor({ internal, children, href }: AnchorTypes) {
+export default function Anchor({ children, href }: AnchorTypes) {
   return (
     <Link
       to={href}
