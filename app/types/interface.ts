@@ -29,7 +29,6 @@ interface HomeContent {
         image?: {
             url: string
         }
-        title: string
         description: string
         leftPosition: boolean
     }>
