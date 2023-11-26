@@ -35,10 +35,11 @@ export default function Index(): JSX.Element {
   return (
     <>
       <div className="bg-[url('/books.jpg')] h-screen w-full bg-center bg-cover relative flex items-center justify-center lg:justify-end grayscale">
-        <div className="text-white w-[75%] lg:w-1/2 text-center -mt-[20rem] pl-[4.5rem] md:pl-[8rem] max-w-5xl -mr-[4.5rem] md:-mr-[8.5rem] lg:mr-[5rem]">
-          <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] border-b-2 border-white leading-none font-bold drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)] text-right">
+        <div className="flex flex-col items-end text-white w-[75%] lg:w-1/2 text-center -mt-[20rem] sm:-mt-[23rem] pl-[4.5rem] md:pl-[8rem] max-w-5xl -mr-[4.5rem] md:-mr-[8.5rem] lg:mr-[5rem]">
+          <h1 className="text-[3.5rem] md:text-[5rem] w-min leading-none font-bold drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)] text-right">
             English Language Everyday
           </h1>
+          <hr className="w-full border-1 border-white" />
           <p className="mt-8 text-lg md:text-xl drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)] text-right">
             It is a long established fact that a reader will be distracted by the readable content of a page when
             looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
