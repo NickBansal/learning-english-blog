@@ -3,7 +3,7 @@ import { useLoaderData } from '@remix-run/react';
 import { gql } from 'graphql-request';
 
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
-import { Buttons } from '~/components/buttons/buttons';
+import { ExternalLink, InternalLink } from '~/components/buttons/buttons';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { homePage } from '~/constants/meta-data';
@@ -48,8 +48,10 @@ export default function Index(): JSX.Element {
             letters
           </p>
           <ButtonsGroup className="mt-8">
-            <Buttons outline>Contact</Buttons>
-            <Buttons>Courses</Buttons>
+            <ExternalLink href="https://flowbite.com/docs/typography/links/" outline>
+              Courses
+            </ExternalLink>
+            <InternalLink to="/contact">Contact</InternalLink>
           </ButtonsGroup>
         </div>
       </div>
