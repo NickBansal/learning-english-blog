@@ -20,15 +20,15 @@ export const Navbar = () => {
 
         const opacity = open ? 'opacity-100' : 'opacity-90';
         return (
-          <div className={`fixed z-[900] left-0 right-0 bg-slate-50 ${opacity} dark:bg-gray-800`}>
+          <div className={`fixed z-[900] left-0 right-0 bg-slate-50 ${opacity} dark:bg-gray-700`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ">
               <div className="flex justify-between h-16">
                 <div className="flex justify-between w-full">
                   <div className="flex items-center">
-                    <Link to="/">
+                    <Link to="/" onClick={closeModal}>
                       <h1 className="text-2xl font-medium">
                         English
-                        <span className="text-teal-600">Everyday</span>
+                        <span className="text-teal-600 dark:text-teal-500">Everyday</span>
                       </h1>
                     </Link>
                   </div>
@@ -45,7 +45,7 @@ export const Navbar = () => {
                     <NavLink to="/courses" className={headerLinksDesktop}>
                       Courses
                     </NavLink>
-                    <NavLink to="/contact" className={headerLinksDesktop} onClick={closeModal}>
+                    <NavLink to="/contact" className={headerLinksDesktop}>
                       Contact
                     </NavLink>
                     <DarknessModeButton theme={theme} setTheme={setTheme} />
@@ -90,21 +90,21 @@ export const Navbar = () => {
                 </div>
               </div>
             </div>
-            <Disclosure.Panel className="sm:hidden absolute z-[9999] w-full h-screen bg-slate-50 dark:">
+            <Disclosure.Panel className="sm:hidden absolute z-[9999] w-full h-screen bg-slate-50 dark:bg-gray-700">
               <div className="p-2 pb-3 space-y-1">
                 <NavLink to="/" className={headerLinksMobile} onClick={closeModal}>
                   Home
                 </NavLink>
-                <NavLink to="/about" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/about" className={headerLinksMobile} onClick={closeModal}>
                   About
                 </NavLink>
-                <NavLink to="/blogs" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/blogs" className={headerLinksMobile} onClick={closeModal}>
                   Blogs
                 </NavLink>
-                <NavLink to="/courses" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/courses" className={headerLinksMobile} onClick={closeModal}>
                   Courses
                 </NavLink>
-                <NavLink to="/contact" prefetch="intent" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/contact" className={headerLinksMobile} onClick={closeModal}>
                   Contact
                 </NavLink>
               </div>
