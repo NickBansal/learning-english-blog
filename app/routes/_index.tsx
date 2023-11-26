@@ -3,9 +3,10 @@ import { useLoaderData } from '@remix-run/react';
 import { gql } from 'graphql-request';
 
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
-import { ExternalLink, InternalLink } from '~/components/buttons/buttons';
+import { InternalLink } from '~/components/buttons/buttons';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
+import { SlideReveal } from '~/components/reveal/slide-reveal';
 import { homePage } from '~/constants/meta-data';
 import { type HomeContent } from '~/types/interface';
 import { hygraph } from '~/utils/hygraph.server';
@@ -59,24 +60,29 @@ export default function Index(): JSX.Element {
         {homeContents.map((item) => {
           const flexPos = item.leftPosition ? 'flex-col' : 'flex-col-reverse';
           return (
-            <div
-              className={`flex ${flexPos} items-center space-y-reverse md:flex-row md:space-x-8 md:space-y-0 mb-52`}
-              key={item.id}
-            >
-              {item.image != null && item.leftPosition && (
-                <img
-                  src={item.image.url}
-                  alt="Image of Project"
-                  className="h-48 w-full md:w-1/2 object-cover rounded-md"
-                />
-              )}
-              <div>
-                <JSMarkdown>{item.description}</JSMarkdown>
+            <SlideReveal key={item.id} leftPosition={item.leftPosition}>
+              <div
+                className={`flex flex-col items-center space-y-4 md:flex-row md:space-x-8 md:space-y-0 mb-[5rem] md:mb-[15rem]`}
+              >
+                {item.image != null && item.leftPosition && (
+                  <img
+                    src={item.image.url}
+                    alt="Image of Project"
+                    className="h-48 w-full md:w-1/2 object-cover rounded-md"
+                  />
+                )}
+                <div>
+                  <JSMarkdown>{item.description}</JSMarkdown>
+                </div>
+                {item.image != null && !item.leftPosition && (
+                  <img
+                    src={item.image.url}
+                    alt="Image of Project"
+                    className="h-48 w-full md:w-1/2 object-cover rounded-md"
+                  />
+                )}
               </div>
-              {item.image != null && !item.leftPosition && (
-                <img src={item.image.url} alt="Image of Project" className="h-48 w-1/2 object-cover rounded-md" />
-              )}
-            </div>
+            </SlideReveal>
           );
         })}
       </PaddedSection>
