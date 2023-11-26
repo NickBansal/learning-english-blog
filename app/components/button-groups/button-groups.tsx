@@ -4,5 +4,5 @@ interface ButtonGroupsTypes {
 }
 
 export function ButtonsGroup({ children, className = '' }: ButtonGroupsTypes) {
-  return <div className={`inline-flex space-x-4 ${className}`}>{children}</div>;
+  return <div className={`inline-flex space-x-2 ${className}`}>{children}</div>;
 }

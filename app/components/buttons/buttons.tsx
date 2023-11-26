@@ -16,13 +16,15 @@ interface LinkButtonTypes extends ButtonTypes {
 
 export function Buttons({ outline = false, children }: ButtonTypes) {
   const className = outline
-    ? 'bg-transparent hover:bg-teal-500 text-teal-300 font-semibold hover:text-white py-2 px-4 border-2 border-teal-500 hover:border-transparent rounded min-w-[110px]'
-    : 'bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded min-w-[110px]';
+    ? 'bg-transparent hover:bg-teal-500 text-teal-300 font-semibold hover:text-white py-2 px-4 border-2 border-teal-500 hover:border-transparent rounded min-w-[110px] transition-colors duration-200'
+    : 'bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded min-w-[110px] transition-colors duration-200';
   return <button className={className}>{children}</button>;
 }
 
 export function LinkButton({ children }: ButtonTypes) {
-  <button className='class="font-medium text-teal-600 dark:text-teal-500 hover:underline"'>{children}</button>;
+  <button className="font-medium text-teal-600 dark:text-teal-500 hover:underline transition-colors duration-200">
+    {children}
+  </button>;
 }
 
 export function InternalLink({ to, children, outline = false }: InternalLinkTypes) {

@@ -27,10 +27,11 @@ interface HomeContent {
     homeContents: Array<{
         id: string;
         image?: {
-            id: string
+            url: string
         }
         title: string
         description: string
+        leftPosition: boolean
     }>
 }
 

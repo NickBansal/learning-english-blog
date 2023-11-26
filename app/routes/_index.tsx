@@ -18,10 +18,11 @@ export async function loader() {
       homeContents {
         id
         image {
-          id
+          url
         }
         title
         description
+        leftPosition
       }
     }
   `;
@@ -57,11 +58,27 @@ export default function Index(): JSX.Element {
       </div>
       <PaddedSection>
         {homeContents.map((item) => {
+          const flexPos = item.leftPosition ? 'flex-col' : 'flex-col-reverse';
           return (
-            <section key={item.id}>
-              <h2 className="text-base md:text-xl">{item.title}</h2>
-              <JSMarkdown>{item.description}</JSMarkdown>
-            </section>
+            <div
+              className={`flex ${flexPos} items-center space-y-6 md:flex-row md:space-x-8 md:space-y-0`}
+              key={item.id}
+            >
+              {item.image != null && item.leftPosition && (
+                <img
+                  src={item.image.url}
+                  alt="Image of Project"
+                  className="h-48 w-full md:w-1/2 object-cover rounded-md"
+                />
+              )}
+              <div>
+                <h2 className="text-base md:text-xl">{item.title}</h2>
+                <JSMarkdown>{item.description}</JSMarkdown>
+              </div>
+              {item.image != null && !item.leftPosition && (
+                <img src={item.image.url} alt="Image of Project" className="h-48 w-1/2 object-cover rounded-md" />
+              )}
+            </div>
           );
         })}
       </PaddedSection>
