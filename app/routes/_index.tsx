@@ -4,6 +4,7 @@ import { gql } from 'graphql-request';
 
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
 import { InternalLink } from '~/components/buttons/buttons';
+import { Carousel } from '~/components/carousel/carousel';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
@@ -18,11 +19,9 @@ export async function loader() {
     query HomeContent {
       homeContents {
         id
-        image {
-          url
-        }
         description
         leftPosition
+        title
       }
     }
   `;
@@ -58,33 +57,23 @@ export default function Index(): JSX.Element {
       </div>
       <PaddedSection>
         {homeContents.map((item) => {
-          const flexPos = item.leftPosition ? 'flex-col' : 'flex-col-reverse';
+          const textPosition = item.leftPosition ? 'left' : 'right';
+          const justifyPosition = item.leftPosition ? 'start' : 'end';
           return (
             <SlideReveal key={item.id} leftPosition={item.leftPosition}>
-              <div
-                className={`flex flex-col items-center space-y-4 md:flex-row md:space-x-8 md:space-y-0 mb-[5rem] md:mb-[15rem]`}
-              >
-                {item.image != null && item.leftPosition && (
-                  <img
-                    src={item.image.url}
-                    alt="Image of Project"
-                    className="h-48 w-full md:w-1/2 object-cover rounded-md"
-                  />
-                )}
-                <div>
+              <div className={`flex text-${textPosition} mb-[10rem] md:mb-[15rem] justify-${justifyPosition}`}>
+                <div className="w-4/5">
+                  <h1 className="text-2xl md:text-3xl font-bold">{item.title}</h1>
+                  <hr className="h2 border max-w-1/2 mb-4" />
                   <JSMarkdown>{item.description}</JSMarkdown>
                 </div>
-                {item.image != null && !item.leftPosition && (
-                  <img
-                    src={item.image.url}
-                    alt="Image of Project"
-                    className="h-48 w-full md:w-1/2 object-cover rounded-md"
-                  />
-                )}
               </div>
             </SlideReveal>
           );
         })}
+      </PaddedSection>
+      <PaddedSection>
+        <Carousel />
       </PaddedSection>
     </>
   );

@@ -26,9 +26,7 @@ interface BlogItem {
 interface HomeContent {
     homeContents: Array<{
         id: string;
-        image?: {
-            url: string
-        }
+        title: string;
         description: string
         leftPosition: boolean
     }>
