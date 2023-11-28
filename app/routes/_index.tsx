@@ -47,7 +47,7 @@ export default function Index(): JSX.Element {
             looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
             letters
           </p>
-          <ButtonsGroup className="mt-8">
+          <ButtonsGroup className="mt-8 justify-end">
             <InternalLink to="/contact" outline>
               Contact
             </InternalLink>
@@ -62,9 +62,11 @@ export default function Index(): JSX.Element {
           return (
             <SlideReveal key={item.id} leftPosition={item.leftPosition}>
               <div className={`flex text-${textPosition} mb-[10rem] md:mb-[15rem] justify-${justifyPosition}`}>
-                <div className="w-4/5">
+                <div>
                   <h1 className="text-2xl md:text-3xl font-bold">{item.title}</h1>
-                  <hr className="h2 border max-w-1/2 mb-4" />
+                  <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
+                    <hr className="h2 border max-w-1/2 mb-4 border-gray-500 dark:border-white" />
+                  </SlideReveal>
                   <JSMarkdown>{item.description}</JSMarkdown>
                 </div>
               </div>
@@ -72,7 +74,7 @@ export default function Index(): JSX.Element {
           );
         })}
       </PaddedSection>
-      <PaddedSection>
+      <PaddedSection className="mb-20">
         <Carousel />
       </PaddedSection>
     </>

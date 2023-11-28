@@ -6,6 +6,10 @@
 import { startTransition, StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { RemixBrowser } from '@remix-run/react';
+import { Carousel, Collapse, Dropdown, initTE, Ripple } from 'tw-elements';
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+initTE({ Collapse, Dropdown, Ripple, Carousel });
 
 startTransition(() => {
   hydrateRoot(

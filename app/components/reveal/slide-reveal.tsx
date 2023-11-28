@@ -4,9 +4,10 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 interface RevealTypes {
   children: JSX.Element;
   leftPosition: boolean;
+  delay?: number;
 }
 
-export const SlideReveal = ({ children, leftPosition }: RevealTypes) => {
+export const SlideReveal = ({ children, leftPosition, delay = 0 }: RevealTypes) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -31,7 +32,7 @@ export const SlideReveal = ({ children, leftPosition }: RevealTypes) => {
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, ease: 'easeInOut' }}
+        transition={{ duration: 0.5, ease: 'easeInOut', delay }}
       >
         {children}
       </motion.div>
