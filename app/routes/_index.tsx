@@ -4,7 +4,6 @@ import { gql } from 'graphql-request';
 
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
 import { InternalLink } from '~/components/buttons/buttons';
-import { Carousel } from '~/components/carousel/carousel';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
@@ -73,9 +72,6 @@ export default function Index(): JSX.Element {
             </SlideReveal>
           );
         })}
-      </PaddedSection>
-      <PaddedSection className="mb-20">
-        <Carousel />
       </PaddedSection>
     </>
   );
