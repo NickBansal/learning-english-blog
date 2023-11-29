@@ -1,4 +1,4 @@
-export default [
+export const TESTIMONIALS = [
   {
     name: 'Joe Bloggs',
     reference: `I had the pleasure of taking English Everyday's coaching for teaching English to foreign students. The coaching was great and really helpful. The instructor was knowledgeable and gave clear instructions on how to teach English to foreign students. The materials provided were also of high quality and very useful. I highly recommend English Everyday for anyone looking to learn how to teach English to foreign students.`

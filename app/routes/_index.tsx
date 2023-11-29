@@ -4,6 +4,7 @@ import { gql } from 'graphql-request';
 
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
 import { InternalLink } from '~/components/buttons/buttons';
+import { TestimonialsCarousel } from '~/components/carousel/carousel';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
@@ -60,7 +61,9 @@ export default function Index(): JSX.Element {
           const justifyPosition = item.leftPosition ? 'start' : 'end';
           return (
             <SlideReveal key={item.id} leftPosition={item.leftPosition}>
-              <div className={`flex text-${textPosition} mb-[10rem] md:mb-[15rem] justify-${justifyPosition}`}>
+              <div
+                className={`flex text-${textPosition} mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem] justify-${justifyPosition}`}
+              >
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold">{item.title}</h1>
                   <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
@@ -73,6 +76,9 @@ export default function Index(): JSX.Element {
           );
         })}
       </PaddedSection>
+      {/* <PaddedSection className="mb-20">
+        <TestimonialsCarousel />
+      </PaddedSection> */}
     </>
   );
 }

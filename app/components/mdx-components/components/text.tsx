@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Text({ children }: { children: React.ReactNode }) {
-  return <p className="mb-4 text-lg md:text-xl last:mb-0">{children}</p>;
+  return <div className="mb-4 text-lg md:text-xl last:mb-0">{children}</div>;
 }
 
 export default Text;
