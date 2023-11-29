@@ -1,5 +1,6 @@
 import { json, type V2_MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
+import classNames from 'classnames';
 import { gql } from 'graphql-request';
 
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
@@ -56,29 +57,28 @@ export default function Index(): JSX.Element {
         </div>
       </div>
       <PaddedSection>
-        {homeContents.map((item) => {
-          const textPosition = item.leftPosition ? 'left' : 'right';
-          const justifyPosition = item.leftPosition ? 'start' : 'end';
-          return (
-            <SlideReveal key={item.id} leftPosition={item.leftPosition}>
-              <div
-                className={`flex text-${textPosition} mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem] justify-${justifyPosition}`}
-              >
-                <div>
-                  <h1 className="text-2xl md:text-3xl font-bold">{item.title}</h1>
-                  <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
-                    <hr className="h2 border max-w-1/2 mb-4 border-gray-500 dark:border-white" />
-                  </SlideReveal>
-                  <JSMarkdown>{item.description}</JSMarkdown>
-                </div>
+        {homeContents.map((item) => (
+          <SlideReveal key={item.id} leftPosition={item.leftPosition}>
+            <div
+              className={classNames(`flex mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem]`, {
+                'text-left justify-start': item.leftPosition,
+                'text-right justify-end': !item.leftPosition
+              })}
+            >
+              <div>
+                <h1 className="text-2xl md:text-3xl font-bold">{item.title}</h1>
+                <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
+                  <hr className="h2 border max-w-1/2 mb-4 border-gray-500 dark:border-white" />
+                </SlideReveal>
+                <JSMarkdown>{item.description}</JSMarkdown>
               </div>
-            </SlideReveal>
-          );
-        })}
+            </div>
+          </SlideReveal>
+        ))}
       </PaddedSection>
-      {/* <PaddedSection className="mb-20">
+      <PaddedSection className="mb-20">
         <TestimonialsCarousel />
-      </PaddedSection> */}
+      </PaddedSection>
     </>
   );
 }

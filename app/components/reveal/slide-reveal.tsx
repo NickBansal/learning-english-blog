@@ -24,7 +24,7 @@ export const SlideReveal = ({ children, leftPosition, delay = 0 }: RevealTypes) 
   }, [isInView]);
 
   return (
-    <div ref={ref} className={`relative overflow-hidden w-full`}>
+    <div ref={ref} className="relative overflow-hidden w-full">
       <motion.div
         variants={{
           hidden: { opacity: 0, x: leftPosition ? 1000 : -1000 },

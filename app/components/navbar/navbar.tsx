@@ -1,5 +1,6 @@
 import { Disclosure } from '@headlessui/react';
 import { Link, NavLink } from '@remix-run/react';
+import cn from 'classnames';
 import { useTheme } from 'remix-themes';
 
 import { DarknessModeButton } from '../darkness-mode-button/darkness-mode-button';
@@ -18,9 +19,13 @@ export const Navbar = () => {
           }, 200);
         };
 
-        const opacity = open ? 'opacity-100' : 'opacity-90';
         return (
-          <div className={`fixed z-[900] left-0 right-0 bg-slate-50 ${opacity} dark:bg-gray-700`}>
+          <div
+            className={cn(`fixed z-[900] left-0 right-0 bg-slate-50  dark:bg-gray-700`, {
+              'opacity-100': open,
+              'opacity-90': !open
+            })}
+          >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ">
               <div className="flex justify-between h-16">
                 <div className="flex justify-between w-full">

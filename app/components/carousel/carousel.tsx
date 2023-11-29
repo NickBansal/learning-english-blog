@@ -21,12 +21,10 @@ export const TestimonialsCarousel = () => {
   }, []);
 
   return (
-    <div className="max-w-[1000px] relative mx-8 md:mx-20">
+    <div className="max-w-[1000px] relative mx-8 md:mx-20 overflow-hidden">
       {TESTIMONIALS.map((item, index) => {
-        const showSlide = index === slide ? 'block' : 'hidden';
-
         return (
-          <div key={item.reference} className={showSlide}>
+          <div key={item.reference} className={'inline-block'}>
             <h3>{item.reference}</h3>
             <p>{item.name}</p>
           </div>
