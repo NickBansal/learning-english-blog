@@ -12,11 +12,11 @@ export const TestimonialsCarousel = () => {
     const timer = setInterval(() => {
       setSlide((prevState) => {
         if (prevState === maxAmount - 1) {
-          return 1;
+          return 0;
         }
         return prevState + 1;
       });
-    }, 3000);
+    }, 5000);
     return () => {
       clearInterval(timer);
     };
@@ -24,17 +24,17 @@ export const TestimonialsCarousel = () => {
   return (
     <div
       id={`slide-${slide}`}
-      className="max-w-full flex overflow-x-auto scroll-smooth text-center border-y-2 border-gray-700 pb-10"
+      className="max-w-full flex overflow-x-hidden text-center border-y-2 border-gray-700 pb-20"
     >
       {TESTIMONIALS.map((item) => {
         return (
           <div
             key={item.reference}
-            className={`w-full h-max shrink-0 snap-start transition-transform p-8`}
-            style={{ transform: `translateX(-${slide * 100}%)` }}
+            className={`w-full h-max shrink-0 p-8`}
+            style={{ transform: `translateX(-${slide * 100}%)`, transition: 'transform 1s' }}
           >
-            <h3 className="text-lg md:text-xl">{item.reference}</h3>
-            <p className="italic">- {item.name}</p>
+            <h3 className="text-lg md:text-xl italic font-light">{`"${item.reference}"`}</h3>
+            <p className="text-lg md:text-xl italic font-semibold mt-2">- {item.name}</p>
           </div>
         );
       })}

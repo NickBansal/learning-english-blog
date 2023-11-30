@@ -10,9 +10,12 @@ interface IndicatorTypes {
 
 export const Indicators = ({ slide, setSlide }: IndicatorTypes) => {
   return (
-    <div className="flex space-x-2 w-full justify-center items-center absolute bottom-5 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    // padding: 4px;
+    // border: 1px solid white;
+    // border-radius: 100%;
+    <div className="flex space-x-3 w-full justify-center items-center absolute bottom-5 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <button
-        className="mr-4"
+        className="p-1 border-2 border-gray-400 dark:border-white rounded-full hover:bg-gray-400 hover:text-white dark:hover:bg-gray-300 dark:hover:text-gray-900"
         onClick={() => {
           setSlide((prevState) => (prevState === 0 ? TESTIMONIALS.length - 1 : prevState - 1));
         }}
@@ -43,7 +46,7 @@ export const Indicators = ({ slide, setSlide }: IndicatorTypes) => {
         );
       })}
       <button
-        className="ml-4"
+        className="p-1 border-2 border-gray-400 dark:border-white rounded-full hover:bg-gray-400 hover:text-white dark:hover:bg-gray-300 dark:hover:text-gray-900"
         onClick={() => {
           setSlide((prevState) => (prevState === TESTIMONIALS.length - 1 ? 0 : prevState + 1));
         }}
