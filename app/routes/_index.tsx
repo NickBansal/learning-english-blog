@@ -76,7 +76,7 @@ export default function Index(): JSX.Element {
           </SlideReveal>
         ))}
       </PaddedSection>
-      <PaddedSection className="mb-20">
+      <PaddedSection className="mb-20 relative">
         <TestimonialsCarousel />
       </PaddedSection>
     </>
