@@ -7,17 +7,17 @@ export const Footer = () => {
       <table className="hidden md:inline-table max-w-6xl mx-auto px-8 w-full">
         <tbody>
           <tr className="border-b-2 border-red-400">
-            <th>
+            <th className="w-1/3">
               <h2 className="text-2xl font-medium">
                 English
                 <span className="text-teal-600 dark:text-teal-500">Everyday</span>
               </h2>
             </th>
-            <th>
-              <h2 className="text-xl md:text-2xl">Find your way around: </h2>
+            <th className="w-1/3">
+              <h2 className="text-xl lg:text-2xl">Find your way around: </h2>
             </th>
-            <th>
-              <h2 className="text-xl md:text-2xl w-full">Follow us: </h2>
+            <th className="w-1/3">
+              <h2 className="text-xl lg:text-2xl w-full">Follow us: </h2>
             </th>
           </tr>
           <tr>
