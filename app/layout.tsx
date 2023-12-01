@@ -1,3 +1,4 @@
+import { Footer } from './components/footer/footer';
 import { Navbar } from './components/navbar/navbar';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -5,6 +6,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <div>
       <Navbar />
       <main className="mx-auto">{children}</main>
+      <Footer />
     </div>
   );
 };

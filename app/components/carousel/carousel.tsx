@@ -24,7 +24,7 @@ export const TestimonialsCarousel = () => {
   return (
     <div
       id={`slide-${slide}`}
-      className="max-w-full flex overflow-x-hidden text-center border-y-2 border-gray-700 pb-20"
+      className="max-w-full flex overflow-x-hidden text-center border-y-2 border-gray-500 pb-20"
     >
       {TESTIMONIALS.map((item) => {
         return (
