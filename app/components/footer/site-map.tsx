@@ -14,8 +14,7 @@ export const SiteMap = () => {
   ];
 
   return (
-    <div>
-      <h2 className="text-xl md:text-2xl mb-4 md:border-b-2 border-red-400">Find your way around: </h2>
+    <div className="pt-4">
       <ul>
         {websiteLinks
           .filter(({ link }) => link !== pathname)
