@@ -14,10 +14,10 @@ export const Footer = () => {
               </h2>
             </th>
             <th className="w-1/3">
-              <h2 className="text-xl lg:text-2xl">Find your way around: </h2>
+              <h2 className="text-xl lg:text-2xl font-semibold">Find your way around: </h2>
             </th>
             <th className="w-1/3">
-              <h2 className="text-xl lg:text-2xl w-full">Follow us: </h2>
+              <h2 className="text-xl lg:text-2xl font-semibold w-full">Follow us: </h2>
             </th>
           </tr>
           <tr>
@@ -39,11 +39,11 @@ export const Footer = () => {
           </h2>
         </div>
         <div>
-          <h2 className="text-xl md:text-2xl">Find your way around: </h2>
+          <h2 className="text-xl md:text-2xl font-semibold">Find your way around: </h2>
           <SiteMap />
         </div>
         <div>
-          <h2 className="text-xl md:text-2xl w-full mb-4">Follow us: </h2>
+          <h2 className="text-xl md:text-2xl w-full font-semibold mb-4">Follow us: </h2>
           <SocialMedia />
         </div>
       </div>

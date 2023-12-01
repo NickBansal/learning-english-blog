@@ -9,7 +9,7 @@ export const SocialMedia = () => {
   ];
   return (
     <div className="flex flex-col items-center">
-      <table className="w-full">
+      <table className="w-1/2 md:w-full">
         <tbody>
           {mediaLinks.map(({ src, name }) => (
             <tr key={src}>

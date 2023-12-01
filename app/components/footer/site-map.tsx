@@ -20,7 +20,7 @@ export const SiteMap = () => {
           .filter(({ link }) => link !== pathname)
           .map(({ link, name }) => {
             return (
-              <li key={name} className="md:mb-4">
+              <li key={name} className="mb-2 md:mb-4">
                 <Link to={link}>{name}</Link>
               </li>
             );
