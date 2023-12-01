@@ -22,6 +22,9 @@ interface BlogItem {
         title: string
         updatedAt: string
         body: string
+        embeddedVideos?: {
+            html: string
+        }
     }>
 }
 

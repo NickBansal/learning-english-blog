@@ -37,7 +37,7 @@ export default function BlogPost(): JSX.Element {
   const blogData = blogs[0];
 
   return (
-    <PaddedSection>
+    <PaddedSection className="mb-20">
       <div className="mb-8">
         <Link
           to="/blogs"

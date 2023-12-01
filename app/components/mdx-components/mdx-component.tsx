@@ -6,6 +6,7 @@ import { type ObjectOfStrings } from '../../types/mdx-interface';
 import Anchor from './components/anchor';
 import BlockQuote from './components/blockquote';
 import Heading from './components/heading';
+import IFrame from './components/iframe';
 import Image from './components/image';
 import LI from './components/li';
 import OL from './components/ol';
@@ -28,7 +29,8 @@ function JSMarkdown({ children, ...rest }: ObjectOfStrings) {
           a: Anchor,
           p: Text,
           blockquote: BlockQuote,
-          img: Image
+          img: Image,
+          iframe: IFrame
         }
       }}
       {...rest}
