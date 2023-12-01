@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { type ChildrenNodes } from '../interface';
+import { type ChildrenNodes } from '../../../types/mdx-interface';
 
 function BlockQuote({ children }: ChildrenNodes) {
   return (

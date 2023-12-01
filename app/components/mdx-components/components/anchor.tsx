@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from '@remix-run/react';
 
-interface AnchorTypes {
-  children: React.ReactNode;
-  href: string;
-}
+import { type AnchorTypes } from '~/types/mdx-interface';
 
 export default function Anchor({ children, href }: AnchorTypes) {
   return (

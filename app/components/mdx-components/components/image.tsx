@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { type ChildrenString } from '../interface';
+import { type ObjectOfStrings } from '../../../types/mdx-interface';
 
-function Image({ src, alt }: ChildrenString) {
-  return <img className="my-4" src={src} alt={alt} />;
+function Image({ src, alt }: ObjectOfStrings) {
+  return <img className="my-12" src={src} alt={alt} />;
 }
 
 export default Image;

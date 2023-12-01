@@ -1,7 +1,4 @@
-interface ButtonGroupsTypes {
-  children: React.ReactNode;
-  className?: string;
-}
+import { type ButtonGroupsTypes } from '~/types/buttons-interface';
 
 export function ButtonsGroup({ children, className = '' }: ButtonGroupsTypes) {
   return (

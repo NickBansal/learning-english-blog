@@ -1,18 +1,6 @@
-import { type ReactNode } from 'react';
 import { NavLink } from '@remix-run/react';
 
-interface ButtonTypes {
-  outline?: boolean;
-  children: ReactNode;
-}
-
-interface InternalLinkTypes extends ButtonTypes {
-  to: string;
-}
-
-interface LinkButtonTypes extends ButtonTypes {
-  href: string;
-}
+import { type ButtonTypes, type InternalLinkTypes, type LinkButtonTypes } from '~/types/buttons-interface';
 
 export function Buttons({ outline = false, children }: ButtonTypes) {
   const className = outline

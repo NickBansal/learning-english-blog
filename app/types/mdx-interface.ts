@@ -1,9 +1,3 @@
-export interface AnchorTypes {
-  internal: boolean;
-  children: React.ReactNode;
-  href: string;
-}
-
 export interface HeadingTypes {
   id: string;
   children: React.ReactNode;
@@ -14,4 +8,9 @@ export interface ChildrenNodes {
   children: React.ReactNode;
 }
 
-export type ChildrenString = Record<string, string>;
+export interface AnchorTypes {
+  children: React.ReactNode;
+  href: string;
+}
+
+export type ObjectOfStrings = Record<string, string>;

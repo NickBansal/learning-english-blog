@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { type HeadingTypes } from '../interface';
+import { type HeadingTypes } from '../../../types/mdx-interface';
 
 function Heading({ id, children, level = 'h2' }: HeadingTypes) {
   const textSize: Record<string, string> = {

@@ -1,3 +1,5 @@
+import { type ObjectOfStrings } from "~/types/mdx-interface";
+
 interface Blogs {
      blogs: Array<{
         createdAt: string;
@@ -32,4 +34,8 @@ interface HomeContent {
     }>
 }
 
-export type { BlogItem, Blogs, HomeContent }
+interface AboutContent {
+    aboutPage: ObjectOfStrings
+}
+
+export type { BlogItem, Blogs, HomeContent, AboutContent }

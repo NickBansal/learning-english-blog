@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import Markdown from 'markdown-to-jsx';
 
+import { type ObjectOfStrings } from '../../types/mdx-interface';
+
 import Anchor from './components/anchor';
 import BlockQuote from './components/blockquote';
 import Heading from './components/heading';
@@ -9,9 +11,8 @@ import LI from './components/li';
 import OL from './components/ol';
 import Text from './components/text';
 import UL from './components/ul';
-import { type ChildrenString } from './interface';
 
-function JSMarkdown({ children, ...rest }: ChildrenString) {
+function JSMarkdown({ children, ...rest }: ObjectOfStrings) {
   return (
     <Markdown
       options={{

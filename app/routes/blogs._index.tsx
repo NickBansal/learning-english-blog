@@ -5,8 +5,8 @@ import format from 'date-fns/format';
 import { gql } from 'graphql-request';
 
 import { PaddedSection } from '~/components/padded-section/padded-section';
-import { blogsPage } from '~/constants/meta-data';
-import { type Blogs } from '~/types/interface';
+import { blogsPage } from '~/constants/META-DATA';
+import { type Blogs } from '~/types/hygraph-interface';
 import { hygraph } from '~/utils/hygraph.server';
 
 export const meta: V2_MetaFunction = () => blogsPage;
