@@ -6,13 +6,7 @@ export interface HeadingTypes {
 
 export interface IframeTypes {
   children: React.ReactNode;
-  width: string;
-  height: string;
-  src: string;
-  allow: string;
-  allowFullScreen: boolean;
-  frameBorder: string;
-  title: string;
+  title: string
 }
 
 export interface ChildrenNodes {
