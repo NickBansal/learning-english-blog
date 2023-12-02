@@ -43,36 +43,36 @@ export function PaginationBar({ total }: { total: number }) {
 
   return (
     <div className="flex items-center gap-1 mb-12 justify-center">
-      <button disabled={!canPageBackwards}>
-        <Link
-          to={{
-            search: setSearchParamsString(searchParams, {
-              $skip: 0
-            })
-          }}
-          preventScrollReset
-          prefetch="intent"
-          className="text-gray-800 dark:text-gray-300"
-        >
+      <Link
+        to={{
+          search: setSearchParamsString(searchParams, {
+            $skip: 0
+          })
+        }}
+        preventScrollReset
+        prefetch="intent"
+        className={'text-gray-800 dark:text-gray-300'}
+      >
+        <button disabled={!canPageBackwards}>
           <span className="sr-only"> First page</span>
           <DoubleArrowLeft />
-        </Link>
-      </button>
-      <button disabled={!canPageBackwards}>
-        <Link
-          to={{
-            search: setSearchParamsString(searchParams, {
-              $skip: Math.max($skip - $top, 0)
-            })
-          }}
-          preventScrollReset
-          prefetch="intent"
-          className="text-gray-800 dark:text-gray-300"
-        >
+        </button>
+      </Link>
+      <Link
+        to={{
+          search: setSearchParamsString(searchParams, {
+            $skip: Math.max($skip - $top, 0)
+          })
+        }}
+        preventScrollReset
+        prefetch="intent"
+        className="text-gray-800 dark:text-gray-300"
+      >
+        <button disabled={!canPageBackwards}>
           <span className="sr-only"> Previous page</span>
           <ArrowLeft className="mx-4" />
-        </Link>
-      </button>
+        </button>
+      </Link>
 
       {pageNumbers.map((pageNumber) => {
         const pageSkip = (pageNumber - 1) * $top;
@@ -86,36 +86,36 @@ export function PaginationBar({ total }: { total: number }) {
           />
         );
       })}
-      <button disabled={!canPageForwards}>
-        <Link
-          to={{
-            search: setSearchParamsString(searchParams, {
-              $skip: $skip + $top
-            })
-          }}
-          preventScrollReset
-          prefetch="intent"
-          className="text-gray-800 dark:text-gray-300"
-        >
+      <Link
+        to={{
+          search: setSearchParamsString(searchParams, {
+            $skip: $skip + $top
+          })
+        }}
+        preventScrollReset
+        prefetch="intent"
+        className="text-gray-800 dark:text-gray-300"
+      >
+        <button disabled={!canPageForwards}>
           <span className="sr-only"> Next page</span>
           <ArrowRight className="mx-4" />
-        </Link>
-      </button>
-      <button disabled={!canPageForwards}>
-        <Link
-          to={{
-            search: setSearchParamsString(searchParams, {
-              $skip: (totalPages - 1) * $top
-            })
-          }}
-          preventScrollReset
-          prefetch="intent"
-          className="text-gray-800 dark:text-gray-300"
-        >
+        </button>
+      </Link>
+      <Link
+        to={{
+          search: setSearchParamsString(searchParams, {
+            $skip: (totalPages - 1) * $top
+          })
+        }}
+        preventScrollReset
+        prefetch="intent"
+        className="text-gray-800 dark:text-gray-300"
+      >
+        <button disabled={!canPageForwards}>
           <span className="sr-only"> Last page</span>
           <DoubleArrowRight />
-        </Link>
-      </button>
+        </button>
+      </Link>
     </div>
   );
 }
