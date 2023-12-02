@@ -2,13 +2,12 @@ import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import format from 'date-fns/format';
-import { gql } from 'graphql-request';
+import { gql, GraphQLClient } from 'graphql-request';
 
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { blogsPage } from '~/constants/META-DATA';
 import { type BlogItem } from '~/types/hygraph-interface';
-import { hygraph } from '~/utils/hygraph.server';
 
 export const meta: V2_MetaFunction = () => blogsPage;
 
@@ -27,7 +26,7 @@ export async function loader({ params }: LoaderArgs) {
       }
     }
   `;
-
+  const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
   const blogs = await hygraph.request(query);
   return json(blogs);
 }

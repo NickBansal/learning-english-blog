@@ -1,7 +1,7 @@
 import { json, type V2_MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import classNames from 'classnames';
-import { gql } from 'graphql-request';
+import { gql, GraphQLClient } from 'graphql-request';
 
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
 import { InternalLink } from '~/components/buttons/buttons';
@@ -11,7 +11,6 @@ import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
 import { homePage } from '~/constants/META-DATA';
 import { type HomeContent } from '~/types/hygraph-interface';
-import { hygraph } from '~/utils/hygraph.server';
 
 export const meta: V2_MetaFunction = () => homePage;
 
@@ -27,6 +26,7 @@ export async function loader() {
     }
   `;
 
+  const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
   const homeContents = await hygraph.request(query);
 
   return json(homeContents);
