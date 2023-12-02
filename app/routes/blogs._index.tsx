@@ -1,16 +1,24 @@
-import type { V2_MetaFunction } from '@remix-run/node';
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import format from 'date-fns/format';
 import { gql, GraphQLClient } from 'graphql-request';
 
 import { PaddedSection } from '~/components/padded-section/padded-section';
+import { PaginationBar } from '~/components/pagination/pagination-bar';
 import { blogsPage } from '~/constants/META_DATA';
-import { type Blogs } from '~/types/hygraph-interface';
+import { type BlogArrayItem, type Blogs } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = () => blogsPage;
 
-export async function loader() {
+export async function loader({ request }: LoaderArgs) {
+  const url = new URL(request.url);
+  const $top = Number(url.searchParams.get('$top')) || 5;
+  const $skip = Number(url.searchParams.get('$skip')) || 0;
+
   const query = gql`
     query Blogs {
       blogs {
@@ -25,21 +33,22 @@ export async function loader() {
     }
   `;
   const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
+  const blogs: BlogArrayItem = await hygraph.request(query);
 
-  const blogs = await hygraph.request(query);
+  const data = blogs.blogs.slice($skip, $skip + $top);
 
-  return json(blogs);
+  return json({ data, total: blogs.blogs.length ?? 0 });
 }
 
 export default function BlogPage(): JSX.Element {
-  const { blogs } = useLoaderData() as Blogs;
+  const { data, total } = useLoaderData() as Blogs;
 
   return (
-    <PaddedSection className="h-[60rem] overflow-scroll">
-      <h1 className="text-lg md:text-2xl w-full border-b-2 pb-4">All content ({blogs.length})</h1>
+    <PaddedSection>
+      <h1 className="text-lg md:text-2xl w-full border-b-2 pb-4">All content ({total})</h1>
 
       <div className="py-8">
-        {blogs.map((blog) => {
+        {data.map((blog) => {
           return (
             <Link to={blog.slug} prefetch="none" key={blog.id}>
               <div className="mb-8 group pb-8 border-b-[1px] border-b-gray-200 mx-8">
@@ -54,6 +63,7 @@ export default function BlogPage(): JSX.Element {
           );
         })}
       </div>
+      <PaginationBar total={total} />
     </PaddedSection>
   );
 }
