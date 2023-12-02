@@ -36,7 +36,7 @@ export default function BlogPage(): JSX.Element {
 
   return (
     <PaddedSection className="h-[60rem] overflow-scroll">
-      <h1 className="text-lg md:text-2xl w-full border-b-2 pb-4 ">All content ({blogs.length})</h1>
+      <h1 className="text-lg md:text-2xl w-full border-b-2 pb-4">All content ({blogs.length})</h1>
 
       <div className="py-8">
         {blogs.map((blog) => {

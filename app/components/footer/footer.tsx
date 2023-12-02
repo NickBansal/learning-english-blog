@@ -1,9 +1,12 @@
+import Newsletter from '../newsletter/newsletter';
+
 import { SiteMap } from './site-map';
 import { SocialMedia } from './social-media';
 
 export const Footer = () => {
   return (
     <div className="w-full shadow-2xl shadow-gray-500 dark:shadow-white  p-8 text-center">
+      <Newsletter />
       <table className="hidden md:inline-table max-w-6xl mx-auto px-8 w-full">
         <tbody>
           <tr className="border-b-2 border-red-400">

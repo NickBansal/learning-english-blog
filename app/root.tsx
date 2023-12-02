@@ -1,4 +1,5 @@
-import type { LinksFunction, LoaderArgs } from '@remix-run/node';
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+import type { ActionFunction, LinksFunction, LoaderArgs } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
@@ -15,6 +16,26 @@ export const loader = async ({ request }: LoaderArgs) => {
   return {
     theme: getTheme()
   };
+};
+
+export const action: ActionFunction = async ({ request }) => {
+  const API_URL = 'https://api.convertkit.com/v3';
+  const API_KEY = 'kXJ15_XfkvY_bsVX0qQacw';
+  const FORM_ID = '5007484';
+
+  const formData = await request.formData();
+  const email = formData.get('email');
+  const name = formData.get('name');
+
+  const res = await fetch(`${API_URL}/forms/${FORM_ID}/subscribe`, {
+    method: 'post',
+    body: JSON.stringify({ email, name, api_key: API_KEY }),
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    }
+  });
+
+  return await res.json();
 };
 
 export default function AppWithProvider() {
