@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { type ActionFunction, json, type LinksFunction, type LoaderArgs } from '@remix-run/node';
+import { type ActionFunction, type LinksFunction, type LoaderArgs } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
@@ -19,9 +20,9 @@ export const loader = async ({ request }: LoaderArgs) => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
-  const API_URL = 'https://api.convertkit.com/v3';
-  const API_KEY = 'kXJ15_XfkvY_bsVX0qQacw';
-  const FORM_ID = '5007484';
+  const API_URL = process.env.CONVERTKIT_API;
+  const API_KEY = process.env.CONVERTKIT_API_KEY;
+  const FORM_ID = process.env.CONVERTKIT_FORM_ID;
 
   const formData = await request.formData();
   const email = formData.get('email');

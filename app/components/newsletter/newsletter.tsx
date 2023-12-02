@@ -23,25 +23,27 @@ export default function Newsletter() {
             name="name"
             type="text"
             placeholder="Enter your name..."
-            className="border-2 rounded-lg w-full h-12 px-4 mb-4 text-black"
+            className="border-2 border-gray-400 rounded-lg w-full h-12 px-4 mb-4 text-black"
           />
           <input
             name="email"
             type="text"
             placeholder="Enter your email..."
-            className="border-2 rounded-lg w-full h-12 px-4 mb-4 text-black"
+            className="border-2 border-gray-400 rounded-lg w-full h-12 px-4 mb-4 text-black"
           />
           {/* If subscription succeeded */}
           {actionData?.subscription && (
-            <p className="w-full text-center text-sm text-green-500 px-4 mb-4">
+            <p className="w-full text-center text-sm text-green-500 dark:text-green-300 px-4 mb-4">
               Please check your email, and confirm subscription.
             </p>
           )}
           {/* If subscription failed */}
-          {actionData?.error && <p className="w-full text-center text-sm text-red-500 mb-4">{actionData.message}</p>}
+          {actionData?.error && (
+            <p className="w-full text-center text-sm text-red-300 dark:text-red-300 mb-4">{actionData.message}</p>
+          )}
           <button
             type="submit"
-            className="bg-red-400 text-white rounded-md hover:bg-red-500 font-semibold px-4 py-3 w-full"
+            className="bg-red-400  text-white rounded-md hover:bg-red-500 font-semibold px-4 py-3 w-full"
           >
             {submitting ? 'Subscribing...' : 'Subscribe'}
           </button>
