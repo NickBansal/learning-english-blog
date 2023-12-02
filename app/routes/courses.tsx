@@ -1,7 +1,7 @@
 import type { V2_MetaFunction } from '@remix-run/node';
 
 import { PaddedSection } from '~/components/padded-section/padded-section';
-import { aboutPage } from '~/constants/META-DATA';
+import { aboutPage } from '~/constants/META_DATA';
 
 export const meta: V2_MetaFunction = () => aboutPage;
 

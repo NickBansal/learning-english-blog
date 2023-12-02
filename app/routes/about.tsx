@@ -4,7 +4,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
-import { aboutPage } from '~/constants/META-DATA';
+import { aboutPage } from '~/constants/META_DATA';
 import { type AboutContent } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = () => aboutPage;

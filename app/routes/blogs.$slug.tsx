@@ -6,7 +6,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
-import { blogsPage } from '~/constants/META-DATA';
+import { blogsPage } from '~/constants/META_DATA';
 import { type BlogItem } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = () => blogsPage;

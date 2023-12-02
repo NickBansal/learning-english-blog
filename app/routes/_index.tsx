@@ -9,7 +9,7 @@ import { TestimonialsCarousel } from '~/components/carousel/carousel';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
-import { homePage } from '~/constants/META-DATA';
+import { homePage } from '~/constants/META_DATA';
 import { type HomeContent } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = () => homePage;
