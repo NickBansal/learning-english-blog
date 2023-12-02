@@ -33,13 +33,13 @@ export default function Newsletter() {
           />
           {/* If subscription succeeded */}
           {actionData?.subscription && (
-            <p className="w-full text-center text-sm text-green-500 dark:text-green-300 px-4 mb-4">
+            <p className="w-full text-center text-sm text-green-600 dark:text-green-300 px-4 mb-4">
               Please check your email, and confirm subscription.
             </p>
           )}
           {/* If subscription failed */}
           {actionData?.error && (
-            <p className="w-full text-center text-sm text-red-300 dark:text-red-300 mb-4">{actionData.message}</p>
+            <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">{actionData.message}</p>
           )}
           <button
             type="submit"
