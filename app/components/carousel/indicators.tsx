@@ -1,6 +1,9 @@
 import { type Dispatch, type SetStateAction } from 'react';
 import classNames from 'classnames';
 
+import { ArrowLeft } from '../icons/arrow-left';
+import { ArrowRight } from '../icons/arrow-right';
+
 import { TESTIMONIALS } from '~/constants/TESTIMONIALS';
 
 interface IndicatorTypes {
@@ -18,16 +21,7 @@ export const Indicators = ({ slide, setSlide }: IndicatorTypes) => {
           setSlide((prevState) => (prevState === 0 ? TESTIMONIALS.length - 1 : prevState - 1));
         }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-4 h-4"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
+        <ArrowLeft />
       </button>
       <div className="flex space-x-2">
         {TESTIMONIALS.map((item, index) => {
@@ -53,16 +47,7 @@ export const Indicators = ({ slide, setSlide }: IndicatorTypes) => {
           setSlide((prevState) => (prevState === TESTIMONIALS.length - 1 ? 0 : prevState + 1));
         }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-4 h-4"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
+        <ArrowRight />
       </button>
     </div>
   );

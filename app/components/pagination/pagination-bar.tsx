@@ -1,5 +1,12 @@
 import { Link, useSearchParams } from '@remix-run/react';
 
+import { ArrowLeft } from '../icons/arrow-left';
+import { ArrowRight } from '../icons/arrow-right';
+import { DoubleArrowLeft } from '../icons/double-arrow-left';
+import { DoubleArrowRight } from '../icons/double-arrow-right';
+
+import { PaginationNumbers } from './pagination-numbers';
+
 import { setSearchParamsString } from '~/utils/set-search-params-string';
 
 export function PaginationBar({ total }: { total: number }) {
@@ -13,6 +20,7 @@ export function PaginationBar({ total }: { total: number }) {
   const canPageBackwards = $skip > 0;
   const canPageForwards = $skip + $top < total;
   const pageNumbers = [] as number[];
+
   if (totalPages <= maxPages) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
@@ -34,7 +42,7 @@ export function PaginationBar({ total }: { total: number }) {
   }
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 mb-12 justify-center">
       <button disabled={!canPageBackwards}>
         <Link
           to={{
@@ -44,11 +52,10 @@ export function PaginationBar({ total }: { total: number }) {
           }}
           preventScrollReset
           prefetch="intent"
-          className="text-neutral-600"
+          className="text-gray-800 dark:text-gray-300"
         >
           <span className="sr-only"> First page</span>
-          {/* <Icon name="double-arrow-left" /> */}
-          <span>{' << '}</span>
+          <DoubleArrowLeft />
         </Link>
       </button>
       <button disabled={!canPageBackwards}>
@@ -60,46 +67,24 @@ export function PaginationBar({ total }: { total: number }) {
           }}
           preventScrollReset
           prefetch="intent"
-          className="text-neutral-600"
+          className="text-gray-800 dark:text-gray-300"
         >
           <span className="sr-only"> Previous page</span>
-          {/* <Icon name="arrow-left" /> */}
-          <span>{' < '}</span>
+          <ArrowLeft className="mx-4" />
         </Link>
       </button>
+
       {pageNumbers.map((pageNumber) => {
         const pageSkip = (pageNumber - 1) * $top;
         const isCurrentPage = pageNumber === currentPage;
-        if (isCurrentPage) {
-          return (
-            <button
-              key={`${pageNumber}-active`}
-              className="grid min-w-[2rem] place-items-center bg-neutral-200 text-sm text-black"
-            >
-              <div>
-                <span className="sr-only">Page {pageNumber}</span>
-                <span>{pageNumber}</span>
-              </div>
-            </button>
-          );
-        } else {
-          return (
-            <button key={pageNumber}>
-              <Link
-                to={{
-                  search: setSearchParamsString(searchParams, {
-                    $skip: pageSkip
-                  })
-                }}
-                preventScrollReset
-                prefetch="intent"
-                className="min-w-[2rem] font-normal text-neutral-600"
-              >
-                {pageNumber}
-              </Link>
-            </button>
-          );
-        }
+        return (
+          <PaginationNumbers
+            pageNumber={pageNumber}
+            isCurrentPage={isCurrentPage}
+            pageSkip={pageSkip}
+            key={pageNumber}
+          />
+        );
       })}
       <button disabled={!canPageForwards}>
         <Link
@@ -110,11 +95,10 @@ export function PaginationBar({ total }: { total: number }) {
           }}
           preventScrollReset
           prefetch="intent"
-          className="text-neutral-600"
+          className="text-gray-800 dark:text-gray-300"
         >
           <span className="sr-only"> Next page</span>
-          {/* <Icon name="arrow-right" /> */}
-          <span>{' > '}</span>
+          <ArrowRight className="mx-4" />
         </Link>
       </button>
       <button disabled={!canPageForwards}>
@@ -126,11 +110,10 @@ export function PaginationBar({ total }: { total: number }) {
           }}
           preventScrollReset
           prefetch="intent"
-          className="text-neutral-600"
+          className="text-gray-800 dark:text-gray-300"
         >
           <span className="sr-only"> Last page</span>
-          {/* <Icon name="double-arrow-right" /> */}
-          <span>{' >> '}</span>
+          <DoubleArrowRight />
         </Link>
       </button>
     </div>
