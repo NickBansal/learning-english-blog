@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from '@remix-run/react';
+import classNames from 'classnames';
 
 import { ArrowLeft } from '../icons/arrow-left';
 import { ArrowRight } from '../icons/arrow-right';
@@ -53,7 +54,13 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className={'text-gray-800 dark:text-gray-300'}
       >
-        <button disabled={!canPageBackwards}>
+        <button
+          disabled={!canPageBackwards}
+          className={classNames('', {
+            'cursor-not-allowed': !canPageBackwards,
+            'hover:text-gray-600 dark:hover:text-white hover:scale-125': canPageBackwards
+          })}
+        >
           <span className="sr-only"> First page</span>
           <DoubleArrowLeft />
         </button>
@@ -68,7 +75,13 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button disabled={!canPageBackwards}>
+        <button
+          disabled={!canPageBackwards}
+          className={classNames('', {
+            'cursor-not-allowed': !canPageBackwards,
+            'hover:text-gray-600 dark:hover:text-white hover:scale-125': canPageBackwards
+          })}
+        >
           <span className="sr-only"> Previous page</span>
           <ArrowLeft className="mx-4" />
         </button>
@@ -96,7 +109,13 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button disabled={!canPageForwards}>
+        <button
+          disabled={!canPageForwards}
+          className={classNames('', {
+            'cursor-not-allowed': !canPageForwards,
+            'hover:text-gray-600 dark:hover:text-white hover:scale-125': canPageForwards
+          })}
+        >
           <span className="sr-only"> Next page</span>
           <ArrowRight className="mx-4" />
         </button>
@@ -111,7 +130,13 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button disabled={!canPageForwards}>
+        <button
+          disabled={!canPageForwards}
+          className={classNames('', {
+            'cursor-not-allowed': !canPageForwards,
+            'hover:text-gray-600 dark:hover:text-white  hover:scale-125': canPageForwards
+          })}
+        >
           <span className="sr-only"> Last page</span>
           <DoubleArrowRight />
         </button>
