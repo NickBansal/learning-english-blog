@@ -3,14 +3,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
 import format from 'date-fns/format';
 import { gql, GraphQLClient } from 'graphql-request';
 
+import { ArrowLeft } from '~/components/icons/arrow-left';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { PaginationBar } from '~/components/pagination/pagination-bar';
 import { blogsPage } from '~/constants/META_DATA';
 import { type BlogArrayItem, type Blogs } from '~/types/hygraph-interface';
+import { setSearchParamsString } from '~/utils/set-search-params-string';
 
 export const meta: V2_MetaFunction = () => blogsPage;
 
@@ -42,12 +44,37 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function BlogPage(): JSX.Element {
   const { data, total } = useLoaderData() as Blogs;
+  const [searchParams] = useSearchParams();
 
   return (
     <PaddedSection>
       <h1 className="text-lg md:text-2xl w-full border-b-2 pb-4">All content ({total})</h1>
 
       <div className="py-8">
+        {!data.length && total === 0 && (
+          <p className="text-center mt-16 mb-32">There is no content available right now, please check back soon</p>
+        )}
+        {!data.length && total !== 0 && (
+          <p className="text-center mt-16 mb-32">
+            {' '}
+            <Link
+              to={{
+                search: setSearchParamsString(searchParams, {
+                  $skip: Math.max(0, 0)
+                })
+              }}
+              preventScrollReset
+              prefetch="intent"
+              className="text-gray-800 dark:text-gray-300"
+            >
+              <button className="border-2 border-gray-500 dark:border-white hover:bg-gray-300 dark:hover:bg-gray-500 p-2 rounded-full">
+                <span className="sr-only"> Previous page</span>
+                <ArrowLeft />
+              </button>
+              <p className="mt-4">Please head back to the first page</p>
+            </Link>
+          </p>
+        )}
         {data.map((blog) => {
           return (
             <Link to={blog.slug} prefetch="none" key={blog.id}>
@@ -63,7 +90,7 @@ export default function BlogPage(): JSX.Element {
           );
         })}
       </div>
-      <PaginationBar total={total} />
+      {total > 5 && <PaginationBar total={total} />}
     </PaddedSection>
   );
 }
