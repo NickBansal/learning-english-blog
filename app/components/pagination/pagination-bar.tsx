@@ -42,6 +42,13 @@ export function PaginationBar({ total }: { total: number }) {
     }
   }
 
+  const paginationBtns = (allowed: boolean) => {
+    return {
+      'cursor-not-allowed': !allowed,
+      'hover:text-gray-600 dark:hover:text-white hover:scale-125': allowed
+    };
+  };
+
   return (
     <div className="flex items-center gap-1 mb-12 justify-center">
       <Link
@@ -54,13 +61,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className={'text-gray-800 dark:text-gray-300'}
       >
-        <button
-          disabled={!canPageBackwards}
-          className={classNames('', {
-            'cursor-not-allowed': !canPageBackwards,
-            'hover:text-gray-600 dark:hover:text-white hover:scale-125': canPageBackwards
-          })}
-        >
+        <button disabled={!canPageBackwards} className={classNames('', paginationBtns(canPageBackwards))}>
           <span className="sr-only"> First page</span>
           <DoubleArrowLeft />
         </button>
@@ -75,13 +76,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button
-          disabled={!canPageBackwards}
-          className={classNames('', {
-            'cursor-not-allowed': !canPageBackwards,
-            'hover:text-gray-600 dark:hover:text-white hover:scale-125': canPageBackwards
-          })}
-        >
+        <button disabled={!canPageBackwards} className={classNames('', paginationBtns(canPageBackwards))}>
           <span className="sr-only"> Previous page</span>
           <ArrowLeft className="mx-4" />
         </button>
@@ -109,13 +104,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button
-          disabled={!canPageForwards}
-          className={classNames('', {
-            'cursor-not-allowed': !canPageForwards,
-            'hover:text-gray-600 dark:hover:text-white hover:scale-125': canPageForwards
-          })}
-        >
+        <button disabled={!canPageForwards} className={classNames('', paginationBtns(canPageForwards))}>
           <span className="sr-only"> Next page</span>
           <ArrowRight className="mx-4" />
         </button>
@@ -130,13 +119,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button
-          disabled={!canPageForwards}
-          className={classNames('', {
-            'cursor-not-allowed': !canPageForwards,
-            'hover:text-gray-600 dark:hover:text-white  hover:scale-125': canPageForwards
-          })}
-        >
+        <button disabled={!canPageForwards} className={classNames('', paginationBtns(canPageForwards))}>
           <span className="sr-only"> Last page</span>
           <DoubleArrowRight />
         </button>

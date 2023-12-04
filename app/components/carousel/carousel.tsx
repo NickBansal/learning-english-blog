@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Indicators } from './indicators';
 
@@ -6,10 +6,22 @@ import { TESTIMONIALS } from '~/constants/TESTIMONIALS';
 
 export const TestimonialsCarousel = () => {
   const [slide, setSlide] = useState(0);
+  const timeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    startTimer();
+    return () => {
+      clearInterval(timeout.current as NodeJS.Timeout);
+    };
+  }, []);
+
+  const resetTimer = () => {
+    clearInterval(timeout.current as NodeJS.Timeout);
+  };
+
+  const startTimer = () => {
     const maxAmount = TESTIMONIALS.length;
-    const timer = setInterval(() => {
+    timeout.current = setInterval(() => {
       setSlide((prevState) => {
         if (prevState === maxAmount - 1) {
           return 0;
@@ -17,10 +29,8 @@ export const TestimonialsCarousel = () => {
         return prevState + 1;
       });
     }, 5000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
+  };
+
   return (
     <div
       id={`slide-${slide}`}
@@ -39,7 +49,7 @@ export const TestimonialsCarousel = () => {
         );
       })}
 
-      <Indicators slide={slide} setSlide={setSlide} />
+      <Indicators slide={slide} setSlide={setSlide} resetTimer={resetTimer} startTimer={startTimer} />
     </div>
   );
 };
