@@ -39,7 +39,7 @@ export default function BlogPost(): JSX.Element {
     <PaddedSection className="mb-20">
       <div className="mb-8">
         <Link
-          to="/blogs"
+          to="/blogs?$top=5"
           className="text-teal-700 border-b-2 border-teal-700 hover:text-teal-800 hover:border-teal-800 dark:text-teal-500 dark:border-teal-500 dark:hover:text-teal-600 dark:hover:border-teal-600 mr-2"
         >
           Blogs page

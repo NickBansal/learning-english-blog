@@ -10,9 +10,6 @@ export const setSearchParamsString = (
     }
     newSearchParams.set(key, String(value));
   }
-  // Print string manually to avoid over-encoding the URL
-  // Browsers are ok with $ nowadays
-  // optional: return newSearchParams.toString()
   return Array.from(newSearchParams.entries())
     .map(([key, value]) => (value ? `${key}=${encodeURIComponent(value)}` : key))
     .join('&');

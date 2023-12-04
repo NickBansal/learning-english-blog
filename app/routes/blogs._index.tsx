@@ -7,6 +7,7 @@ import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
 import format from 'date-fns/format';
 import { gql, GraphQLClient } from 'graphql-request';
 
+import { Header } from '~/components/header/header';
 import { ArrowLeft } from '~/components/icons/arrow-left';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { PaginationBar } from '~/components/pagination/pagination-bar';
@@ -48,7 +49,7 @@ export default function BlogPage(): JSX.Element {
 
   return (
     <PaddedSection>
-      <h1 className="text-lg md:text-2xl w-full border-b-2 pb-4">All content ({total})</h1>
+      <Header>All content ({total})</Header>
 
       <div className="py-8">
         {!data.length && total === 0 && (
@@ -90,7 +91,7 @@ export default function BlogPage(): JSX.Element {
           );
         })}
       </div>
-      {total > 5 && <PaginationBar total={total} />}
+      {total > Number(searchParams.get('$top')) && <PaginationBar total={total} />}
     </PaddedSection>
   );
 }

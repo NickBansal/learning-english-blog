@@ -2,6 +2,7 @@ import { json, type V2_MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { gql, GraphQLClient } from 'graphql-request';
 
+import { Header } from '~/components/header/header';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { aboutPage } from '~/constants/META_DATA';
@@ -30,7 +31,7 @@ export default function About(): JSX.Element {
 
   return (
     <PaddedSection>
-      <h1 className="text-lg md:text-2xl border-b-2 border-gray-500 dark:border-white mb-8 pb-4">About section</h1>
+      <Header>About section</Header>
       <div className="bg-[url('/about.jpg')] h-[400px] w-full bg-center bg-cover relative flex items-start justify-center lg:justify-end mb-20" />
       <div className="mt-8 mb-48">
         <JSMarkdown>{aboutPage.information}</JSMarkdown>
