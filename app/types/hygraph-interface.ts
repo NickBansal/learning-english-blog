@@ -1,16 +1,16 @@
 import { type ObjectOfStrings } from '~/types/mdx-interface';
 
 interface BlogArray {
-    createdAt: string;
-    id: string;
-    overview: string;
-    publishedAt: string;
-    slug: string;
-    title: string;
-    updatedAt: string;
-  }
+  createdAt: string;
+  id: string;
+  overview: string;
+  publishedAt: string;
+  slug: string;
+  title: string;
+  updatedAt: string;
+}
 interface BlogArrayItem {
-  blogs: BlogArray[]
+  blogs: BlogArray[];
 }
 interface Blogs {
   data: BlogArray[];
@@ -46,4 +46,17 @@ interface AboutContent {
   aboutPage: ObjectOfStrings;
 }
 
-export type { BlogItem, Blogs, HomeContent, AboutContent, BlogArrayItem };
+interface CoursesArray {
+  courses: Array<{
+    image: {
+      url: string;
+    };
+    overview: string;
+    price: number;
+    title: string;
+    date: string;
+    id: string;
+  }>;
+}
+
+export type { BlogItem, Blogs, HomeContent, AboutContent, BlogArrayItem, CoursesArray };
