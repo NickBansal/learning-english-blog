@@ -17,3 +17,9 @@ export interface ButtonGroupsTypes {
   children: React.ReactNode;
   className?: string;
 }
+
+export interface SubmitButtonTypes {
+  children: React.ReactNode;
+  fullWidth?: boolean;
+  value?: string;
+}

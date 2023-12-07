@@ -1,7 +1,12 @@
 import { NavLink } from '@remix-run/react';
 import classNames from 'classnames';
 
-import { type ButtonTypes, type InternalLinkTypes, type LinkButtonTypes } from '~/types/buttons-interface';
+import {
+  type ButtonTypes,
+  type InternalLinkTypes,
+  type LinkButtonTypes,
+  type SubmitButtonTypes
+} from '~/types/buttons-interface';
 
 export const ActionButtons = ({ outline = false, children, className = '' }: ButtonTypes) => {
   const classNames = outline
@@ -16,13 +21,15 @@ export const LinkButton = ({ children }: ButtonTypes) => {
   </button>;
 };
 
-export const SubmitButton = ({ children, fullWidth = false }: { children: React.ReactNode; fullWidth?: boolean }) => {
+export const SubmitButton = ({ children, fullWidth = false, value = '' }: SubmitButtonTypes) => {
   return (
     <button
       type="submit"
+      name="_action"
       className={classNames(`bg-red-400  text-white rounded-md hover:bg-red-500 font-semibold px-4 py-3`, {
         'w-full': fullWidth
       })}
+      value={value}
     >
       {children}
     </button>

@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { type ActionFunction, type LinksFunction, type LoaderArgs } from '@remix-run/node';
+import { type ActionFunction, type DataFunctionArgs, type LinksFunction, type LoaderArgs } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
+import { FormActions } from './types/form-enum';
+import { submitNewsletterForm } from './utils/form-submissions';
 import { themeSessionResolver } from './utils/session.server';
 import { Layout } from './layout';
 
@@ -19,24 +21,20 @@ export const loader = async ({ request }: LoaderArgs) => {
   };
 };
 
-export const action: ActionFunction = async ({ request }) => {
-  const API_URL = process.env.CONVERTKIT_API;
-  const API_KEY = process.env.CONVERTKIT_API_KEY;
-  const FORM_ID = process.env.CONVERTKIT_FORM_ID;
+export const action: ActionFunction = async ({ request }: DataFunctionArgs) => {
+  const formData = await request.clone().formData();
+  const _action = formData.get('_action');
 
-  const formData = await request.formData();
-  const email = formData.get('email');
-  const name = formData.get('name');
+  if (_action === FormActions.NEWSLETTER) {
+    return await submitNewsletterForm({ formData });
+  }
 
-  const res = await fetch(`${API_URL}/forms/${FORM_ID}/subscribe`, {
-    method: 'post',
-    body: JSON.stringify({ email, name, api_key: API_KEY }),
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8'
-    }
-  });
+  if (_action === FormActions.CONTACT_FORM) {
+    console.log('GOODLJDHF');
+    return null;
+  }
 
-  return await res.json();
+  return null;
 };
 
 export default function AppWithProvider() {
