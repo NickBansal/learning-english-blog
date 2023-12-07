@@ -42,3 +42,15 @@ export const submitNewsletterForm = async ({ formData }: { formData: FormData })
 
   return await res.json();
 };
+
+export const submitContactForm = ({ formData }: { formData: FormData }) => {
+  const firstName = formData.get('first-name');
+  const lastName = formData.get('last-name');
+  const email = formData.get('email');
+  const subject = formData.get('subject');
+  const comments = formData.get('comments');
+
+  console.log({ firstName, lastName, email, subject, comments });
+
+  return null;
+};

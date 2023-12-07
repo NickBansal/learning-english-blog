@@ -1,23 +1,13 @@
-import { type FormEvent } from 'react';
-import { Form, useSubmit } from '@remix-run/react';
+import { Form } from '@remix-run/react';
 
 import { SubmitButton } from '../buttons/buttons';
 
 import { FormActions } from '~/types/form-enum';
 
 export const ContactForm = () => {
-  const submit = useSubmit();
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // const formData = new FormData(e.target as HTMLFormElement);
-    // formData.set('hello', 'world');
-    submit(e.currentTarget);
-  };
-
   return (
     <div className="w-full max-w-lg mx-auto mb-28 mt-2 md:mt-16">
-      <Form method="post" action="/contact" onSubmit={handleSubmit}>
+      <Form method="post">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label

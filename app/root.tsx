@@ -23,18 +23,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 
 export const action: ActionFunction = async ({ request }: DataFunctionArgs) => {
   const formData = await request.clone().formData();
-  const _action = formData.get('_action');
-
-  if (_action === FormActions.NEWSLETTER) {
-    return await submitNewsletterForm({ formData });
-  }
-
-  if (_action === FormActions.CONTACT_FORM) {
-    console.log('GOODLJDHF');
-    return null;
-  }
-
-  return null;
+  return await submitNewsletterForm({ formData });
 };
 
 export default function AppWithProvider() {

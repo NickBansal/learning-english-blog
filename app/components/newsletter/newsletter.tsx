@@ -8,6 +8,7 @@ import { FormActions } from '~/types/form-enum';
 export default function Newsletter() {
   const actionData = useActionData();
   const transition = useTransition();
+
   const submitting = transition.submission;
 
   return (
