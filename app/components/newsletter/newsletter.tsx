@@ -21,8 +21,8 @@ export default function Newsletter() {
         <fetcher.Form
           method="post"
           className="md:w-[400px] md:ml-4"
-          onSubmit={(formData) => {
-            fetcher.submit({ data: formData.currentTarget }, { method: 'post' });
+          onSubmit={(e) => {
+            fetcher.submit(e.currentTarget);
           }}
         >
           <input

@@ -22,7 +22,6 @@ export const loader = async ({ request }: LoaderArgs) => {
 
 export const action: ActionFunction = async ({ request }: DataFunctionArgs) => {
   const formData = await request.clone().formData();
-  console.log(formData);
   return await submitNewsletterForm({ formData });
 };
 
