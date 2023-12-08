@@ -51,7 +51,7 @@ export default function BlogPage(): JSX.Element {
     <PaddedSection>
       <Header>All content ({total})</Header>
 
-      <div className="py-8">
+      <div className="py-2 md:py-8">
         {!data.length && total === 0 && (
           <p className="text-center mt-16 mb-32">There is no content available right now, please check back soon</p>
         )}

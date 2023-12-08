@@ -15,6 +15,12 @@ const validateEmail = (email?: FormDataEntryValue | null) => {
   }
 };
 
+const validateContactFields = (title: string, name?: FormDataEntryValue | null) => {
+  if (!name) {
+    return `${title} is required`;
+  }
+};
+
 export const submitNewsletterForm = async ({ formData }: { formData: FormData }) => {
   const API_URL = process.env.CONVERTKIT_API;
   const API_KEY = process.env.CONVERTKIT_API_KEY;
@@ -50,7 +56,17 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
   const subject = formData.get('subject');
   const comments = formData.get('comments');
 
-  console.log({ firstName, lastName, email, subject, comments });
+  const formErrors = {
+    firstName: validateContactFields('First name', firstName),
+    lastName: validateContactFields('Last name', lastName),
+    email: validateEmail(email),
+    subject: validateContactFields('Subject', subject),
+    comments: validateContactFields('Comments', comments)
+  };
+
+  if (Object.values(formErrors).some(Boolean)) {
+    return { formErrors };
+  }
 
   return null;
 };
