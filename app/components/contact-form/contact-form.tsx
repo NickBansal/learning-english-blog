@@ -3,13 +3,10 @@
 import { Form, useActionData } from '@remix-run/react';
 
 import { SubmitButton } from '../buttons/buttons';
+import { FieldError } from '../field-error/field-error';
 
 import { type action } from '~/routes/contact';
 import { FormActions } from '~/types/form-enum';
-
-export const FieldError = ({ data }: { data?: string | null }) => {
-  return data ? <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">{data}</p> : null;
-};
 
 export const ContactForm = () => {
   const actionData = useActionData<typeof action>();

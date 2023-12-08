@@ -55,6 +55,13 @@ export default function BlogPost(): JSX.Element {
         <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData.overview}</p>
         <div className="mt-8">{<JSMarkdown>{blogData.body}</JSMarkdown>}</div>
       </div>
+      <div className="w-full border-b-2 border-t-2 border-gray-300 mt-8 flex justify-end items-center space-x-8 py-2">
+        <h4 className="text-lg md:text-xl font-medium">Share story: </h4>
+        <div className="flex items-center space-x-1">
+          <img src="/icons8-facebook-48.png" alt="Facebook icon" className="w-12" />
+          <img src="/icons8-twitterx-64.png" alt="Twitter icon" className="w-12" />
+        </div>
+      </div>
     </PaddedSection>
   );
 }
