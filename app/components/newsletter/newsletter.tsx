@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Form, useActionData, useTransition } from '@remix-run/react';
+import { useFetcher } from '@remix-run/react';
 
 import { FormActions } from '~/types/form-enum';
 
 export default function Newsletter() {
-  const actionData = useActionData();
-  const transition = useTransition();
-
-  const submitting = transition.submission;
+  const fetcher = useFetcher();
 
   return (
     <div className="flex items-center justify-center h-max pb-16">
@@ -21,16 +18,22 @@ export default function Newsletter() {
           </p>
         </div>
         {/* Newsletter form */}
-        <Form method="post" className="md:w-[400px] md:ml-4">
+        <fetcher.Form
+          method="post"
+          className="md:w-[400px] md:ml-4"
+          onSubmit={(formData) => {
+            fetcher.submit({ data: formData.currentTarget }, { method: 'post' });
+          }}
+        >
           <input
             name="name"
             type="text"
             placeholder="Enter your name..."
             className="border-2 border-gray-400 rounded-lg w-full h-12 px-4 mb-4 text-black"
           />
-          {actionData?.formErrors?.name && (
+          {fetcher?.data?.formErrors?.name && (
             <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">
-              {actionData.formErrors.name}
+              {fetcher.data.formErrors.name}
             </p>
           )}
           <input
@@ -40,19 +43,16 @@ export default function Newsletter() {
             className="border-2 border-gray-400 rounded-lg w-full h-12 px-4 mb-4 text-black"
           />
           {/* If subscription succeeded */}
-          {actionData?.subscription && (
+          {fetcher?.data?.subscription && (
             <p className="w-full text-center text-sm text-green-600 dark:text-green-300 px-4 mb-4">
               Please check your email, and confirm subscription.
             </p>
           )}
           {/* If subscription failed */}
-          {actionData?.formErrors?.email && (
+          {fetcher?.data?.formErrors?.email && (
             <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">
-              {actionData.formErrors.email}
+              {fetcher.data.formErrors.email}
             </p>
-          )}
-          {actionData?.error && (
-            <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">{actionData.message}</p>
           )}
           <button
             type="submit"
@@ -60,9 +60,9 @@ export default function Newsletter() {
             value={FormActions.NEWSLETTER}
             className="bg-red-400  text-white rounded-md hover:bg-red-500 font-semibold px-4 py-3 w-full"
           >
-            {submitting ? 'Subscribing...' : 'Subscribe'}
+            {fetcher.state === 'submitting' || fetcher.state === 'loading' ? 'Subscribing...' : 'Subscribe'}
           </button>
-        </Form>
+        </fetcher.Form>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import { type ActionFunction, type DataFunctionArgs, type LinksFunction, type Lo
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
-import { FormActions } from './types/form-enum';
 import { submitNewsletterForm } from './utils/form-submissions';
 import { themeSessionResolver } from './utils/session.server';
 import { Layout } from './layout';
@@ -23,6 +22,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 
 export const action: ActionFunction = async ({ request }: DataFunctionArgs) => {
   const formData = await request.clone().formData();
+  console.log(formData);
   return await submitNewsletterForm({ formData });
 };
 
