@@ -17,7 +17,7 @@ export default function Newsletter() {
             Join our Newsletter and get weekly news.
           </p>
         </div>
-        {/* Newsletter form */}
+
         <fetcher.Form
           method="post"
           className="md:w-[400px] md:ml-4"
@@ -42,13 +42,11 @@ export default function Newsletter() {
             placeholder="Enter your email..."
             className="border-2 border-gray-400 rounded-lg w-full h-12 px-4 mb-4 text-black"
           />
-          {/* If subscription succeeded */}
           {fetcher?.data?.subscription && (
             <p className="w-full text-center text-sm text-green-600 dark:text-green-300 px-4 mb-4">
               Please check your email, and confirm subscription.
             </p>
           )}
-          {/* If subscription failed */}
           {fetcher?.data?.formErrors?.email && (
             <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">
               {fetcher.data.formErrors.email}

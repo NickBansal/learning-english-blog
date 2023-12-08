@@ -20,7 +20,7 @@ export async function loader() {
         date
         id
         image {
-          url
+          url(transformation: { image: { resize: { width: 350, height: 250 } } })
         }
       }
     }
