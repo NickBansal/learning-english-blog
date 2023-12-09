@@ -6,6 +6,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
+import { SOCIAL_MEDIA_LINKS } from '~/constants/FOOTER_DATA';
 import { blogsPage } from '~/constants/META_DATA';
 import { type BlogItem } from '~/types/hygraph-interface';
 
@@ -31,6 +32,9 @@ export async function loader({ params }: LoaderArgs) {
   return json(blogs);
 }
 
+const faceBook = SOCIAL_MEDIA_LINKS[0];
+const twitterx = SOCIAL_MEDIA_LINKS[3];
+
 export default function BlogPost(): JSX.Element {
   const { blogs } = useLoaderData() as BlogItem;
   const blogData = blogs[0];
@@ -55,11 +59,15 @@ export default function BlogPost(): JSX.Element {
         <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData.overview}</p>
         <div className="mt-8">{<JSMarkdown>{blogData.body}</JSMarkdown>}</div>
       </div>
-      <div className="w-full border-b-2 border-t-2 border-gray-300 mt-8 flex justify-end items-center space-x-8 py-2">
+      <div className="w-full border-b-2 border-t-2 border-gray-200 mt-8 flex justify-end items-center space-x-8 py-2">
         <h4 className="text-lg md:text-xl font-medium">Share story: </h4>
         <div className="flex items-center space-x-1">
-          <img src="/icons8-facebook-48.png" alt="Facebook icon" className="w-12" />
-          <img src="/icons8-twitterx-64.png" alt="Twitter icon" className="w-12" />
+          <a href={faceBook.href} target="_blank" rel="noopener noreferrer">
+            <img src={faceBook.src} alt={faceBook.alt} className="w-12" />
+          </a>
+          <a href={twitterx.href} target="_blank" rel="noopener noreferrer">
+            <img src={twitterx.src} alt={twitterx.alt} className="w-12" />
+          </a>
         </div>
       </div>
     </PaddedSection>
