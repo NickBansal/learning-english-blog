@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Form, useActionData } from '@remix-run/react';
+import { useFetcher } from '@remix-run/react';
 
-import { SubmitButton } from '../buttons/buttons';
+import { ButtonsGroup } from '../button-groups/button-groups';
+import { ActionButtons, SubmitButton } from '../buttons/buttons';
+import { ConfirmationModal } from '../confirmation-modal/confirmation-modal';
 import { FieldError } from '../field-error/field-error';
 
-import { type action } from '~/routes/contact';
 import { FormActions } from '~/types/form-enum';
 
 export const ContactForm = () => {
-  const actionData = useActionData<typeof action>();
+  const fetcher = useFetcher();
 
   return (
     <div className="w-full max-w-lg mx-auto mb-28 mt-2 md:mt-16">
-      <Form method="post">
+      <fetcher.Form method="post">
         <div className="flex flex-wrap -mx-3">
           <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
             <label
@@ -29,7 +30,7 @@ export const ContactForm = () => {
               type="text"
               placeholder="Jane"
             />
-            <FieldError data={actionData?.formErrors?.firstName} />
+            <FieldError data={fetcher?.data?.formErrors?.firstName} />
           </div>
           <div className="w-full md:w-1/2 px-3 mb-3">
             <label
@@ -45,7 +46,7 @@ export const ContactForm = () => {
               type="text"
               placeholder="Doe"
             />
-            <FieldError data={actionData?.formErrors?.lastName} />
+            <FieldError data={fetcher?.data?.formErrors?.lastName} />
           </div>
         </div>
         <div className="flex flex-col -mx-3 mb-6">
@@ -63,7 +64,7 @@ export const ContactForm = () => {
               type="email"
               placeholder="janedoe@email.com"
             />
-            <FieldError data={actionData?.formErrors?.email} />
+            <FieldError data={fetcher?.data?.formErrors?.email} />
           </div>
           <div className="w-full px-3  mt-4">
             <label
@@ -79,7 +80,7 @@ export const ContactForm = () => {
               type="subject"
               placeholder="Subject"
             />
-            <FieldError data={actionData?.formErrors?.subject} />
+            <FieldError data={fetcher?.data?.formErrors?.subject} />
           </div>
           <div className="w-full px-3 mt-4">
             <label
@@ -95,15 +96,31 @@ export const ContactForm = () => {
               placeholder="Whats on your mind?"
               rows={7}
             />
-            <FieldError data={actionData?.formErrors?.comments} />
+            <FieldError data={fetcher?.data?.formErrors?.comments} />
           </div>
         </div>
         <div className="w-full">
           <SubmitButton fullWidth value={FormActions.CONTACT_FORM}>
-            Submit
+            {fetcher?.state === 'submitting' || fetcher?.state === 'loading' ? 'Submitting...' : 'Submit'}
           </SubmitButton>
         </div>
-      </Form>
+      </fetcher.Form>
+      {!fetcher?.data?.success && (
+        <ConfirmationModal
+          onClick={() => {
+            return null;
+          }}
+        >
+          <p>Message successfully sent</p>
+          <ActionButtons
+            onClick={() => {
+              console.log('Hello');
+            }}
+          >
+            Go back to form
+          </ActionButtons>
+        </ConfirmationModal>
+      )}
     </div>
   );
 };

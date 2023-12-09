@@ -84,7 +84,7 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
   const mailOptions = {
     to: EMAIL_FROM,
     from: EMAIL_FROM,
-    subject: 'I have a job for you',
+    subject: `English everyday message from: ${name}`,
     text: `${comments as string} from ${email as string}`,
     html: `<strong>Message from ${name} ${email as string} \n ${comments as string}/strong>`
   };
@@ -94,6 +94,7 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
       console.log(success);
     })
     .catch((error) => {
+      console.log(error);
       return { error };
     });
 
