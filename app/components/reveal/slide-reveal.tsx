@@ -27,12 +27,22 @@ export const SlideReveal = ({ children, leftPosition, delay = 0 }: RevealTypes) 
     <div ref={ref} className="relative overflow-hidden w-full">
       <motion.div
         variants={{
-          hidden: { opacity: 0, x: leftPosition ? 1000 : -1000 },
-          visible: { opacity: 1, x: 0 }
+          hidden: {
+            opacity: 0,
+            x: leftPosition ? 1000 : -1000
+          },
+          visible: {
+            opacity: 1,
+            x: 0
+          }
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, ease: 'easeInOut', delay }}
+        transition={{
+          duration: 0.5,
+          ease: 'easeInOut',
+          delay
+        }}
       >
         {children}
       </motion.div>

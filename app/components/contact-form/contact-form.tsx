@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useRef } from 'react';
 import { useFetcher } from '@remix-run/react';
 
 import { SubmitButton } from '../buttons/buttons';
@@ -9,12 +8,11 @@ import { FieldError } from '../field-error/field-error';
 import { FormActions } from '~/types/form-enum';
 
 export const ContactForm = () => {
-  const $form = useRef<HTMLFormElement>(null);
   const fetcher = useFetcher();
-  console.log(fetcher, ' <<<<');
+
   return (
     <div className="w-full max-w-lg mx-auto mb-28 mt-2 md:mt-16">
-      <fetcher.Form method="post" ref={$form}>
+      <fetcher.Form method="post">
         <div className="flex flex-wrap -mx-3">
           <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
             <label
