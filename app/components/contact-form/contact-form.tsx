@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { useRef } from 'react';
 import { useFetcher } from '@remix-run/react';
 
-import { ButtonsGroup } from '../button-groups/button-groups';
-import { ActionButtons, SubmitButton } from '../buttons/buttons';
-import { ConfirmationModal } from '../confirmation-modal/confirmation-modal';
+import { SubmitButton } from '../buttons/buttons';
 import { FieldError } from '../field-error/field-error';
 
 import { FormActions } from '~/types/form-enum';
 
 export const ContactForm = () => {
+  const $form = useRef<HTMLFormElement>(null);
   const fetcher = useFetcher();
-
+  console.log(fetcher, ' <<<<');
   return (
     <div className="w-full max-w-lg mx-auto mb-28 mt-2 md:mt-16">
-      <fetcher.Form method="post">
+      <fetcher.Form method="post" ref={$form}>
         <div className="flex flex-wrap -mx-3">
           <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
             <label
@@ -105,21 +105,10 @@ export const ContactForm = () => {
           </SubmitButton>
         </div>
       </fetcher.Form>
-      {!fetcher?.data?.success && (
-        <ConfirmationModal
-          onClick={() => {
-            return null;
-          }}
-        >
-          <p>Message successfully sent</p>
-          <ActionButtons
-            onClick={() => {
-              console.log('Hello');
-            }}
-          >
-            Go back to form
-          </ActionButtons>
-        </ConfirmationModal>
+      {fetcher?.data?.success && (
+        <p className="text-green-600 text-center px-2 py-4">
+          Message sent, we will get back to you as soon as we possible
+        </p>
       )}
     </div>
   );
