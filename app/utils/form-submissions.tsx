@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import SGMail, { type MailDataRequired } from '@sendgrid/mail';
 
@@ -80,7 +82,7 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
   SGMail.setApiKey(SENDGRID_API_KEY as string);
 
   const mailOptions = {
-    to: SENDGRID_API_KEY,
+    to: EMAIL_FROM,
     from: EMAIL_FROM,
     subject: 'I have a job for you',
     text: `${comments as string} from ${email as string}`,
@@ -89,10 +91,10 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
 
   SGMail.send(mailOptions as MailDataRequired)
     .then((success) => {
-      console.log(success, ' <<<<<<<<< MAIL OPTIONS');
+      console.log(success);
     })
     .catch((error) => {
-      console.log(error.response.body.errors[0], ' <<<<<<<< ERROR');
+      return { error };
     });
 
   return { success: true, fields };
