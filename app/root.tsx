@@ -3,7 +3,7 @@
 import { type ActionFunction, type DataFunctionArgs, type LinksFunction, type LoaderArgs } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/remix';
+// import { SpeedInsights } from '@vercel/speed-insights/remix';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
 import { submitNewsletterForm } from './utils/form-submissions';
@@ -53,7 +53,7 @@ export const App = (): JSX.Element => {
       <body className="bg-white text-black dark:bg-gray-900 dark:text-white h-full selection:bg-gray-50 dark:selection:bg-gray-900 transition-colors">
         <Layout>
           <Outlet />
-          <SpeedInsights />
+          {/* <SpeedInsights /> */}
           <Analytics />
           <ScrollRestoration />
           <Scripts />

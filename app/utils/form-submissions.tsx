@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+import SGMail, { type MailDataRequired } from '@sendgrid/mail';
+
 const validateName = (name?: FormDataEntryValue | null) => {
   if (!name) {
     return 'Please enter your name';
@@ -50,6 +52,9 @@ export const submitNewsletterForm = async ({ formData }: { formData: FormData })
 };
 
 export const submitContactForm = ({ formData }: { formData: FormData }) => {
+  const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+  const EMAIL_FROM = process.env.EMAIL_FROM;
+
   const firstName = formData.get('first-name');
   const lastName = formData.get('last-name');
   const email = formData.get('email');
@@ -68,5 +73,27 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
     return { formErrors };
   }
 
-  return null;
+  const name = `${firstName as string} ${lastName as string}`;
+
+  const fields = { name, email, comments };
+
+  SGMail.setApiKey(SENDGRID_API_KEY as string);
+
+  const mailOptions = {
+    to: SENDGRID_API_KEY,
+    from: EMAIL_FROM,
+    subject: 'I have a job for you',
+    text: `${comments as string} from ${email as string}`,
+    html: `<strong>Message from ${name} ${email as string} \n ${comments as string}/strong>`
+  };
+
+  SGMail.send(mailOptions as MailDataRequired)
+    .then((success) => {
+      console.log(success, ' <<<<<<<<< MAIL OPTIONS');
+    })
+    .catch((error) => {
+      console.log(error.response.body.errors[0], ' <<<<<<<< ERROR');
+    });
+
+  return { success: true, fields };
 };
