@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import { type ActionFunction, type DataFunctionArgs, type LinksFunction, type LoaderArgs } from '@remix-run/node';
+import type { ActionFunction, DataFunctionArgs, LinksFunction, LoaderArgs } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import { Analytics } from '@vercel/analytics/react';
 // import { SpeedInsights } from '@vercel/speed-insights/remix';
@@ -44,8 +44,6 @@ export const App = (): JSX.Element => {
   return (
     <html lang="en" data-theme={themeX ?? ''}>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(theme)} />
         <Links />

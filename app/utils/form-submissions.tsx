@@ -84,7 +84,7 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
   const mailOptions = {
     to: EMAIL_FROM,
     from: EMAIL_FROM,
-    subject: `English everyday message from: ${name}`,
+    subject: `English everyday: ${subject as string}`,
     text: `${comments as string} from ${email as string}`,
     html: `<body>
       <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:arial,helvetica,sans-serif; color:#000000; background-color:#8ac6e4;">

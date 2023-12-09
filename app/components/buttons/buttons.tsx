@@ -1,12 +1,7 @@
 import { NavLink } from '@remix-run/react';
 import classNames from 'classnames';
 
-import {
-  type ButtonTypes,
-  type InternalLinkTypes,
-  type LinkButtonTypes,
-  type SubmitButtonTypes
-} from '~/types/buttons-interface';
+import type { ButtonTypes, InternalLinkTypes, LinkButtonTypes, SubmitButtonTypes } from '~/types/buttons-interface';
 
 export const ActionButtons = ({ outline = false, children, className = '', onClick = () => null }: ButtonTypes) => {
   const classNames = outline

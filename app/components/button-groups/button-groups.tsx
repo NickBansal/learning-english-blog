@@ -1,4 +1,4 @@
-import { type ButtonGroupsTypes } from '~/types/buttons-interface';
+import type { ButtonGroupsTypes } from '~/types/buttons-interface';
 
 export function ButtonsGroup({ children, className = '' }: ButtonGroupsTypes) {
   return (
