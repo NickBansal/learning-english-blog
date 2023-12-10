@@ -18,9 +18,9 @@ export const meta: V2_MetaFunction = ({ data }) => {
     return [];
   }
 
-  const { title, overview, seoImage } = data?.blogs[0];
+  const { title, overview, seoImage, slug } = data?.blogs[0];
 
-  return singleBlog(title, overview, seoImage.url);
+  return singleBlog(title, overview, seoImage.url, slug);
 };
 
 export async function loader({ params }: LoaderArgs) {

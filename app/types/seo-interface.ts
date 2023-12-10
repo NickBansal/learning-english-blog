@@ -3,4 +3,5 @@ export interface seoTypes {
   description: string;
   title: string;
   image?: string
+  url?: string
 }
