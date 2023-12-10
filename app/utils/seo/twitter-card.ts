@@ -19,8 +19,8 @@ export const twitterCard = ({ description, title }: seoTypes) => {
       content: description
     },
     {
-      name: 'twitter:image:src',
-      content: '/about.jpg'
+      name: 'twitter:image',
+      content: '/twitter-card.jpg'
     },
     {
       name: 'twitter:card',
