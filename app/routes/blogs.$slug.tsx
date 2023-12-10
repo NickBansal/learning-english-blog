@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
@@ -7,10 +10,13 @@ import { gql, GraphQLClient } from 'graphql-request';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SOCIAL_MEDIA_LINKS } from '~/constants/FOOTER_DATA';
-import { blogsPage } from '~/constants/META_DATA';
+import { singleBlog } from '~/constants/META_DATA';
 import { type BlogItem } from '~/types/hygraph-interface';
 
-export const meta: V2_MetaFunction = () => blogsPage;
+export const meta: V2_MetaFunction = ({ data }) => {
+  const { title, overview } = data?.blogs[0];
+  return singleBlog(title, overview);
+};
 
 export async function loader({ params }: LoaderArgs) {
   const query = gql`
@@ -60,7 +66,7 @@ export default function BlogPost(): JSX.Element {
         <div className="mt-8">{<JSMarkdown>{blogData.body}</JSMarkdown>}</div>
       </div>
       <div className="w-full border-b-2 border-t-2 border-gray-200 mt-8 flex justify-end items-center space-x-8 py-2">
-        <h4 className="text-lg md:text-xl font-medium">Share story: </h4>
+        <p className="text-lg md:text-xl font-medium">Share story: </p>
         <div className="flex items-center space-x-1">
           <a href={faceBook.href} target="_blank" rel="noopener noreferrer">
             <img src={faceBook.src} alt={faceBook.alt} className="w-12" />

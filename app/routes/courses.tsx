@@ -5,10 +5,10 @@ import { gql, GraphQLClient } from 'graphql-request';
 import { CoursesCard } from '~/components/courses-card/courses-card';
 import { Header } from '~/components/header/header';
 import { PaddedSection } from '~/components/padded-section/padded-section';
-import { aboutPage } from '~/constants/META_DATA';
+import { coursesPage } from '~/constants/META_DATA';
 import { type CoursesArray } from '~/types/hygraph-interface';
 
-export const meta: V2_MetaFunction = () => aboutPage;
+export const meta: V2_MetaFunction = () => coursesPage;
 
 export async function loader() {
   const query = gql`
