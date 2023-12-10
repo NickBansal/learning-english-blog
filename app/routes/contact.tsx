@@ -11,7 +11,7 @@ export const meta: V2_MetaFunction = () => contactPage;
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.clone().formData();
 
-  return submitContactForm({ formData });
+  return await submitContactForm({ formData });
 };
 
 export default function Contact(): JSX.Element {
