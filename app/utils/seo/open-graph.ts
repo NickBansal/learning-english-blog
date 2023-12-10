@@ -6,7 +6,7 @@ export const openGraph = ({
   content = 'website',
   description,
   title,
-  image = 'https://everyday-english-sukhi.vercel.app/about.jpg',
+  image = 'https://everyday-english-sukhi.vercel.app/twitter-image.jpg',
   url = ''
 }: seoTypes) => {
   return [
