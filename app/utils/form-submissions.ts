@@ -53,7 +53,7 @@ export const submitNewsletterForm = async ({ formData }: { formData: FormData })
   return await res.json();
 };
 
-export const submitContactForm = ({ formData }: { formData: FormData }) => {
+export const submitContactForm = async ({ formData }: { formData: FormData }) => {
   const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
   const EMAIL_FROM = process.env.EMAIL_FROM;
 
@@ -77,7 +77,7 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
 
   const name = `${firstName as string} ${lastName as string}`;
 
-  const fields = { name, email, comments };
+  const fields = { name, email, comments, subject };
 
   SGMail.setApiKey(SENDGRID_API_KEY as string);
 
@@ -137,7 +137,7 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
       <tr>
         <td style="padding:16px 16px 16px 16px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit"><span style="font-size: 18px"><strong>Email from: ${name}</strong></span></div>
 <div style="font-family: inherit; text-align: inherit"><br></div>
-<div style="font-family: inherit; text-align: center"><span style="font-size: 18px; color: #ff0000"><em><strong>Please response to ${
+<div style="font-family: inherit; text-align: center"><span style="font-size: 18px; color: #ff0000"><em><strong>Please respond to ${
       email as string
     }</strong></em></span></div><div></div></div></td>
       </tr>
@@ -189,7 +189,7 @@ export const submitContactForm = ({ formData }: { formData: FormData }) => {
   </body>`
   };
 
-  SGMail.send(mailOptions as MailDataRequired)
+  await SGMail.send(mailOptions as MailDataRequired)
     .then((success) => {
       console.log(success);
     })
