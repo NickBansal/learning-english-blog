@@ -48,7 +48,7 @@ export const openGraph = ({
     },
     ...twitterCard(),
     {
-      keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
+      keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident, Manchester'
     }
   ];
 };
