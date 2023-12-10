@@ -14,6 +14,10 @@ import { singleBlog } from '~/constants/META_DATA';
 import { type BlogItem } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = ({ data }) => {
+  if (!data) {
+    return [];
+  }
+
   const { title, overview } = data?.blogs[0];
   return singleBlog(title, overview);
 };
@@ -33,8 +37,16 @@ export async function loader({ params }: LoaderArgs) {
       }
     }
   `;
+
   const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
-  const blogs = await hygraph.request(query);
+  const blogs: BlogItem = await hygraph.request(query);
+
+  if (!blogs.blogs.length) {
+    throw new Response('Oh no! Something went wrong!', {
+      status: 404
+    });
+  }
+
   return json(blogs);
 }
 
@@ -55,15 +67,15 @@ export default function BlogPost(): JSX.Element {
           Blogs page
         </Link>
         {' > '}
-        <span className="ml-2">{blogData.title}</span>
+        <span className="ml-2">{blogData?.title}</span>
       </div>
       <div className="lg:px-20">
-        <h1 className="text-center text-2xl md:text-3xl pb-2 font-semibold">{blogData.title}</h1>
+        <h1 className="text-center text-2xl md:text-3xl pb-2 font-semibold">{blogData?.title}</h1>
         <p className="text-sm font-light border-b-2 border-black dark:border-white text-center pb-4">
-          Created: {format(new Date(blogData.createdAt), 'dd/MM/yyyy')}
+          Created: {format(new Date(blogData?.createdAt), 'dd/MM/yyyy')}
         </p>
-        <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData.overview}</p>
-        <div className="mt-8">{<JSMarkdown>{blogData.body}</JSMarkdown>}</div>
+        <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData?.overview}</p>
+        <div className="mt-8">{<JSMarkdown>{blogData?.body}</JSMarkdown>}</div>
       </div>
       <div className="w-full border-b-2 border-t-2 border-gray-200 mt-8 flex justify-end items-center space-x-8 py-2">
         <p className="text-lg md:text-xl font-medium">Share story: </p>

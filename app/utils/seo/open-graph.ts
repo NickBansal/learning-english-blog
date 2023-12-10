@@ -1,4 +1,6 @@
-import { type seoTypes } from "~/types/seo-interface";
+import { twitterCard } from './twitter-card';
+
+import { type seoTypes } from '~/types/seo-interface';
 
 export const openGraph = ({ content = 'website', description, title }: seoTypes) => {
   return [
@@ -26,6 +28,7 @@ export const openGraph = ({ content = 'website', description, title }: seoTypes)
       property: 'og:site_name',
       content: 'English Everyday'
     },
+    ...twitterCard(),
     {
       keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
     }

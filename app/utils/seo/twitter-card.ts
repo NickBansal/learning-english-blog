@@ -1,7 +1,9 @@
-import { type seoTypes } from '~/types/seo-interface';
-
-export const twitterCard = ({ description, title }: seoTypes) => {
+export const twitterCard = () => {
   return [
+    {
+      name: 'twitter:card',
+      content: 'summary'
+    },
     {
       name: 'twitter:creator',
       content: 'Sukhi Bansal'
@@ -10,21 +12,5 @@ export const twitterCard = ({ description, title }: seoTypes) => {
       name: 'twitter:site',
       content: '@thepracticaldev'
     },
-    {
-      name: 'twitter:title',
-      content: `English Everyday: ${title}`
-    },
-    {
-      name: 'twitter:description',
-      content: description
-    },
-    {
-      name: 'twitter:image',
-      content: '/twitter-card.jpg'
-    },
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image'
-    }
   ];
 };

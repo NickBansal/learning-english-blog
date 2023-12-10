@@ -1,11 +1,22 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import type { ActionFunction, DataFunctionArgs, LinksFunction, LoaderArgs } from '@remix-run/node';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
+import {
+  isRouteErrorResponse,
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useRouteError
+} from '@remix-run/react';
 import { Analytics } from '@vercel/analytics/react';
 // import { SpeedInsights } from '@vercel/speed-insights/remix';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
+import { Error404, Error500 } from './components/error-screen/error-screen';
 import { submitNewsletterForm } from './utils/form-submissions';
 import { themeSessionResolver } from './utils/session.server';
 import { Layout } from './layout';
@@ -59,6 +70,27 @@ export const App = (): JSX.Element => {
           <Scripts />
           <LiveReload />
         </Layout>
+      </body>
+    </html>
+  );
+};
+
+export const ErrorBoundary = () => {
+  const error = useRouteError();
+
+  return (
+    <html>
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <div className="h-screen w-screen flex-col flex justify-center items-center p-64">
+          {isRouteErrorResponse(error) && error.status === 404 && <Error404 />}
+          {isRouteErrorResponse(error) && error.status === 500 && <Error500 />}
+        </div>
+        <Scripts />
       </body>
     </html>
   );

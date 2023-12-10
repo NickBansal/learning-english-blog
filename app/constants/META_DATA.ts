@@ -1,5 +1,4 @@
 import { openGraph } from '~/utils/seo/open-graph';
-import { twitterCard } from '~/utils/seo/twitter-card';
 
 export const homePage = [
   { title: 'English Everyday | Home Page' },
@@ -13,11 +12,7 @@ export const homePage = [
     description:
       'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
   }),
-  ...twitterCard({
-    title: 'Home Page',
-    description:
-      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
-  })
+
 ];
 
 export const allBlogs = [
@@ -32,11 +27,6 @@ export const allBlogs = [
     description:
       'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
   }),
-  ...twitterCard({
-    title: 'All content',
-    description:
-      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
-  })
 ];
 
 export const singleBlog = (title: string, content: string) => [
@@ -46,10 +36,6 @@ export const singleBlog = (title: string, content: string) => [
     content
   },
   ...openGraph({ title, description: content }),
-  ...twitterCard({
-    title,
-    description: content
-  })
 ];
 
 export const aboutPage = [
@@ -64,11 +50,6 @@ export const aboutPage = [
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   }),
-  ...twitterCard({
-    title: 'About Us',
-    description:
-      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
-  })
 ];
 
 export const contactPage = [
@@ -83,11 +64,7 @@ export const contactPage = [
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   }),
-  ...twitterCard({
-    title: 'Contact Us',
-    description:
-      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
-  })
+
 ];
 
 export const coursesPage = [
@@ -102,9 +79,4 @@ export const coursesPage = [
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   }),
-  ...twitterCard({
-    title: 'Courses',
-    description:
-      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
-  })
 ];
