@@ -22,7 +22,7 @@ export const openGraph = ({ content = 'website', description, title }: seoTypes)
     },
     {
       property: 'og:image',
-      content: '/about.jpg'
+      content: 'https://everyday-english-sukhi.vercel.app/about.jpg'
     },
     {
       property: 'og:site_name',

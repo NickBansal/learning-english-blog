@@ -81,7 +81,7 @@ export const ErrorBoundary = () => {
   return (
     <html>
       <head>
-        <title>Oops!</title>
+        <title>English Everyday | Page not found!</title>
         <Meta />
         <Links />
       </head>
