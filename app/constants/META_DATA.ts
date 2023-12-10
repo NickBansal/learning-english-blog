@@ -1,70 +1,111 @@
+interface openGraphTypes {
+  content?: string;
+  description: string;
+  title?: string;
+}
+
+const openGraph = ({ content = 'website', description, title = 'English Everyday' }: openGraphTypes) => {
+  return [
+    {
+      property: 'og:type',
+      content
+    },
+    {
+      property: 'og:url',
+      content: 'https://everyday-english-sukhi.vercel.app/'
+    },
+    {
+      property: 'og:title',
+      content: title
+    },
+    {
+      property: 'og:description',
+      content: description
+    },
+    {
+      property: 'og:image',
+      content: '/about.jpg'
+    },
+    {
+      property: 'og:site_name',
+      content: 'English Everyday'
+    },
+    {
+      keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
+    }
+  ];
+};
+
 export const homePage = [
-  { title: 'Learning English | Home Page' },
+  { title: 'English Everyday | Home Page' },
   {
     name: 'description',
     content:
-      'Explore insightful articles on learning English in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
+      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
   },
-  {
-    keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
-  }
+  ...openGraph({
+    description:
+      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
+  })
 ];
 
 export const allBlogs = [
-  { title: 'Learning English | content' },
+  { title: 'English Everyday | content' },
   {
     name: 'description',
     content:
-      'Explore insightful articles on learning English in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
+      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
   },
-   {
-    keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
-  }
+  ...openGraph({
+    description:
+      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
+  })
 ];
 
 export const singleBlog = (title: string, content: string) => [
-  { title: `Learning English | ${title}` },
+  { title: `English Everyday | ${title}` },
   {
     name: 'description',
     content
   },
-   {
-    keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
-  }
+  ...openGraph({ content: 'article', description: content, title: `English Everyday: ${title}` })
 ];
 
 export const aboutPage = [
-  { title: 'Learning English | About Us' },
+  { title: 'English Everyday | About Us' },
   {
     name: 'description',
     content:
-      'Discover the story behind Learning English. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   },
-   {
-    keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
-  }
+  ...openGraph({
+    description:
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+  })
 ];
 
 export const contactPage = [
-  { title: 'Learning English | Contact Us' },
+  { title: 'English Everyday | Contact Us' },
   {
     name: 'description',
     content:
-      'Discover the story behind Learning English. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   },
-   {
-    keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
-  }
+  ...openGraph({
+    description:
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+  })
 ];
 
 export const coursesPage = [
-  { title: 'Learning English | All Our Courses' },
+  { title: 'English Everyday | All Our Courses' },
   {
     name: 'description',
     content:
-      'Discover the story behind Learning English. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   },
-   {
-    keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
-  }
+  ...openGraph({
+    description:
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+  })
 ];
