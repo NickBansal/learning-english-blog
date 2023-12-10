@@ -20,7 +20,7 @@ export const twitterCard = ({ description, title }: seoTypes) => {
     },
     {
       name: 'twitter:image:src',
-      content: 'https://thepracticaldev.s3.amazonaws.com/i/6hqmcjaxbgbon8ydw93z.png'
+      content: '/about.jpg'
     },
     {
       name: 'twitter:card',
