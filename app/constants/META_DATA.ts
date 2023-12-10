@@ -29,13 +29,13 @@ export const allBlogs = [
   }),
 ];
 
-export const singleBlog = (title: string, content: string) => [
+export const singleBlog = (title: string, content: string, image: string) => [
   { title: `English Everyday | ${title}` },
   {
     name: 'description',
     content
   },
-  ...openGraph({ title, description: content }),
+  ...openGraph({ title, description: content, image }),
 ];
 
 export const aboutPage = [

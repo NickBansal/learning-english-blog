@@ -2,7 +2,7 @@ import { twitterCard } from './twitter-card';
 
 import { type seoTypes } from '~/types/seo-interface';
 
-export const openGraph = ({ content = 'website', description, title }: seoTypes) => {
+export const openGraph = ({ content = 'website', description, title, image = 'https://everyday-english-sukhi.vercel.app/about.jpg' }: seoTypes) => {
   return [
     {
       property: 'og:type',
@@ -22,7 +22,7 @@ export const openGraph = ({ content = 'website', description, title }: seoTypes)
     },
     {
       property: 'og:image',
-      content: 'https://everyday-english-sukhi.vercel.app/about.jpg'
+      content: image
     },
     {
       property: 'og:site_name',

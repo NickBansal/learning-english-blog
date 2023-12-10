@@ -18,8 +18,9 @@ export const meta: V2_MetaFunction = ({ data }) => {
     return [];
   }
 
-  const { title, overview } = data?.blogs[0];
-  return singleBlog(title, overview);
+  const { title, overview, seoImage } = data?.blogs[0];
+
+  return singleBlog(title, overview, seoImage.url);
 };
 
 export async function loader({ params }: LoaderArgs) {
@@ -34,6 +35,9 @@ export async function loader({ params }: LoaderArgs) {
         title
         updatedAt
         body
+        seoImage {
+          url(transformation: {image: {resize: {width: 800, height: 418}}})
+        }
       }
     }
   `;
