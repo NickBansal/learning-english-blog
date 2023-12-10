@@ -1,40 +1,5 @@
-interface openGraphTypes {
-  content?: string;
-  description: string;
-  title: string;
-}
-
-const openGraph = ({ content = 'website', description, title }: openGraphTypes) => {
-  return [
-    {
-      property: 'og:type',
-      content
-    },
-    {
-      property: 'og:url',
-      content: 'https://everyday-english-sukhi.vercel.app/'
-    },
-    {
-      property: 'og:title',
-      content: `English Everyday: ${title}`
-    },
-    {
-      property: 'og:description',
-      content: description
-    },
-    {
-      property: 'og:image',
-      content: '/about.jpg'
-    },
-    {
-      property: 'og:site_name',
-      content: 'English Everyday'
-    },
-    {
-      keywords: 'English, Coaching, Learning, Teaching, Confidence, Confident'
-    }
-  ];
-};
+import { openGraph } from '~/utils/seo/open-graph';
+import { twitterCard } from '~/utils/seo/twitter-card';
 
 export const homePage = [
   { title: 'English Everyday | Home Page' },
@@ -44,6 +9,11 @@ export const homePage = [
       'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
   },
   ...openGraph({
+    title: 'Home Page',
+    description:
+      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
+  }),
+  ...twitterCard({
     title: 'Home Page',
     description:
       'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
@@ -61,6 +31,11 @@ export const allBlogs = [
     title: 'All content',
     description:
       'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
+  }),
+  ...twitterCard({
+    title: 'All content',
+    description:
+      'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
   })
 ];
 
@@ -70,7 +45,11 @@ export const singleBlog = (title: string, content: string) => [
     name: 'description',
     content
   },
-  ...openGraph({ title, content: 'article', description: content })
+  ...openGraph({ title, description: content }),
+  ...twitterCard({
+    title,
+    description: content
+  })
 ];
 
 export const aboutPage = [
@@ -81,6 +60,11 @@ export const aboutPage = [
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   },
   ...openGraph({
+    title: 'About Us',
+    description:
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+  }),
+  ...twitterCard({
     title: 'About Us',
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
@@ -98,6 +82,11 @@ export const contactPage = [
     title: 'Contact Us',
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+  }),
+  ...twitterCard({
+    title: 'Contact Us',
+    description:
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   })
 ];
 
@@ -109,6 +98,11 @@ export const coursesPage = [
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
   },
   ...openGraph({
+    title: 'Courses',
+    description:
+      'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
+  }),
+  ...twitterCard({
     title: 'Courses',
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
