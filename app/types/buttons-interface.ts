@@ -2,8 +2,8 @@ export interface ButtonTypes {
   outline?: boolean;
   children: React.ReactNode;
   type?: 'submit' | 'reset' | 'button' | undefined;
-  className?: string,
-  onClick?: () => void
+  className?: string;
+  onClick?: () => void;
 }
 
 export interface InternalLinkTypes extends ButtonTypes {

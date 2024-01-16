@@ -11,6 +11,6 @@ export const twitterCard = () => {
     {
       name: 'twitter:site',
       content: '@thepracticaldev'
-    },
+    }
   ];
 };

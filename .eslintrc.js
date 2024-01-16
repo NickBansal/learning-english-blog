@@ -7,7 +7,7 @@ module.exports = {
   overrides: [
     {
       files: ['*.ts', '*.tsx'], // Your TypeScript files extension
-
+      processor: '@graphql-eslint/graphql',
       // As mentioned in the comments, you should extend TypeScript plugins here,
       // instead of extending them outside the `overrides`.
       // If you don't want to extend any rules, you don't need an `extends` attribute.
@@ -25,7 +25,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react', '@typescript-eslint', 'simple-import-sort'],
+  plugins: ['react', '@typescript-eslint', 'simple-import-sort', '@graphql-eslint'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/quotes': 0,
@@ -35,8 +35,8 @@ module.exports = {
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/member-delimiter-style': 0,
-    "@typescript-eslint/strict-boolean-expressions": 0,
-    "@typescript-eslint/no-throw-literal": 0,
+    '@typescript-eslint/strict-boolean-expressions': 0,
+    '@typescript-eslint/no-throw-literal': 0,
     'multiline-ternary': 0,
     'simple-import-sort/imports': [
       'error',

@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useFetcher } from '@remix-run/react';
 
-import { FormActions } from '~/types/form-enum';
+import { FormActions } from '~/types/form-interface';
 
 export default function Newsletter() {
   const fetcher = useFetcher();

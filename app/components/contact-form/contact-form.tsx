@@ -5,7 +5,7 @@ import { useFetcher } from '@remix-run/react';
 import { SubmitButton } from '../buttons/buttons';
 import { FieldError } from '../field-error/field-error';
 
-import { FormActions } from '~/types/form-enum';
+import { FormActions } from '~/types/form-interface';
 
 export const ContactForm = () => {
   const fetcher = useFetcher();
