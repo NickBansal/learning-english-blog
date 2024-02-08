@@ -21,10 +21,9 @@ export const Navbar = () => {
 
         return (
           <div
-            className={cn(`fixed z-[900] left-0 right-0 bg-slate-50  dark:bg-gray-700`, {
-              'opacity-100': open,
-              'opacity-90': !open
-            })}
+            className={cn(
+              `fixed z-[900] left-0 right-0 bg-slate-50  dark:bg-gray-700 shadow-md shadow-gray-200 dark:shadow-slate-600`
+            )}
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ">
               <div className="flex justify-between h-16">
