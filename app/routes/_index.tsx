@@ -1,4 +1,3 @@
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { json, type V2_MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import classNames from 'classnames';
@@ -38,7 +37,6 @@ export default function Index(): JSX.Element {
 
   return (
     <>
-    <LazyLoadComponent>
       <div className="bg-[url('/books.jpg')] h-screen w-full bg-center bg-cover relative flex items-start justify-center lg:justify-end">
         <div className="flex flex-col items-end text-white w-[75%] lg:w-1/2 text-center mt-28 pl-[4.5rem] md:pl-[8rem] max-w-5xl -mr-[4.5rem] md:-mr-[8.5rem] lg:mr-[5rem]">
           <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] w-min leading-[0.8] font-bold drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)] text-right">
@@ -58,7 +56,6 @@ export default function Index(): JSX.Element {
           </ButtonsGroup>
         </div>
       </div>
-    </LazyLoadComponent>
       <PaddedSection>
         {homeContents.map((item) => (
           <SlideReveal key={item.id} leftPosition={item.leftPosition}>
