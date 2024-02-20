@@ -8,6 +8,15 @@ export default {
       boxShadow: {
         inner: 'inset 0 -5px 10px 0 rgb(13 148 136)',
         outer: 'inset 0 5px 10px 0 rgb(252 255 255)'
+      },
+      keyframes: {
+        dropDown: {
+          '0%': { transform: 'translateY(-12.5rem)' },
+          '100%': { transform: 'translateY(0px)' }
+        }
+      },
+      animation: {
+        dropDown: 'dropDown 500ms ease-in-out'
       }
     }
   },
