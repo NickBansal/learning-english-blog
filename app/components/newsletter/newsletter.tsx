@@ -19,7 +19,7 @@ export default function Newsletter({
         className={classNames(
           'flex items-center justify-center h-max pb-16 transition-transform duration-500 animate-dropDown',
           {
-            '-translate-y-[12.5rem]': !shouldRenderChild
+            '-translate-y-[18rem]': !shouldRenderChild
           }
         )}
       >

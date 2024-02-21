@@ -44,9 +44,10 @@ export default function Index(): JSX.Element {
           </h1>
           <hr className="w-full border-1 border-white mt-2" />
           <p className="mt-8 text-base sm:text-lg md:text-xl drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)] text-right">
-            It is a long established fact that a reader will be distracted by the readable content of a page when
-            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-            letters
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters
           </p>
           <ButtonsGroup className="mt-8 justify-end">
             <InternalLink to="/contact" outline>
@@ -60,10 +61,13 @@ export default function Index(): JSX.Element {
         {homeContents.map((item) => (
           <SlideReveal key={item.id} leftPosition={item.leftPosition}>
             <div
-              className={classNames(`flex mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem]`, {
-                'text-left justify-start': item.leftPosition,
-                'text-right justify-end': !item.leftPosition
-              })}
+              className={classNames(
+                `flex mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem]`,
+                {
+                  'text-left justify-start': item.leftPosition,
+                  'text-right justify-end': !item.leftPosition
+                }
+              )}
             >
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold">{item.title}</h1>

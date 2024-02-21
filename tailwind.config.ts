@@ -11,12 +11,12 @@ export default {
       },
       keyframes: {
         dropDown: {
-          '0%': { transform: 'translateY(-12.5rem)' },
+          '0%': { transform: 'translateY(-14rem)' },
           '100%': { transform: 'translateY(0px)' }
         }
       },
       animation: {
-        dropDown: 'dropDown 500ms ease-in-out'
+        dropDown: 'dropDown 400ms ease-in-out'
       }
     }
   },
