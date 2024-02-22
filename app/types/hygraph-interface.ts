@@ -16,6 +16,7 @@ interface BlogArrayItem {
 interface Blogs {
   data: BlogArray[];
   total: number;
+  videoCourse: boolean;
 }
 
 interface BlogItem {

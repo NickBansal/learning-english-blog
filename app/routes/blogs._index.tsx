@@ -21,6 +21,7 @@ export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
   const $top = Number(url.searchParams.get('$top')) || TOP_VALUE;
   const $skip = Number(url.searchParams.get('$skip')) || 0;
+  const $videoCourse = Boolean(url.searchParams.get('$videoCourse')) || false;
 
   const query = gql`
     query Blogs {
@@ -39,18 +40,28 @@ export async function loader({ request }: LoaderArgs) {
   const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
   const blogs: BlogArrayItem = await hygraph.request(query);
 
-  const data = blogs.blogs.slice($skip, $skip + $top);
+  const blogsLength = blogs.blogs.filter((blog) => blog.videoCourse === $videoCourse);
+  const data = blogsLength.slice($skip, $skip + $top);
 
-  return json({ data, total: blogs.blogs.length ?? 0 });
+  return json({ data, total: blogsLength.length ?? 0, videoCourse: $videoCourse });
 }
 
 export default function BlogPage(): JSX.Element {
-  const { data, total } = useLoaderData() as Blogs;
+  const { data, total, videoCourse } = useLoaderData() as Blogs;
   const [searchParams] = useSearchParams();
 
   return (
     <PaddedSection>
       <Header>All content ({total})</Header>
+      <div>
+        <a href="/blogs?$videoCourse=true">
+          {videoCourse ? '>' : ''}{' '}
+          <span className="underline mr-2 text-blue-500 hover:text-blue-700">Video Courses</span>
+        </a>
+        <a href="/blogs?$blogs=true">
+          {!videoCourse ? '>' : ''} <span className="underline mr-2 text-blue-500 hover:text-blue-700">Blogs</span>
+        </a>
+      </div>
 
       <div className="py-2 md:py-8">
         {!data.length && total === 0 && (
