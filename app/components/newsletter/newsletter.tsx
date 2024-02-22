@@ -39,8 +39,8 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
               type="text"
               placeholder="Enter your name..."
               className={classNames('border-2 border-gray-400 rounded-lg w-full h-12 px-4  text-black', {
-                'mb-4': !fetcher?.data?.formErrors?.name,
-                'mb-1': fetcher?.data?.formErrors?.name
+                'mb-4 border-gray-400': !fetcher?.data?.formErrors?.name,
+                'mb-1 border-red-500': fetcher?.data?.formErrors?.name
               })}
             />
             {fetcher?.data?.formErrors?.name && (
@@ -53,8 +53,8 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
               type="text"
               placeholder="Enter your email..."
               className={classNames('border-2 border-gray-400 rounded-lg w-full h-12 px-4 text-black', {
-                'mb-4': !fetcher?.data?.formErrors?.email,
-                'mb-1': fetcher?.data?.formErrors?.email
+                'mb-4 border-gray-400': !fetcher?.data?.formErrors?.email,
+                'mb-1 border-red-500': fetcher?.data?.formErrors?.email
               })}
             />
             {fetcher?.data?.subscription && (
