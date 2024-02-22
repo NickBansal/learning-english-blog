@@ -45,14 +45,14 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
             />
             {fetcher?.data?.formErrors?.name && (
               <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">
-                {fetcher.data.formErrors.name}
+                * {fetcher.data.formErrors.name}
               </p>
             )}
             <input
               name="email"
               type="text"
               placeholder="Enter your email..."
-              className={classNames('border-2 border-gray-400 rounded-lg w-full h-12 px-4 mb-4 text-black', {
+              className={classNames('border-2 border-gray-400 rounded-lg w-full h-12 px-4 text-black', {
                 'mb-4': !fetcher?.data?.formErrors?.email,
                 'mb-1': fetcher?.data?.formErrors?.email
               })}
@@ -63,8 +63,8 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
               </p>
             )}
             {fetcher?.data?.formErrors?.email && (
-              <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">
-                {fetcher.data.formErrors.email}
+              <p className={classNames('w-full text-center text-sm text-red-500 dark:text-red-300 mb-4')}>
+                * {fetcher.data.formErrors.email}
               </p>
             )}
             <button

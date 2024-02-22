@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import classNames from 'classnames';
 
-import { ArrowDown } from '../icons/arrow-down';
 import Newsletter from '../newsletter/newsletter';
 import { NewsletterButton } from '../newsletter/showNewsletterButton';
 
