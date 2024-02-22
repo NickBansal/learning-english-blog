@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { ArrowDown } from '../icons/arrow-down';
 import Newsletter from '../newsletter/newsletter';
+import { NewsletterButton } from '../newsletter/showNewsletterButton';
 
 import { SiteMap } from './site-map';
 import { SocialMedia } from './social-media';
@@ -16,22 +17,7 @@ export const Footer = () => {
 
   return (
     <div className="w-full shadow-2xl shadow-gray-500 dark:shadow-white  p-8 text-center">
-      <div className="w-full mb-8 flex justify-center">
-        <button
-          className="flex w-fit rounded-lg border-gray-400 border-2 py-3 px-6"
-          onClick={() => {
-            setShowSubscription(!showSubscription);
-          }}
-        >
-          <span className="mr-2">Click here to subscribe to our newsletter</span>{' '}
-          <ArrowDown
-            className={classNames('transition-transform duration-300 dark:fill-white', {
-              'rotate-0': !showSubscription,
-              'rotate-180': showSubscription
-            })}
-          />
-        </button>
-      </div>
+      <NewsletterButton setShowSubscription={setShowSubscription} showSubscription={showSubscription} />
       {Boolean(shouldRenderChild) && <Newsletter shouldRenderChild={showSubscription} />}
       <table className="hidden md:inline-table max-w-6xl mx-auto px-8 w-full">
         <tbody>

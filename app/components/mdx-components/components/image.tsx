@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { type ObjectOfStrings } from '../../../types/mdx-interface';
 
 function Image({ src, ...rest }: ObjectOfStrings) {

@@ -43,7 +43,7 @@ export const TestimonialsCarousel = () => {
             className={`w-full h-max shrink-0 p-8`}
             style={{ transform: `translateX(-${slide * 100}%)`, transition: 'transform 1s' }}
           >
-            <h3 className="text-lg md:text-xl italic font-light">{`"${item.reference}"`}</h3>
+            <p className="text-lg md:text-xl italic font-light">{`"${item.reference}"`}</p>
             <p className="text-lg md:text-xl italic font-semibold mt-2">- {item.name}</p>
           </div>
         );
