@@ -10,7 +10,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SOCIAL_MEDIA_LINKS } from '~/constants/FOOTER_DATA';
-import { singleBlog } from '~/constants/META_DATA';
+import { singleBlog, TOP_VALUE } from '~/constants/META_DATA';
 import { type BlogItem } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = ({ data }) => {
@@ -65,7 +65,7 @@ export default function BlogPost(): JSX.Element {
     <PaddedSection className="mb-20">
       <div className="mb-8">
         <Link
-          to="/blogs?$top=5"
+          to={`/blogs?$top=${TOP_VALUE}`}
           className="text-teal-700 border-b-2 border-teal-700 hover:text-teal-800 hover:border-teal-800 dark:text-teal-500 dark:border-teal-500 dark:hover:text-teal-600 dark:hover:border-teal-600 mr-2"
         >
           Blogs page

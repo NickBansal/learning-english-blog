@@ -1,5 +1,7 @@
 import { openGraph } from '~/utils/seo/open-graph';
 
+export const TOP_VALUE = 5;
+
 export const homePage = [
   { title: 'English Everyday | Home Page' },
   {
@@ -11,8 +13,7 @@ export const homePage = [
     title: 'Home Page',
     description:
       'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
-  }),
-
+  })
 ];
 
 export const allBlogs = [
@@ -26,7 +27,7 @@ export const allBlogs = [
     title: 'All content',
     description:
       'Explore insightful articles on English Everyday in our blog. Get expert tips, guides, and resources to help with mastering the English language. Stay updated with the latest trends and valuable insights from our skilled Language coach. Dive into a wealth of information to be confident with speaking English today!'
-  }),
+  })
 ];
 
 export const singleBlog = (title: string, content: string, image: string, url: string) => [
@@ -35,7 +36,7 @@ export const singleBlog = (title: string, content: string, image: string, url: s
     name: 'description',
     content
   },
-  ...openGraph({ title, description: content, image, url }),
+  ...openGraph({ title, description: content, image, url })
 ];
 
 export const aboutPage = [
@@ -49,7 +50,7 @@ export const aboutPage = [
     title: 'About Us',
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
-  }),
+  })
 ];
 
 export const contactPage = [
@@ -63,8 +64,7 @@ export const contactPage = [
     title: 'Contact Us',
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
-  }),
-
+  })
 ];
 
 export const coursesPage = [
@@ -78,5 +78,5 @@ export const coursesPage = [
     title: 'Courses',
     description:
       'Discover the story behind English Everyday. Learn about our mission, values, and commitment to educating English language. Explore how our dedicated team brings English coaching to all foreign students. Get to know us and our passion for Language coaching!'
-  }),
+  })
 ];

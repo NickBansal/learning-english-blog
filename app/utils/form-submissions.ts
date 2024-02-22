@@ -15,7 +15,7 @@ const validateEmail = (email?: FormDataEntryValue | null) => {
   if (!email) {
     return 'Please enter your email address';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email as string)) {
-    return 'Invalid emaill address';
+    return 'Invalid email address';
   }
 };
 

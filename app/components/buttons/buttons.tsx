@@ -1,18 +1,14 @@
 import { NavLink } from '@remix-run/react';
 import classNames from 'classnames';
 
-import type {
-  ButtonTypes,
-  InternalLinkTypes,
-  LinkButtonTypes,
-  SubmitButtonTypes
-} from '~/types/buttons-interface';
+import type { ButtonTypes, InternalLinkTypes, LinkButtonTypes, SubmitButtonTypes } from '~/types/buttons-interface';
 
 export const ActionButtons = ({
   outline = false,
   children,
   className = '',
-  onClick = () => null
+  onClick = () => null,
+  fullWidth = false
 }: ButtonTypes) => {
   const classNames = outline
     ? 'before:ease relative h-10 w-full sm:h-12 md:w-32 overflow-hidden border-2 font-semibold border-teal-500 bg-transparent text-teal-300 hover:text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-40 rounded-md hover:bg-teal-500'
@@ -24,21 +20,14 @@ export const ActionButtons = ({
   );
 };
 
-export const SubmitButton = ({
-  children,
-  fullWidth = false,
-  value = ''
-}: SubmitButtonTypes) => {
+export const SubmitButton = ({ children, fullWidth = false, value = '' }: SubmitButtonTypes) => {
   return (
     <button
       type="submit"
       name="_action"
-      className={classNames(
-        `bg-red-400  text-white rounded-md hover:bg-red-500 font-semibold px-4 py-3`,
-        {
-          'w-full': fullWidth
-        }
-      )}
+      className={classNames(`bg-red-400  text-white rounded-md hover:bg-red-500 font-semibold px-4 py-3`, {
+        'w-full': fullWidth
+      })}
       value={value}
     >
       {children}
@@ -46,11 +35,7 @@ export const SubmitButton = ({
   );
 };
 
-export const InternalLink = ({
-  to,
-  children,
-  outline = false
-}: InternalLinkTypes) => {
+export const InternalLink = ({ to, children, outline = false }: InternalLinkTypes) => {
   return (
     <NavLink to={to}>
       <ActionButtons outline={outline}>{children}</ActionButtons>

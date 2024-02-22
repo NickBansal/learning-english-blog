@@ -8,6 +8,7 @@ interface BlogArray {
   slug: string;
   title: string;
   updatedAt: string;
+  videoCourse: boolean;
 }
 interface BlogArrayItem {
   blogs: BlogArray[];
@@ -27,6 +28,7 @@ interface BlogItem {
     title: string;
     updatedAt: string;
     body: string;
+    videoCourse: boolean;
     embeddedVideos?: {
       html: string;
     };

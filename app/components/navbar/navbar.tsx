@@ -94,7 +94,7 @@ export const Navbar = () => {
                 </div>
               </div>
             </div>
-            <Disclosure.Panel className="sm:hidden absolute z-[9999] w-full h-screen bg-slate-50 dark:bg-gray-700">
+            <Disclosure.Panel className="md:hidden absolute z-[9999] w-full h-screen bg-slate-50 dark:bg-gray-700">
               <div className="p-2 pb-3 space-y-1">
                 <NavLink to="/" className={headerLinksMobile} onClick={closeModal}>
                   Home

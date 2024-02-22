@@ -11,7 +11,7 @@ import { Header } from '~/components/header/header';
 import { ArrowLeft } from '~/components/icons/arrow-left';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { PaginationBar } from '~/components/pagination/pagination-bar';
-import { allBlogs } from '~/constants/META_DATA';
+import { allBlogs, TOP_VALUE } from '~/constants/META_DATA';
 import { type BlogArrayItem, type Blogs } from '~/types/hygraph-interface';
 import { setSearchParamsString } from '~/utils/set-search-params-string';
 
@@ -19,7 +19,7 @@ export const meta: V2_MetaFunction = () => allBlogs;
 
 export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
-  const $top = Number(url.searchParams.get('$top')) || 5;
+  const $top = Number(url.searchParams.get('$top')) || TOP_VALUE;
   const $skip = Number(url.searchParams.get('$skip')) || 0;
 
   const query = gql`
@@ -32,6 +32,7 @@ export async function loader({ request }: LoaderArgs) {
         slug
         title
         updatedAt
+        videoCourse
       }
     }
   `;
