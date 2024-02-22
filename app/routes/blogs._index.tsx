@@ -4,6 +4,7 @@
 import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
+import classNames from 'classnames';
 import format from 'date-fns/format';
 import { gql, GraphQLClient } from 'graphql-request';
 
@@ -53,13 +54,30 @@ export default function BlogPage(): JSX.Element {
   return (
     <PaddedSection>
       <Header>All content ({total})</Header>
-      <div>
-        <a href="/blogs?$videoCourse=true">
-          {videoCourse ? '>' : ''}{' '}
-          <span className="underline mr-2 text-blue-500 hover:text-blue-700">Video Courses</span>
+      <div className=" border-b-2 border-gray-400 pb-8">
+        <a
+          href="/blogs?$blogs=true"
+          className={classNames(
+            'mr-2 text-teal-600 hover:text-teal-700 dark:text-teal-300 dark:hover:text-teal-500 p-2 rounded-md',
+            {
+              'border-2  border-gray-500 bg-gray-200 dark:bg-gray-500 dark:border-gray-200': !videoCourse,
+              'border-0': videoCourse
+            }
+          )}
+        >
+          Blogs
         </a>
-        <a href="/blogs?$blogs=true">
-          {!videoCourse ? '>' : ''} <span className="underline mr-2 text-blue-500 hover:text-blue-700">Blogs</span>
+        <a
+          href="/blogs?$videoCourse=true"
+          className={classNames(
+            'mr-2 text-teal-600 hover:text-teal-700 dark:text-teal-300 dark:hover:text-teal-500 p-2 rounded-md',
+            {
+              'border-2 border-gray-500 bg-gray-200 dark:bg-gray-500 dark:border-gray-200': videoCourse,
+              'border-0': !videoCourse
+            }
+          )}
+        >
+          Video Courses
         </a>
       </div>
 
