@@ -43,7 +43,7 @@ export const Navbar = () => {
                     <NavLink to="/about" className={headerLinksDesktop}>
                       About
                     </NavLink>
-                    <NavLink to="/blogs?$top=5" className={headerLinksDesktop}>
+                    <NavLink to="/blogs" className={headerLinksDesktop}>
                       Blogs
                     </NavLink>
                     <NavLink to="/courses" className={headerLinksDesktop}>
@@ -102,7 +102,7 @@ export const Navbar = () => {
                 <NavLink to="/about" className={headerLinksMobile} onClick={closeModal}>
                   About
                 </NavLink>
-                <NavLink to="/blogs?$top=5" className={headerLinksMobile} onClick={closeModal}>
+                <NavLink to="/blogs" className={headerLinksMobile} onClick={closeModal}>
                   Blogs
                 </NavLink>
                 <NavLink to="/courses" className={headerLinksMobile} onClick={closeModal}>
