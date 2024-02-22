@@ -1,3 +1,4 @@
+import { Link } from '@remix-run/react';
 import classNames from 'classnames';
 
 export const BlogSwitcher = ({ videoCourse }: { videoCourse: boolean }) => {
@@ -8,24 +9,24 @@ export const BlogSwitcher = ({ videoCourse }: { videoCourse: boolean }) => {
 
   return (
     <div className=" border-b-2 border-gray-400 pb-2 md:pb-4 md:-mt-4 -mt-6">
-      <a
-        href="/blogs?$blogs=true"
+      <Link
+        to="/blogs?$blogs=true"
         className={classNames(btnClasses, {
           [selectedBtn]: !videoCourse,
           [notSelectedBtn]: videoCourse
         })}
       >
         Blogs
-      </a>
-      <a
-        href="/blogs?$videoCourse=true"
+      </Link>
+      <Link
+        to="/blogs?$videoCourse=true"
         className={classNames(btnClasses, {
           [selectedBtn]: videoCourse,
           [notSelectedBtn]: !videoCourse
         })}
       >
         Video Courses
-      </a>
+      </Link>
     </div>
   );
 };
