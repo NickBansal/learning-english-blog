@@ -4,6 +4,7 @@
 import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
+import classNames from 'classnames';
 import format from 'date-fns/format';
 import { gql, GraphQLClient } from 'graphql-request';
 
@@ -11,7 +12,7 @@ import { Header } from '~/components/header/header';
 import { ArrowLeft } from '~/components/icons/arrow-left';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { PaginationBar } from '~/components/pagination/pagination-bar';
-import { allBlogs } from '~/constants/META_DATA';
+import { allBlogs, TOP_VALUE } from '~/constants/META_DATA';
 import { type BlogArrayItem, type Blogs } from '~/types/hygraph-interface';
 import { setSearchParamsString } from '~/utils/set-search-params-string';
 
@@ -19,8 +20,9 @@ export const meta: V2_MetaFunction = () => allBlogs;
 
 export async function loader({ request }: LoaderArgs) {
   const url = new URL(request.url);
-  const $top = Number(url.searchParams.get('$top')) || 5;
+  const $top = Number(url.searchParams.get('$top')) || TOP_VALUE;
   const $skip = Number(url.searchParams.get('$skip')) || 0;
+  const $videoCourse = Boolean(url.searchParams.get('$videoCourse')) || false;
 
   const query = gql`
     query Blogs {
@@ -32,24 +34,52 @@ export async function loader({ request }: LoaderArgs) {
         slug
         title
         updatedAt
+        videoCourse
       }
     }
   `;
   const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
   const blogs: BlogArrayItem = await hygraph.request(query);
 
-  const data = blogs.blogs.slice($skip, $skip + $top);
+  const blogsLength = blogs.blogs.filter((blog) => blog.videoCourse === $videoCourse);
+  const data = blogsLength.slice($skip, $skip + $top);
 
-  return json({ data, total: blogs.blogs.length ?? 0 });
+  return json({ data, total: blogsLength.length ?? 0, videoCourse: $videoCourse });
 }
 
 export default function BlogPage(): JSX.Element {
-  const { data, total } = useLoaderData() as Blogs;
+  const { data, total, videoCourse } = useLoaderData() as Blogs;
   const [searchParams] = useSearchParams();
 
   return (
     <PaddedSection>
       <Header>All content ({total})</Header>
+      <div className=" border-b-2 border-gray-400 pb-8">
+        <a
+          href="/blogs?$blogs=true"
+          className={classNames(
+            'mr-2 text-teal-600 hover:text-teal-700 dark:text-teal-300 dark:hover:text-teal-500 p-2 rounded-md',
+            {
+              'border-2  border-gray-500 bg-gray-200 dark:bg-gray-500 dark:border-gray-200': !videoCourse,
+              'border-0': videoCourse
+            }
+          )}
+        >
+          Blogs
+        </a>
+        <a
+          href="/blogs?$videoCourse=true"
+          className={classNames(
+            'mr-2 text-teal-600 hover:text-teal-700 dark:text-teal-300 dark:hover:text-teal-500 p-2 rounded-md',
+            {
+              'border-2 border-gray-500 bg-gray-200 dark:bg-gray-500 dark:border-gray-200': videoCourse,
+              'border-0': !videoCourse
+            }
+          )}
+        >
+          Video Courses
+        </a>
+      </div>
 
       <div className="py-2 md:py-8">
         {!data.length && total === 0 && (

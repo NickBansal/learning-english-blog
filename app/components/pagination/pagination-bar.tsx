@@ -8,12 +8,13 @@ import { DoubleArrowRight } from '../icons/double-arrow-right';
 
 import { PaginationNumbers } from './pagination-numbers';
 
+import { TOP_VALUE } from '~/constants/META_DATA';
 import { setSearchParamsString } from '~/utils/set-search-params-string';
 
 export function PaginationBar({ total }: { total: number }) {
   const [searchParams] = useSearchParams();
   const $skip = Number(searchParams.get('$skip')) || 0;
-  const $top = Number(searchParams.get('$top')) || 5;
+  const $top = Number(searchParams.get('$top')) || TOP_VALUE;
   const totalPages = Math.ceil(total / $top);
   const currentPage = Math.floor($skip / $top) + 1;
   const maxPages = 7;

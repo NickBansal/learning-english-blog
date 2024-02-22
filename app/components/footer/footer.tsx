@@ -1,12 +1,22 @@
+import { useState } from 'react';
+
 import Newsletter from '../newsletter/newsletter';
+import { NewsletterButton } from '../newsletter/showNewsletterButton';
 
 import { SiteMap } from './site-map';
 import { SocialMedia } from './social-media';
 
+import { useDelayUnmount } from '~/utils/hooks/use-delay-unmount';
+
 export const Footer = () => {
+  const [showSubscription, setShowSubscription] = useState(false);
+
+  const shouldRenderChild = useDelayUnmount(showSubscription, 500);
+
   return (
     <div className="w-full shadow-2xl shadow-gray-500 dark:shadow-white  p-8 text-center">
-      <Newsletter />
+      <NewsletterButton setShowSubscription={setShowSubscription} showSubscription={showSubscription} />
+      {Boolean(shouldRenderChild) && <Newsletter shouldRenderChild={showSubscription} />}
       <table className="hidden md:inline-table max-w-6xl mx-auto px-8 w-full">
         <tbody>
           <tr className="border-b-2 border-red-400">

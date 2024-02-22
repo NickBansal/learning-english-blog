@@ -13,9 +13,9 @@ const validateName = (name?: FormDataEntryValue | null) => {
 
 const validateEmail = (email?: FormDataEntryValue | null) => {
   if (!email) {
-    return 'Email address is Required';
+    return 'Please enter your email address';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email as string)) {
-    return 'Invalid emaill address';
+    return 'Invalid email address';
   }
 };
 

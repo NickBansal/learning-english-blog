@@ -30,7 +30,7 @@ export const SOCIAL_MEDIA_LINKS: ObjectOfStrings[] = [
 export const WEBSITE_LINKS: ObjectOfStrings[] = [
   { link: '/', name: 'Home' },
   { link: '/about', name: 'About' },
-  { link: '/blogs?$top=5', name: 'Blogs' },
+  { link: '/blogs', name: 'Blogs' },
   { link: '/courses', name: 'Courses' },
   { link: '/contact', name: 'Contact' }
 ];

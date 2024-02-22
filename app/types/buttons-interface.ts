@@ -4,10 +4,12 @@ export interface ButtonTypes {
   type?: 'submit' | 'reset' | 'button' | undefined;
   className?: string;
   onClick?: () => void;
+  fullWidth?: boolean;
 }
 
 export interface InternalLinkTypes extends ButtonTypes {
   to: string;
+  fullWidth?: boolean;
 }
 
 export interface LinkButtonTypes extends ButtonTypes {

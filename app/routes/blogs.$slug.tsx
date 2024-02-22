@@ -35,6 +35,7 @@ export async function loader({ params }: LoaderArgs) {
         title
         updatedAt
         body
+        videoCourse
         seoImage {
           url(transformation: {image: {resize: {width: 800, height: 418}}})
         }
@@ -60,12 +61,12 @@ const twitterx = SOCIAL_MEDIA_LINKS[3];
 export default function BlogPost(): JSX.Element {
   const { blogs } = useLoaderData() as BlogItem;
   const blogData = blogs[0];
-
+  const blogType = blogData.videoCourse ? 'videoCourse' : 'blogs';
   return (
     <PaddedSection className="mb-20">
       <div className="mb-8">
         <Link
-          to="/blogs?$top=5"
+          to={`/blogs?$${blogType}=true`}
           className="text-teal-700 border-b-2 border-teal-700 hover:text-teal-800 hover:border-teal-800 dark:text-teal-500 dark:border-teal-500 dark:hover:text-teal-600 dark:hover:border-teal-600 mr-2"
         >
           Blogs page
