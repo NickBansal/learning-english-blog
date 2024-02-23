@@ -13,7 +13,7 @@ import {
   useRouteError
 } from '@remix-run/react';
 import { Analytics } from '@vercel/analytics/react';
-// import { SpeedInsights } from '@vercel/speed-insights/remix';
+import { SpeedInsights } from '@vercel/speed-insights/remix';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
 import { Error404, Error500 } from './components/error-screen/error-screen';
@@ -64,7 +64,7 @@ export const App = (): JSX.Element => {
       <body className="bg-white text-black dark:bg-gray-900 dark:text-white h-full selection:bg-gray-50 dark:selection:bg-gray-900 transition-colors">
         <Layout>
           <Outlet />
-          {/* <SpeedInsights /> */}
+          <SpeedInsights />
           <Analytics />
           <ScrollRestoration />
           <Scripts />
