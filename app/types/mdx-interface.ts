@@ -6,11 +6,15 @@ export interface HeadingTypes {
 
 export interface IframeTypes {
   children: React.ReactNode;
-  title: string
+  title: string;
 }
 
 export interface ChildrenNodes {
   children: React.ReactNode;
+}
+
+export interface HeaderTypes extends ChildrenNodes {
+  className?: string;
 }
 
 export interface AnchorTypes {

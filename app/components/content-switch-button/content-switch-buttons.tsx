@@ -3,13 +3,13 @@ import classNames from 'classnames';
 
 export const ContentSwitcher = ({ videoContent }: { videoContent: boolean }) => {
   const btnClasses =
-    'text-sm md:text-base mr-2 text-teal-600 dark:text-teal-300 dark:hover:text-teal-500 p-1 md:p-2 rounded-md';
+    'text-sm md:text-base text-teal-600 dark:text-teal-300 dark:hover:text-teal-500 h-full p-1 md:p-2 mb-2 rounded-md';
   const selectedBtn =
     'border-2 border-gray-500 bg-teal-600 text-white dark:bg-gray-500 dark:hover:text-teal-300 dark:border-gray-200';
-  const notSelectedBtn = 'border-0 hover:text-teal-700';
+  const notSelectedBtn = 'hover:text-gray-200 hover:bg-teal-500 dark:hover:bg-gray-300 dark:hover:text-gray-500';
 
   return (
-    <div className=" border-b-2 border-gray-400 pb-[0.6rem] md:pb-4 md:-mt-4 -mt-6 mb-4 md:mb-0">
+    <div className="flex border-b-2 border-gray-400 mb-4 md:mb-0 mt-2 space-x-1 items-center">
       <Link
         to="/content?$blogContent=true"
         className={classNames(btnClasses, {

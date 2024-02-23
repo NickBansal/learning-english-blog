@@ -49,7 +49,6 @@ export async function loader({ request }: LoaderArgs) {
 
     return json({ data, total: contentLength.length ?? 0, videoContent: $videoContent });
   } catch (error) {
-    console.log(error, ' <<<<<<<');
     return { data: false, error };
   }
 }
@@ -61,7 +60,7 @@ export default function AllContentsPage(): JSX.Element {
   const header = !data ? 'All content' : `All content (${total})`;
   return (
     <PaddedSection>
-      <Header>{header}</Header>
+      <Header className="mb-0">{header}</Header>
 
       {error?.response?.status === 400 ? <Error400 /> : null}
 
