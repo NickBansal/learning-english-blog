@@ -47,6 +47,7 @@ interface HomeContent {
 
 interface AboutContent {
   aboutPage: ObjectOfStrings;
+  error: { response: Response } | null;
 }
 
 interface CoursesArray {
