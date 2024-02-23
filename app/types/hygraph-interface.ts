@@ -50,7 +50,7 @@ interface AboutContent {
 }
 
 interface CoursesArray {
-  courses: Array<{
+  courses?: Array<{
     image: {
       url: string;
     };
@@ -60,6 +60,7 @@ interface CoursesArray {
     date: string;
     id: string;
   }>;
+  error: { response: Response } | null;
 }
 
 export type { BlogItem, Blogs, HomeContent, AboutContent, BlogArrayItem, CoursesArray };

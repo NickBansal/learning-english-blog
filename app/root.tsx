@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-import type { ActionFunction, DataFunctionArgs, LinksFunction, LoaderArgs } from '@remix-run/node';
+import { type ActionFunction, type DataFunctionArgs, json, type LinksFunction, type LoaderArgs } from '@remix-run/node';
 import {
   isRouteErrorResponse,
   Links,
