@@ -3,30 +3,30 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import { useLoaderData, useNavigate } from '@remix-run/react';
 import format from 'date-fns/format';
 import { gql, GraphQLClient } from 'graphql-request';
 
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SOCIAL_MEDIA_LINKS } from '~/constants/FOOTER_DATA';
-import { singleBlog } from '~/constants/META_DATA';
-import { type BlogItem } from '~/types/hygraph-interface';
+import { content } from '~/constants/META_DATA';
+import { type ContentItem } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = ({ data }) => {
   if (!data) {
     return [];
   }
 
-  const { title, overview, seoImage, slug } = data?.blogs[0];
+  const { title, overview, seoImage, slug } = data?.content;
 
-  return singleBlog(title, overview, seoImage.url, slug);
+  return content(title, overview, seoImage.url, slug);
 };
 
 export async function loader({ params }: LoaderArgs) {
   const query = gql`
-    query Blogs {
-      blogs(where: { slug: "${params.slug}" }) {
+    query Content {
+      content(where: { slug: "${params.slug}" }) {
         createdAt
         id
         overview
@@ -35,7 +35,7 @@ export async function loader({ params }: LoaderArgs) {
         title
         updatedAt
         body
-        videoCourse
+        videoContent
         seoImage {
           url(transformation: {image: {resize: {width: 800, height: 418}}})
         }
@@ -44,44 +44,48 @@ export async function loader({ params }: LoaderArgs) {
   `;
 
   const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
-  const blogs: BlogItem = await hygraph.request(query);
+  const content: ContentItem = await hygraph.request(query);
 
-  if (!blogs.blogs.length) {
+  if (!content.content) {
     throw new Response('Oh no! Something went wrong!', {
       status: 404
     });
   }
 
-  return json(blogs);
+  return json(content);
 }
 
 const faceBook = SOCIAL_MEDIA_LINKS[0];
 const twitterx = SOCIAL_MEDIA_LINKS[3];
 
-export default function BlogPost(): JSX.Element {
-  const { blogs } = useLoaderData() as BlogItem;
-  const blogData = blogs[0];
-  const blogType = blogData.videoCourse ? 'videoCourse' : 'blogs';
+export default function ContentPost(): JSX.Element {
+  const { content } = useLoaderData() as ContentItem;
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <PaddedSection className="mb-20">
       <div className="mb-8">
-        <Link
-          to={`/blogs?$${blogType}=true`}
+        <a
+          href="#"
+          onClick={goBack}
           className="text-teal-700 border-b-2 border-teal-700 hover:text-teal-800 hover:border-teal-800 dark:text-teal-500 dark:border-teal-500 dark:hover:text-teal-600 dark:hover:border-teal-600 mr-2"
         >
-          Blogs page
-        </Link>
+          Content page
+        </a>
         {' > '}
-        <span className="ml-2">{blogData?.title}</span>
+        <span className="ml-2">{content?.title}</span>
       </div>
       <div className="lg:px-20">
-        <h1 className="text-center text-xl sm:text-2xl md:text-3xl pb-2 font-semibold">{blogData?.title}</h1>
+        <h1 className="text-center text-xl sm:text-2xl md:text-3xl pb-2 font-semibold">{content?.title}</h1>
         <p className="text-sm font-light border-b-2 border-black dark:border-white text-center pb-4">
-          Created: {format(new Date(blogData?.createdAt), 'dd/MM/yyyy')}
+          Created: {format(new Date(content?.createdAt), 'dd/MM/yyyy')}
         </p>
-        <p className="text-center font-thin mt-2 text-base md:text-lg">{blogData?.overview}</p>
-        <div className="mt-8">{<JSMarkdown>{blogData?.body}</JSMarkdown>}</div>
+        <p className="text-center font-thin mt-2 text-base md:text-lg">{content?.overview}</p>
+        <div className="mt-8">{<JSMarkdown>{content?.body}</JSMarkdown>}</div>
       </div>
       <div className="w-full border-b-2 border-t-2 border-gray-200 mt-8 flex justify-end items-center space-x-8 py-2">
         <p className="pl-2 text-base sm:text-lg md:text-xl font-medium mr-auto sm:mr-0">Share story: </p>

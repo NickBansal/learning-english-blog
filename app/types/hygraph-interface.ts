@@ -1,6 +1,6 @@
 import { type ObjectOfStrings } from '~/types/mdx-interface';
 
-interface BlogArray {
+interface ContentArray {
   createdAt: string;
   id: string;
   overview: string;
@@ -8,20 +8,20 @@ interface BlogArray {
   slug: string;
   title: string;
   updatedAt: string;
-  videoCourse: boolean;
+  videoContent: boolean;
 }
-interface BlogArrayItem {
-  blogs: BlogArray[];
+interface ContentArrayItem {
+  contents: ContentArray[];
 }
 interface Blogs {
-  data: BlogArray[];
+  data: ContentArray[];
   total: number;
-  videoCourse: boolean;
+  videoContent: boolean;
   error: { response: Response } | null;
 }
 
-interface BlogItem {
-  blogs: Array<{
+interface ContentItem {
+  content: {
     createdAt: string;
     id: string;
     overview: string;
@@ -30,11 +30,11 @@ interface BlogItem {
     title: string;
     updatedAt: string;
     body: string;
-    videoCourse: boolean;
+    videoContent: boolean;
     embeddedVideos?: {
       html: string;
     };
-  }>;
+  };
 }
 
 interface HomeContent {
@@ -65,4 +65,4 @@ interface CoursesArray {
   error: { response: Response } | null;
 }
 
-export type { BlogItem, Blogs, HomeContent, AboutContent, BlogArrayItem, CoursesArray };
+export type { ContentItem, Blogs, HomeContent, AboutContent, ContentArrayItem, CoursesArray };

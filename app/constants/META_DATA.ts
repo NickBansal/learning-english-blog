@@ -16,7 +16,7 @@ export const homePage = [
   })
 ];
 
-export const allBlogs = [
+export const allContent = [
   { title: 'English Everyday | Content' },
   {
     name: 'description',
@@ -30,7 +30,7 @@ export const allBlogs = [
   })
 ];
 
-export const singleBlog = (title: string, content: string, image: string, url: string) => [
+export const content = (title: string, content: string, image: string, url: string) => [
   { title: `English Everyday | ${title}` },
   {
     name: 'description',
