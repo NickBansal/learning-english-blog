@@ -62,6 +62,7 @@ export default function BlogPost(): JSX.Element {
   const { blogs } = useLoaderData() as BlogItem;
   const blogData = blogs[0];
   const blogType = blogData.videoCourse ? 'videoCourse' : 'blogs';
+
   return (
     <PaddedSection className="mb-20">
       <div className="mb-8">

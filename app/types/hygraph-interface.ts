@@ -35,7 +35,6 @@ interface BlogItem {
       html: string;
     };
   }>;
-  error: { response: Response } | null;
 }
 
 interface HomeContent {
