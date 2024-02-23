@@ -33,7 +33,7 @@ export async function loader() {
     const courses = await hygraph.request(query);
     return json(courses);
   } catch (error) {
-    return { courses: [], error };
+    return { courses: false, error };
   }
 }
 

@@ -17,6 +17,7 @@ interface Blogs {
   data: BlogArray[];
   total: number;
   videoCourse: boolean;
+  error: { response: Response } | null;
 }
 
 interface BlogItem {
@@ -34,6 +35,7 @@ interface BlogItem {
       html: string;
     };
   }>;
+  error: { response: Response } | null;
 }
 
 interface HomeContent {
