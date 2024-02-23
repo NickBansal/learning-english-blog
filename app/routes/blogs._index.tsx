@@ -86,11 +86,11 @@ export default function BlogPage(): JSX.Element {
           return (
             <Link to={blog.slug} prefetch="none" key={blog.id}>
               <div className="mb-8 group pb-8 border-b-[1px] border-b-gray-200 mx-8">
-                <h2 className="text-xl font-semibold mb-2 relative w-fit">
+                <h2 className="text-lg md:text-xl font-semibold mb-2 relative w-fit">
                   {blog.title}
                   <span className="absolute -bottom-1 left-0 w-0 h-[0.15rem] bg-teal-500 transition-all duration-150 group-hover:w-full"></span>
                 </h2>
-                <p className="mb-2">{blog.overview}</p>
+                <p className="text-base md:text-lg mb-2">{blog.overview}</p>
                 <p className="text-sm font-light">Created: {format(new Date(blog.createdAt), 'dd/MM/yyyy')}</p>
               </div>
             </Link>

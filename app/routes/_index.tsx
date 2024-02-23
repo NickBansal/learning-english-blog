@@ -66,7 +66,7 @@ export default function Index(): JSX.Element {
               })}
             >
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold">{item.title}</h1>
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">{item.title}</h1>
                 <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
                   <hr className="h2 border max-w-1/2 mb-4 border-gray-500 dark:border-white" />
                 </SlideReveal>
