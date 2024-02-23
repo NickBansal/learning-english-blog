@@ -39,7 +39,7 @@ export default function Courses(): JSX.Element {
     <PaddedSection>
       <Header>Courses section</Header>
 
-      <div className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 py-4">
+      <div className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-8 py-4">
         {courses.map((course) => {
           return <CoursesCard key={course.id} {...course} />;
         })}

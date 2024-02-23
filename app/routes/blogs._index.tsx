@@ -85,7 +85,7 @@ export default function BlogPage(): JSX.Element {
         {data.map((blog) => {
           return (
             <Link to={blog.slug} prefetch="none" key={blog.id}>
-              <div className="mb-8 group pb-8 border-b-[1px] border-b-gray-200 mx-8">
+              <div className="mb-4 sm:mb-8 group pb-4 sm:pb-8 border-b-[1px] border-b-gray-200 mx-4 sm:mx-8">
                 <h2 className="text-lg md:text-xl font-semibold mb-2 relative w-fit">
                   {blog.title}
                   <span className="absolute -bottom-1 left-0 w-0 h-[0.15rem] bg-teal-500 transition-all duration-150 group-hover:w-full"></span>

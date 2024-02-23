@@ -8,7 +8,7 @@ export const BlogSwitcher = ({ videoCourse }: { videoCourse: boolean }) => {
   const notSelectedBtn = 'border-0 hover:text-teal-700';
 
   return (
-    <div className=" border-b-2 border-gray-400 pb-2 md:pb-4 md:-mt-4 -mt-6 mb-4 md:mb-0">
+    <div className=" border-b-2 border-gray-400 pb-[0.6rem] md:pb-4 md:-mt-4 -mt-6 mb-4 md:mb-0">
       <Link
         to="/blogs?$blogs=true"
         className={classNames(btnClasses, {

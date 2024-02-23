@@ -75,7 +75,7 @@ export default function BlogPost(): JSX.Element {
         <span className="ml-2">{blogData?.title}</span>
       </div>
       <div className="lg:px-20">
-        <h1 className="text-center text-2xl md:text-3xl pb-2 font-semibold">{blogData?.title}</h1>
+        <h1 className="text-center text-xl sm:text-2xl md:text-3xl pb-2 font-semibold">{blogData?.title}</h1>
         <p className="text-sm font-light border-b-2 border-black dark:border-white text-center pb-4">
           Created: {format(new Date(blogData?.createdAt), 'dd/MM/yyyy')}
         </p>
@@ -83,7 +83,7 @@ export default function BlogPost(): JSX.Element {
         <div className="mt-8">{<JSMarkdown>{blogData?.body}</JSMarkdown>}</div>
       </div>
       <div className="w-full border-b-2 border-t-2 border-gray-200 mt-8 flex justify-end items-center space-x-8 py-2">
-        <p className="text-lg md:text-xl font-medium">Share story: </p>
+        <p className="pl-2 text-base sm:text-lg md:text-xl font-medium mr-auto sm:mr-0">Share story: </p>
         <div className="flex items-center space-x-1">
           <a href={faceBook.href} target="_blank" rel="noopener noreferrer">
             <img src={faceBook.src} alt={faceBook.alt} className="w-12" />
