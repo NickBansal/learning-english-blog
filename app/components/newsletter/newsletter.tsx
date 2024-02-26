@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/prefer-optional-chain */
+import { useEffect, useRef } from 'react';
 import { useFetcher } from '@remix-run/react';
 import classNames from 'classnames';
 
@@ -8,9 +10,16 @@ import { FormActions } from '~/types/form-interface';
 
 export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: boolean }) {
   const fetcher = useFetcher();
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref && ref?.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
 
   return (
-    <div className="h-max overflow-hidden border-t-2 p-4">
+    <div ref={ref} className="h-max overflow-hidden border-t-2 p-4">
       <div
         className={classNames(
           'flex items-center justify-center h-max pb-16 transition-transform duration-500 animate-dropDown',
