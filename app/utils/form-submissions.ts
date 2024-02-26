@@ -5,23 +5,23 @@ import SGMail, { type MailDataRequired } from '@sendgrid/mail';
 
 const validateName = (name?: FormDataEntryValue | null) => {
   if (!name) {
-    return 'Please enter your name';
+    return '* Please enter your name';
   } else if (typeof name !== 'string' || name.length < 3) {
-    return `Name must be at least 3 characters long`;
+    return `* Name must be at least 3 characters long`;
   }
 };
 
 const validateEmail = (email?: FormDataEntryValue | null) => {
   if (!email) {
-    return 'Please enter your email address';
+    return '* Please enter your email address';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email as string)) {
-    return 'Invalid email address';
+    return '* Invalid email address';
   }
 };
 
 const validateContactFields = (title: string, name?: FormDataEntryValue | null) => {
   if (!name) {
-    return `${title} is required`;
+    return `* ${title} is required`;
   }
 };
 

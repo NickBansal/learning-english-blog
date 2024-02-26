@@ -54,7 +54,7 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
             />
             {fetcher?.data?.formErrors?.name && (
               <p className="w-full text-center text-sm text-red-500 dark:text-red-300 mb-4">
-                * {fetcher.data.formErrors.name}
+                {fetcher.data.formErrors.name}
               </p>
             )}
             <input
@@ -73,7 +73,7 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
             )}
             {fetcher?.data?.formErrors?.email && (
               <p className={classNames('w-full text-center text-sm text-red-500 dark:text-red-300 mb-4')}>
-                * {fetcher.data.formErrors.email}
+                {fetcher.data.formErrors.email}
               </p>
             )}
             <button
