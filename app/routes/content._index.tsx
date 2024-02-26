@@ -62,7 +62,7 @@ export default function AllContentsPage(): JSX.Element {
     <PaddedSection>
       <Header noBottomMargin>{header}</Header>
 
-      {error?.response?.status === 400 ? <Error400 /> : null}
+      {error?.response?.status === 400 || !data ? <Error400 /> : null}
 
       {data ? (
         <>
