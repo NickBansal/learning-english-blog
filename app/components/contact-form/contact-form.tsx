@@ -26,7 +26,7 @@ export const ContactForm = () => {
               id="first-name"
               name="first-name"
               type="text"
-              placeholder="Jane"
+              placeholder="First name"
             />
             <FieldError data={fetcher?.data?.formErrors?.firstName} />
           </div>
@@ -42,7 +42,7 @@ export const ContactForm = () => {
               id="last-name"
               name="last-name"
               type="text"
-              placeholder="Doe"
+              placeholder="Last name"
             />
             <FieldError data={fetcher?.data?.formErrors?.lastName} />
           </div>
@@ -60,7 +60,7 @@ export const ContactForm = () => {
               id="email"
               name="email"
               type="email"
-              placeholder="janedoe@email.com"
+              placeholder="youremail@email.com"
             />
             <FieldError data={fetcher?.data?.formErrors?.email} />
           </div>

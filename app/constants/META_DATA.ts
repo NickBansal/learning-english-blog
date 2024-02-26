@@ -1,6 +1,6 @@
 import { openGraph } from '~/utils/seo/open-graph';
 
-export const TOP_VALUE = 5;
+export const TOP_VALUE = 2;
 
 export const homePage = [
   { title: 'English Everyday | Home Page' },
