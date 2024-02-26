@@ -60,7 +60,7 @@ export default function AllContentsPage(): JSX.Element {
   const header = !data ? 'All content' : `All content (${total})`;
   return (
     <PaddedSection>
-      <Header className="mb-0">{header}</Header>
+      <Header noBottomMargin>{header}</Header>
 
       {error?.response?.status === 400 ? <Error400 /> : null}
 

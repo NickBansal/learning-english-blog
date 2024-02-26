@@ -14,7 +14,7 @@ export interface ChildrenNodes {
 }
 
 export interface HeaderTypes extends ChildrenNodes {
-  className?: string;
+  noBottomMargin?: boolean;
 }
 
 export interface AnchorTypes {
