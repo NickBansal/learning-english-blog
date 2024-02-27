@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/prefer-optional-chain */
-import { type RefObject, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useFetcher } from '@remix-run/react';
 import classNames from 'classnames';
 
@@ -13,7 +12,7 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
   const fetcher = useFetcher();
   const ref = useRef<HTMLDivElement>(null);
 
-  useScrollIntoView(ref);
+  useScrollIntoView(ref, 65);
 
   return (
     <div ref={ref} className="h-max overflow-hidden border-t-2 p-4">

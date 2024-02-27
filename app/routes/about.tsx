@@ -42,7 +42,7 @@ export default function About(): JSX.Element {
 
       {aboutPage ? (
         <>
-          <div className="bg-[url('/about.jpg')] h-[400px] w-full bg-center bg-cover relative flex items-start justify-center lg:justify-end mb-20" />
+          <div className="bg-[url('/aboutPage.jpg')] h-[400px] w-full bg-center bg-cover relative flex items-start justify-center lg:justify-end mb-20" />
           <div className="mt-8 mb-48">
             <JSMarkdown>{aboutPage?.information}</JSMarkdown>
           </div>
