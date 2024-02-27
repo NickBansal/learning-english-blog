@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/member-delimiter-style': 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
     '@typescript-eslint/no-throw-literal': 0,
+    '@typescript-eslint/prefer-optional-chain': 0,
     'multiline-ternary': 0,
     'simple-import-sort/imports': [
       'error',
