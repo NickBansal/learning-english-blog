@@ -12,7 +12,7 @@ export default function Newsletter({ shouldRenderChild }: { shouldRenderChild: b
   const fetcher = useFetcher();
   const ref = useRef<HTMLDivElement>(null);
 
-  useScrollIntoView(ref, 65);
+  useScrollIntoView(ref, 175);
 
   return (
     <div ref={ref} className="h-max overflow-hidden border-t-2 p-4">
