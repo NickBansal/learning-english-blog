@@ -2,17 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Indicators } from './indicators';
 
-import { TESTIMONIALS } from '~/constants/TESTIMONIALS';
+import { type TestimonialTypes } from '~/types/hygraph-interface';
 
-export const TestimonialsCarousel = ({
-  testimonials
-}: {
-  testimonials: Array<{
-    id: string;
-    name: string;
-    content: string;
-  }>;
-}) => {
+export const TestimonialsCarousel = ({ testimonials }: TestimonialTypes) => {
   const [slide, setSlide] = useState(0);
   const timeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -28,7 +20,7 @@ export const TestimonialsCarousel = ({
   };
 
   const startTimer = () => {
-    const maxAmount = TESTIMONIALS.length;
+    const maxAmount = testimonials.length;
     timeout.current = setInterval(() => {
       setSlide((prevState) => {
         if (prevState === maxAmount - 1) {
@@ -57,7 +49,13 @@ export const TestimonialsCarousel = ({
         );
       })}
 
-      <Indicators slide={slide} setSlide={setSlide} resetTimer={resetTimer} startTimer={startTimer} />
+      <Indicators
+        slide={slide}
+        setSlide={setSlide}
+        resetTimer={resetTimer}
+        startTimer={startTimer}
+        testimonials={testimonials}
+      />
     </div>
   );
 };

@@ -37,6 +37,14 @@ interface ContentItem {
   };
 }
 
+export interface TestimonialTypes {
+  testimonials: Array<{
+    id: string;
+    name: string;
+    content: string;
+  }>;
+}
+
 interface HomeContent {
   homeContents: {
     homeContents: Array<{
@@ -45,11 +53,7 @@ interface HomeContent {
       description: string;
       leftPosition: boolean;
     }>;
-    testimonials: Array<{
-      id: string;
-      name: string;
-      content: string;
-    }>;
+    testimonials: TestimonialTypes['testimonials'];
   };
   error: { response: Response } | null;
 }
