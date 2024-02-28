@@ -62,7 +62,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className={'text-gray-800 dark:text-gray-300'}
       >
-        <button disabled={!canPageBackwards} className={classNames('', paginationBtns(canPageBackwards))}>
+        <button disabled={!canPageBackwards} className={classNames('h-[1.875rem]', paginationBtns(canPageBackwards))}>
           <span className="sr-only"> First page</span>
           <DoubleArrowLeft />
         </button>
@@ -77,7 +77,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button disabled={!canPageBackwards} className={classNames('', paginationBtns(canPageBackwards))}>
+        <button disabled={!canPageBackwards} className={classNames('h-[1.875rem]', paginationBtns(canPageBackwards))}>
           <span className="sr-only"> Previous page</span>
           <ArrowLeft className="mx-4" />
         </button>
@@ -105,7 +105,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button disabled={!canPageForwards} className={classNames('', paginationBtns(canPageForwards))}>
+        <button disabled={!canPageForwards} className={classNames('h-[1.875rem]', paginationBtns(canPageForwards))}>
           <span className="sr-only"> Next page</span>
           <ArrowRight className="mx-4" />
         </button>
@@ -120,7 +120,7 @@ export function PaginationBar({ total }: { total: number }) {
         prefetch="intent"
         className="text-gray-800 dark:text-gray-300"
       >
-        <button disabled={!canPageForwards} className={classNames('', paginationBtns(canPageForwards))}>
+        <button disabled={!canPageForwards} className={classNames('h-[1.875rem]', paginationBtns(canPageForwards))}>
           <span className="sr-only"> Last page</span>
           <DoubleArrowRight />
         </button>
