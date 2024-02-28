@@ -19,6 +19,7 @@ export interface LinkButtonTypes extends ButtonTypes {
 export interface ButtonGroupsTypes {
   children: React.ReactNode;
   className?: string;
+  reducedTopPadding?: boolean;
 }
 
 export interface SubmitButtonTypes {

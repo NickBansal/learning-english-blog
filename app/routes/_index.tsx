@@ -56,7 +56,7 @@ export default function Index(): JSX.Element {
           </ButtonsGroup>
         </div>
       </div>
-      <PaddedSection className="mb-20 pt-10 sm:pt-20 relative">
+      <PaddedSection reducedTopPadding>
         {homeContents.map((item) => (
           <SlideReveal key={item.id} leftPosition={item.leftPosition}>
             <div
