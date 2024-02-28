@@ -71,3 +71,16 @@ export const Error400 = () => {
     </section>
   );
 };
+
+export const ErrorHomePage = () => {
+  return (
+    <section className="flex items-center h-full p-16">
+      <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+        <div className="max-w-md text-center">
+          <p className="text-2xl font-semibold md:text-3xl">Oops... something went wrong.</p>
+          <p className="mt-4 mb-8">We could not load the information.</p>
+        </div>
+      </div>
+    </section>
+  );
+};

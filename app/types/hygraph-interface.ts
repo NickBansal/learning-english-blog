@@ -38,12 +38,20 @@ interface ContentItem {
 }
 
 interface HomeContent {
-  homeContents: Array<{
-    id: string;
-    title: string;
-    description: string;
-    leftPosition: boolean;
-  }>;
+  homeContents: {
+    homeContents: Array<{
+      id: string;
+      title: string;
+      description: string;
+      leftPosition: boolean;
+    }>;
+    testimonials: Array<{
+      id: string;
+      name: string;
+      content: string;
+    }>;
+  };
+  error: { response: Response } | null;
 }
 
 interface AboutContent {

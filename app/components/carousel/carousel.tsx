@@ -4,7 +4,15 @@ import { Indicators } from './indicators';
 
 import { TESTIMONIALS } from '~/constants/TESTIMONIALS';
 
-export const TestimonialsCarousel = () => {
+export const TestimonialsCarousel = ({
+  testimonials
+}: {
+  testimonials: Array<{
+    id: string;
+    name: string;
+    content: string;
+  }>;
+}) => {
   const [slide, setSlide] = useState(0);
   const timeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -36,14 +44,14 @@ export const TestimonialsCarousel = () => {
       id={`slide-${slide}`}
       className="max-w-full flex overflow-x-hidden text-center border-y-2 border-gray-500 pb-20"
     >
-      {TESTIMONIALS.map((item) => {
+      {testimonials.map((item) => {
         return (
           <div
-            key={item.reference}
+            key={item.id}
             className={`w-full h-max shrink-0 p-8`}
             style={{ transform: `translateX(-${slide * 100}%)`, transition: 'transform 1s' }}
           >
-            <p className="text-base sm:text-lg md:text-xl italic font-light">{`"${item.reference}"`}</p>
+            <p className="text-base sm:text-lg md:text-xl italic font-light">{`"${item.content}"`}</p>
             <p className="text-base sm:text-lg md:text-xl italic font-semibold mt-2">- {item.name}</p>
           </div>
         );

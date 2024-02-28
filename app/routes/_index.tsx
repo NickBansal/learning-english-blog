@@ -6,6 +6,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 import { ButtonsGroup } from '~/components/button-groups/button-groups';
 import { InternalLink } from '~/components/buttons/buttons';
 import { TestimonialsCarousel } from '~/components/carousel/carousel';
+import { ErrorHomePage } from '~/components/error-screen/error-screen';
 import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
@@ -23,18 +24,29 @@ export async function loader() {
         leftPosition
         title
       }
+
+      testimonials {
+        id
+        name
+        content
+      }
     }
   `;
 
   const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
-  const homeContents = await hygraph.request(query);
 
-  return json(homeContents);
+  try {
+    const homeContents = await hygraph.request(query);
+    const testimonials = await hygraph.request(query);
+
+    return json({ homeContents, testimonials });
+  } catch (error) {
+    return { homeContents: false, error };
+  }
 }
 
 export default function Index(): JSX.Element {
-  const { homeContents } = useLoaderData() as HomeContent;
-
+  const { homeContents, error } = useLoaderData() as HomeContent;
   return (
     <>
       <div className="bg-[url('/books.jpg')] h-screen w-full bg-center bg-cover relative flex items-start justify-center lg:justify-end">
@@ -57,27 +69,29 @@ export default function Index(): JSX.Element {
         </div>
       </div>
       <PaddedSection reducedTopPadding>
-        {homeContents.map((item) => (
-          <SlideReveal key={item.id} leftPosition={item.leftPosition}>
-            <div
-              className={classNames(`flex mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem]`, {
-                'text-left justify-start': item.leftPosition,
-                'text-right justify-end': !item.leftPosition
-              })}
-            >
-              <div>
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">{item.title}</h1>
-                <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
-                  <hr className="h2 border max-w-1/2 mb-4 border-gray-500 dark:border-white" />
-                </SlideReveal>
-                <JSMarkdown>{item.description}</JSMarkdown>
+        {error?.response?.status === 400 || !homeContents ? <ErrorHomePage /> : null}
+        {homeContents &&
+          homeContents.homeContents.map((item) => (
+            <SlideReveal key={item.id} leftPosition={item.leftPosition}>
+              <div
+                className={classNames(`flex mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem]`, {
+                  'text-left justify-start': item.leftPosition,
+                  'text-right justify-end': !item.leftPosition
+                })}
+              >
+                <div>
+                  <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">{item.title}</h1>
+                  <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
+                    <hr className="h2 border max-w-1/2 mb-4 border-gray-500 dark:border-white" />
+                  </SlideReveal>
+                  <JSMarkdown>{item.description}</JSMarkdown>
+                </div>
               </div>
-            </div>
-          </SlideReveal>
-        ))}
+            </SlideReveal>
+          ))}
       </PaddedSection>
       <PaddedSection className="mb-20 pt-8 relative">
-        <TestimonialsCarousel />
+        <TestimonialsCarousel testimonials={homeContents.testimonials} />
       </PaddedSection>
     </>
   );
