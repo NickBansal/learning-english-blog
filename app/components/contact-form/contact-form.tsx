@@ -104,7 +104,7 @@ export const ContactForm = () => {
         </div>
       </fetcher.Form>
       {fetcher?.data?.success && (
-        <p className="text-green-600 text-center px-2 py-4">
+        <p className="text-green-600 dark:text-green-300 text-center px-2 py-4">
           Message sent, we will get back to you as soon as possible
         </p>
       )}
