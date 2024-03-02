@@ -11,7 +11,7 @@ import JSMarkdown from '~/components/mdx-components/mdx-component';
 import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
 import { homePage } from '~/constants/META_DATA';
-import { type HomeContent } from '~/types/hygraph-interface';
+import { type HomePageData } from '~/types/hygraph-interface';
 
 export const meta: V2_MetaFunction = () => homePage;
 
@@ -24,7 +24,6 @@ export async function loader() {
         leftPosition
         title
       }
-
       testimonials {
         id
         name
@@ -36,17 +35,19 @@ export async function loader() {
   const hygraph = new GraphQLClient(process.env.HYGRAPH_API_KEY as string);
 
   try {
-    const homeContents = await hygraph.request(query);
-    const testimonials = await hygraph.request(query);
-
-    return json({ homeContents, testimonials });
+    const data = await hygraph.request(query);
+    return json({ data, error: false });
   } catch (error) {
-    return { homeContents: false, error };
+    return { data: false, error };
   }
 }
 
 export default function Index(): JSX.Element {
-  const { homeContents, error } = useLoaderData() as HomeContent;
+  const {
+    data: { homeContents, testimonials },
+    error
+  } = useLoaderData() as HomePageData;
+
   return (
     <>
       <div className="bg-[url('/books.jpg')] h-screen w-full bg-center bg-cover relative flex items-start justify-center lg:justify-end">
@@ -68,10 +69,14 @@ export default function Index(): JSX.Element {
           </ButtonsGroup>
         </div>
       </div>
-      <PaddedSection reducedTopPadding>
-        {error?.response?.status === 400 || !homeContents ? <ErrorHomePage /> : null}
-        {homeContents &&
-          homeContents.homeContents.map((item) => (
+      {(error?.response?.status === 400 || !homeContents) && (
+        <PaddedSection>
+          <ErrorHomePage />
+        </PaddedSection>
+      )}
+      {homeContents && (
+        <PaddedSection reducedTopPadding>
+          {homeContents.map((item) => (
             <SlideReveal key={item.id} leftPosition={item.leftPosition}>
               <div
                 className={classNames(`flex mb-[10rem] md:mb-[15rem] last:mb-[5rem] last:md:mb-[10rem]`, {
@@ -89,10 +94,13 @@ export default function Index(): JSX.Element {
               </div>
             </SlideReveal>
           ))}
-      </PaddedSection>
-      <PaddedSection className="mb-20 pt-8 relative">
-        <TestimonialsCarousel testimonials={homeContents.testimonials} />
-      </PaddedSection>
+        </PaddedSection>
+      )}
+      {Boolean(testimonials) && (
+        <PaddedSection className="mb-20 pt-8 relative">
+          <TestimonialsCarousel testimonials={testimonials} />
+        </PaddedSection>
+      )}
     </>
   );
 }

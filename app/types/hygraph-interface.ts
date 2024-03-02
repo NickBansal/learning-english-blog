@@ -37,7 +37,7 @@ interface ContentItem {
   };
 }
 
-export interface TestimonialTypes {
+interface TestimonialTypes {
   testimonials: Array<{
     id: string;
     name: string;
@@ -46,13 +46,16 @@ export interface TestimonialTypes {
 }
 
 interface HomeContent {
-  homeContents: {
-    homeContents: Array<{
-      id: string;
-      title: string;
-      description: string;
-      leftPosition: boolean;
-    }>;
+  homeContents: Array<{
+    id: string;
+    title: string;
+    description: string;
+    leftPosition: boolean;
+  }>;
+}
+interface HomePageData {
+  data: {
+    homeContents: HomeContent['homeContents'];
     testimonials: TestimonialTypes['testimonials'];
   };
   error: { response: Response } | null;
@@ -77,4 +80,13 @@ interface CoursesArray {
   error: { response: Response } | null;
 }
 
-export type { ContentItem, Blogs, HomeContent, AboutContent, ContentArrayItem, CoursesArray };
+export type {
+  ContentItem,
+  Blogs,
+  HomePageData,
+  HomeContent,
+  TestimonialTypes,
+  AboutContent,
+  ContentArrayItem,
+  CoursesArray
+};
