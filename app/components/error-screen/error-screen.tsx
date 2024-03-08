@@ -55,7 +55,7 @@ export const Error404 = () => {
 
 export const Error400 = () => {
   return (
-    <section className="flex items-center h-full p-16">
+    <section className="flex items-center h-[45vh] p-16">
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
         <div className="max-w-md text-center">
           <p className="text-2xl font-semibold md:text-3xl">Oops... something went wrong.</p>

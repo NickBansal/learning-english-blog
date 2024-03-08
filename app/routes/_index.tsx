@@ -12,6 +12,7 @@ import { PaddedSection } from '~/components/padded-section/padded-section';
 import { SlideReveal } from '~/components/reveal/slide-reveal';
 import { homePage } from '~/constants/META_DATA';
 import { type HomePageData } from '~/types/hygraph-interface';
+import { useMediaQuery } from '~/utils/hooks/use-media-query';
 
 export const meta: V2_MetaFunction = () => homePage;
 
@@ -47,6 +48,10 @@ export default function Index(): JSX.Element {
     data: { homeContents, testimonials },
     error
   } = useLoaderData() as HomePageData;
+
+  const isBreakpoint = useMediaQuery(420);
+
+  const delayAmount = isBreakpoint ? 0 : 0.5;
 
   return (
     <>
@@ -86,7 +91,7 @@ export default function Index(): JSX.Element {
               >
                 <div>
                   <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">{item.title}</h1>
-                  <SlideReveal leftPosition={item.leftPosition} delay={0.5}>
+                  <SlideReveal leftPosition={item.leftPosition} delay={delayAmount}>
                     <hr className="h2 border max-w-1/2 mb-4 border-gray-500 dark:border-white" />
                   </SlideReveal>
                   <JSMarkdown>{item.description}</JSMarkdown>

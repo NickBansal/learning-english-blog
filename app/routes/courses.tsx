@@ -46,13 +46,13 @@ export default function Courses(): JSX.Element {
 
       {error?.response?.status === 400 || !courses ? <Error400 /> : null}
 
-      <div className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-8 py-4">
-        {courses
-          ? courses.map((course) => {
-              return <CoursesCard key={course.id} {...course} />;
-            })
-          : null}
-      </div>
+      {courses ? (
+        <div className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-8 py-4">
+          {courses.map((course) => {
+            return <CoursesCard key={course.id} {...course} />;
+          })}
+        </div>
+      ) : null}
     </PaddedSection>
   );
 }
