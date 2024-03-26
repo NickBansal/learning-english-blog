@@ -58,6 +58,7 @@ export default function AllContentsPage(): JSX.Element {
   const [searchParams] = useSearchParams();
 
   const header = !data ? 'All content' : `All content (${total})`;
+
   return (
     <PaddedSection>
       <Header noBottomMargin>{header}</Header>
